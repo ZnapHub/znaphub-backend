@@ -1,0 +1,7 @@
+﻿services:
+  eventflow:
+    image: eventflow
+    build:
+      context: .
+      dockerfile: EventFlow/Dockerfile
+
