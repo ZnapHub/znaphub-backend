@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EventFlow.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96f83483c330fadebe86913290544f5d0b9c3ec6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+565a126a7dca0b36bb81bcb4c575f54be0634fae")]
 [assembly: System.Reflection.AssemblyProductAttribute("EventFlow.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EventFlow.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
