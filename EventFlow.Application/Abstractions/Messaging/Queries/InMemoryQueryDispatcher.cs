@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventFlow.Shared.Queries;
+namespace EventFlow.Application.Abstractions.Messaging.Queries;
 
 internal sealed class InMemoryQueryDispatcher : IQueryDispatcher
 {

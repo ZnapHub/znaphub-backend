@@ -1,4 +1,4 @@
-namespace EventFlow.Shared.Commands;
+namespace EventFlow.Application.Abstractions.Messaging.Commands;
 
 public interface ICommandHandler<in TCommand> where TCommand : class, ICommand
 {

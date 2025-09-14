@@ -1,7 +1,7 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventFlow.Shared.Commands;
+namespace EventFlow.Application.Abstractions.Messaging.Commands;
 
 public static class Extensions
 {

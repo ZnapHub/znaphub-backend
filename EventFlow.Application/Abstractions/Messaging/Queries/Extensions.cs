@@ -1,7 +1,7 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventFlow.Shared.Queries;
+namespace EventFlow.Application.Abstractions.Messaging.Queries;
 
 public static class Extensions
 {

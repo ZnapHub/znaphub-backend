@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventFlow.Shared.Commands;
+namespace EventFlow.Application.Abstractions.Messaging.Commands;
 
 internal sealed class InMemoryCommandDispatcher : ICommandDispatcher
 {
