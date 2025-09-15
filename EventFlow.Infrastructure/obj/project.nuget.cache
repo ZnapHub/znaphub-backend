@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QGbJv8fBhV0=",
+  "dgSpecHash": "1SgRtFIXpns=",
   "success": true,
   "projectFilePath": "/Users/awingray/RiderProjects/EventFlow/EventFlow.Infrastructure/EventFlow.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "/Users/awingray/.nuget/packages/microsoft.extensions.configuration.usersecrets/9.0.9/microsoft.extensions.configuration.usersecrets.9.0.9.nupkg.sha512",
     "/Users/awingray/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.9/microsoft.extensions.dependencyinjection.9.0.9.nupkg.sha512",
     "/Users/awingray/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.9/microsoft.extensions.dependencyinjection.abstractions.9.0.9.nupkg.sha512",
+    "/Users/awingray/.nuget/packages/microsoft.extensions.dependencymodel/8.0.2/microsoft.extensions.dependencymodel.8.0.2.nupkg.sha512",
     "/Users/awingray/.nuget/packages/microsoft.extensions.diagnostics/9.0.9/microsoft.extensions.diagnostics.9.0.9.nupkg.sha512",
     "/Users/awingray/.nuget/packages/microsoft.extensions.diagnostics.abstractions/9.0.9/microsoft.extensions.diagnostics.abstractions.9.0.9.nupkg.sha512",
     "/Users/awingray/.nuget/packages/microsoft.extensions.fileproviders.abstractions/9.0.9/microsoft.extensions.fileproviders.abstractions.9.0.9.nupkg.sha512",
@@ -41,6 +42,7 @@
     "/Users/awingray/.nuget/packages/minio/6.0.5/minio.6.0.5.nupkg.sha512",
     "/Users/awingray/.nuget/packages/npgsql/9.0.3/npgsql.9.0.3.nupkg.sha512",
     "/Users/awingray/.nuget/packages/npgsql.entityframeworkcore.postgresql/9.0.4/npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
+    "/Users/awingray/.nuget/packages/scrutor/6.1.0/scrutor.6.1.0.nupkg.sha512",
     "/Users/awingray/.nuget/packages/system.diagnostics.eventlog/9.0.9/system.diagnostics.eventlog.9.0.9.nupkg.sha512",
     "/Users/awingray/.nuget/packages/system.io.hashing/9.0.4/system.io.hashing.9.0.4.nupkg.sha512",
     "/Users/awingray/.nuget/packages/system.reactive/6.0.1/system.reactive.6.0.1.nupkg.sha512"

@@ -14,4 +14,9 @@
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\EventFlow.Application\EventFlow.Application.csproj" />
+      <ProjectReference Include="..\EventFlow.Domain\EventFlow.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

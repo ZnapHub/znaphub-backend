@@ -5,7 +5,8 @@ namespace EventFlow.Infrastructure.Persistence.Contexts;
 
 public abstract class BaseDbContext : DbContext
 {
-    protected BaseDbContext(DbContextOptions options) : base(options) { }
+    protected BaseDbContext(DbContextOptions options)
+        : base(options) { }
 
     public DbSet<PhotoEntity> Photos => Set<PhotoEntity>();
 

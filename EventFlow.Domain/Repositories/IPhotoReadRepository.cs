@@ -3,10 +3,8 @@ using EventFlow.Domain.ValueObjects;
 
 namespace EventFlow.Domain.Repositories;
 
-public interface IPhotoRepository
+public interface IPhotoReadRepository
 {
     Task<Photo?> GetAsync(PhotoId id);
     Task<IReadOnlyList<Photo>> GetByEventAsync(EventId eventId, int limit = 100);
-    Task AddAsync(Photo photo);
-    Task SaveChangesAsync(CancellationToken ct = default);
 }
