@@ -1,11 +1,12 @@
 using System.Reflection;
+using EventFlow.Application.Abstractions.Messaging.Queries;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventFlow.Application.Abstractions.Messaging.Queries;
+namespace EventFlow.Infrastructure.DependencyInjections.Messaging;
 
-public static class Extensions
+public static class QueryServiceCollectionExtensions
 {
-    public static IServiceCollection AddQueries(this IServiceCollection services)
+    public static IServiceCollection AddQueryHandlers(this IServiceCollection services)
     {
         var assembly = Assembly.GetCallingAssembly();
 

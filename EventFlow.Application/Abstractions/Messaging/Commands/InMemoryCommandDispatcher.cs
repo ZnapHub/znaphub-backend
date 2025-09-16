@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace EventFlow.Application.Abstractions.Messaging.Commands;
 
-internal sealed class InMemoryCommandDispatcher : ICommandDispatcher
+public sealed class InMemoryCommandDispatcher : ICommandDispatcher
 {
     private readonly IServiceProvider _serviceProvider;
 

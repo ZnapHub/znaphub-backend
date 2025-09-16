@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace EventFlow.Application.Abstractions.Messaging.Queries;
 
-internal sealed class InMemoryQueryDispatcher : IQueryDispatcher
+public sealed class InMemoryQueryDispatcher : IQueryDispatcher
 {
     private readonly IServiceProvider _serviceProvider;
 

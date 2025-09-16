@@ -1,11 +1,12 @@
 using System.Reflection;
+using EventFlow.Application.Abstractions.Messaging.Commands;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventFlow.Application.Abstractions.Messaging.Commands;
+namespace EventFlow.Infrastructure.DependencyInjections.Messaging;
 
-public static class Extensions
+public static class CommandServiceCollectionExtensions
 {
-    public static IServiceCollection AddCommands(this IServiceCollection services)
+    public static IServiceCollection AddCommandHandlers(this IServiceCollection services)
     {
         var assembly = Assembly.GetCallingAssembly();
 
