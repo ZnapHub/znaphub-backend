@@ -1,8 +1,9 @@
+using EventFlow.Application.Abstractions.Messaging.Commands;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventFlow.Application.Abstractions.Messaging.Commands;
+namespace EventFlow.Infrastructure.Dispatchers;
 
-public sealed class InMemoryCommandDispatcher : ICommandDispatcher
+internal sealed class InMemoryCommandDispatcher : ICommandDispatcher
 {
     private readonly IServiceProvider _serviceProvider;
 

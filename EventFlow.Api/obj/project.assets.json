@@ -870,10 +870,6 @@
       "EventFlow.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "9.0.9",
-          "Scrutor": "6.1.0"
-        },
         "compile": {
           "bin/placeholder/EventFlow.Application.dll": {}
         },
@@ -901,7 +897,8 @@
           "Microsoft.Extensions.DependencyInjection": "9.0.9",
           "Microsoft.Extensions.Hosting": "9.0.9",
           "Minio": "6.0.5",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
+          "Scrutor": "6.1.0"
         },
         "compile": {
           "bin/placeholder/EventFlow.Infrastructure.dll": {}

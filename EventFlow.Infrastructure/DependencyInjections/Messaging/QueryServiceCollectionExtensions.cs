@@ -1,5 +1,6 @@
 using System.Reflection;
 using EventFlow.Application.Abstractions.Messaging.Queries;
+using EventFlow.Infrastructure.Dispatchers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EventFlow.Infrastructure.DependencyInjections.Messaging;

@@ -1,8 +1,9 @@
+using EventFlow.Application.Abstractions.Messaging.Queries;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventFlow.Application.Abstractions.Messaging.Queries;
+namespace EventFlow.Infrastructure.Dispatchers;
 
-public sealed class InMemoryQueryDispatcher : IQueryDispatcher
+internal sealed class InMemoryQueryDispatcher : IQueryDispatcher
 {
     private readonly IServiceProvider _serviceProvider;
 

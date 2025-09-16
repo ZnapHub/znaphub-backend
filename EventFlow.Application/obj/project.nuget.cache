@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P3pdYzGebAc=",
+  "dgSpecHash": "M7i2k4SIuLY=",
   "success": true,
   "projectFilePath": "/Users/awingray/RiderProjects/EventFlow/EventFlow.Application/EventFlow.Application.csproj",
-  "expectedPackageFiles": [
-    "/Users/awingray/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.9/microsoft.extensions.dependencyinjection.9.0.9.nupkg.sha512",
-    "/Users/awingray/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.9/microsoft.extensions.dependencyinjection.abstractions.9.0.9.nupkg.sha512",
-    "/Users/awingray/.nuget/packages/microsoft.extensions.dependencymodel/8.0.2/microsoft.extensions.dependencymodel.8.0.2.nupkg.sha512",
-    "/Users/awingray/.nuget/packages/scrutor/6.1.0/scrutor.6.1.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
