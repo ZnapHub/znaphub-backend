@@ -16,6 +16,7 @@ nuget.config
 Thumbs.db
 ehthumbs.db
 *.tmp
+.sln.DotSettings.user
 
 *.log
 npm-debug.log*
