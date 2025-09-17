@@ -42,13 +42,6 @@ public sealed class Photo
     {
         ArgumentNullException.ThrowIfNull(id);
         ArgumentNullException.ThrowIfNull(eventId);
-        if (string.IsNullOrWhiteSpace(fileName))
-            throw new ArgumentException("fileName required", nameof(fileName));
-        if (string.IsNullOrWhiteSpace(objectName))
-            throw new ArgumentException("objectName required", nameof(objectName));
-        if (string.IsNullOrWhiteSpace(url))
-            throw new ArgumentException("url required", nameof(url));
-
         return new Photo(id, eventId, fileName.Trim(), objectName.Trim(), url.Trim(), uploadedAt);
     }
 

@@ -25,7 +25,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/awingray/RiderProjects/EventFlow/EventFlow.Domain/EventFlow.Domain.csproj": {
+                "projectPath": "/Users/awingray/RiderProjects/EventFlow/EventFlow.Domain/EventFlow.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -43,6 +47,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
