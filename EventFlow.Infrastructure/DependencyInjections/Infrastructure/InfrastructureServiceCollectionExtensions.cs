@@ -14,5 +14,10 @@ public static class InfrastructureServiceCollectionExtensions
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration
-    ) => services.AddDbContexts(configuration).AddUnitOfWork().AddRepositories();
+    ) =>
+        services
+            .AddDbContexts(configuration)
+            .AddUnitOfWork()
+            .AddRepositories()
+            .AddStorage(configuration);
 }
