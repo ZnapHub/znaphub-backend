@@ -26,17 +26,17 @@ internal sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoCom
 
     public async Task HandleAsync(UploadPhotoCommand command)
     {
-        var eventId = command.EventId;
-        var photoId = Guid.NewGuid();
+        var eventId = EventId.FromString(command.EventId);
+        var photoId = PhotoId.New();
         var fileName = command.File.FileName;
-        var objectName = $"{eventId}/{photoId}-{Path.GetFileName(fileName)}";
+        var objectName = ObjectName.ForEvent(eventId, photoId, fileName);
 
         await using var stream = command.File.OpenReadStream();
         await _storageService.UploadAsync(objectName, stream, command.File.ContentType);
 
         var url = await _storageService.GetUrlAsync(objectName);
 
-        var photo = Photo.Create(new EventId(eventId), fileName, command.File.ContentType, url);
+        var photo = Photo.Create(eventId, fileName, command.File.ContentType, url);
 
         await _repository.AddAsync(photo);
         await _unitOfWork.SaveChangesAsync();
