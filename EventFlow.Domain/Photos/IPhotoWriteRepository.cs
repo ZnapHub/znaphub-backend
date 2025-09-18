@@ -1,6 +1,4 @@
-using EventFlow.Domain.Entities;
-
-namespace EventFlow.Domain.Repositories;
+namespace EventFlow.Domain.Photos;
 
 public interface IPhotoWriteRepository
 {

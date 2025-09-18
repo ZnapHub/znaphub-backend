@@ -1,5 +1,5 @@
 using EventFlow.Application.Abstractions.Data;
-using EventFlow.Domain.Repositories;
+using EventFlow.Domain.Photos;
 using EventFlow.Infrastructure.Data;
 using EventFlow.Infrastructure.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;

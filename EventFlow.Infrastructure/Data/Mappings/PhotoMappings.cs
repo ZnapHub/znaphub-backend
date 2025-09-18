@@ -1,6 +1,5 @@
-using EventFlow.Domain.Entities;
+using EventFlow.Domain.Photos;
 using EventFlow.Domain.ValueObjects;
-using EventFlow.Domain.ValueObjects.Photos;
 using EventFlow.Infrastructure.Data.Entities;
 
 namespace EventFlow.Infrastructure.Data.Mappings;
@@ -14,7 +13,7 @@ internal static class PhotoMappings
 
         return Photo.Rehydrate(
             PhotoId.FromGuid(e.Id),
-            EventId.FromString(e.EventId),
+            EventId.FromGuid(e.EventId),
             FileName.FromString(e.FileName),
             ObjectName.FromString(e.ObjectName),
             PhotoUrl.FromString(e.Url),

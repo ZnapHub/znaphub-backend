@@ -3,7 +3,7 @@ namespace EventFlow.Infrastructure.Data.Entities;
 public sealed class PhotoEntity
 {
     public Guid Id { get; set; }
-    public string EventId { get; set; } = null!;
+    public Guid EventId { get; set; }
     public string FileName { get; set; } = null!;
     public string ObjectName { get; set; } = null!;
     public string Url { get; set; } = null!;

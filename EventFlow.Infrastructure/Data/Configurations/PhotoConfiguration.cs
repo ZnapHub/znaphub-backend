@@ -9,7 +9,7 @@ public class PhotoConfiguration : IEntityTypeConfiguration<PhotoEntity>
     public void Configure(EntityTypeBuilder<PhotoEntity> builder)
     {
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.EventId).IsRequired().HasMaxLength(128);
+        builder.Property(x => x.EventId).IsRequired();
         builder.Property(x => x.FileName).IsRequired().HasMaxLength(512);
         builder.Property(x => x.ObjectName).IsRequired().HasMaxLength(1024);
         builder.Property(x => x.Url).IsRequired().HasMaxLength(2048);

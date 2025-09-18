@@ -1,11 +1,10 @@
 using EventFlow.Domain.ValueObjects;
-using EventFlow.Domain.ValueObjects.Photos;
 
-namespace EventFlow.Domain.Events;
+namespace EventFlow.Domain.Photos;
 
 public sealed record PhotoUploaded(
     PhotoId PhotoId,
     EventId EventId,
-    string FileName,
+    FileName FileName,
     DateTimeOffset UploadedAt
 );

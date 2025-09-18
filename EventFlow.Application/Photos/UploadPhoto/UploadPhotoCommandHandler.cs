@@ -1,10 +1,8 @@
 using EventFlow.Application.Abstractions.Data;
 using EventFlow.Application.Abstractions.Messaging.Commands;
 using EventFlow.Application.Abstractions.Storage;
-using EventFlow.Domain.Entities;
-using EventFlow.Domain.Repositories;
+using EventFlow.Domain.Photos;
 using EventFlow.Domain.ValueObjects;
-using EventFlow.Domain.ValueObjects.Photos;
 
 namespace EventFlow.Application.Photos.UploadPhoto;
 
@@ -27,7 +25,7 @@ internal sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoCom
 
     public async Task HandleAsync(UploadPhotoCommand command)
     {
-        var eventId = EventId.FromString(command.EventId);
+        var eventId = EventId.FromGuid(command.EventId);
         var photoId = PhotoId.New();
         var fileName = command.File.FileName;
         var objectName = ObjectName.ForEvent(eventId, photoId, fileName);

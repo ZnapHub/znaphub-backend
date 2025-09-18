@@ -3,4 +3,4 @@ using Microsoft.AspNetCore.Http;
 
 namespace EventFlow.Application.Photos.UploadPhoto;
 
-public sealed record UploadPhotoCommand(string EventId, IFormFile File) : ICommand;
+public sealed record UploadPhotoCommand(Guid EventId, IFormFile File) : ICommand;

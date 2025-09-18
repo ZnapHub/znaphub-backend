@@ -1,7 +1,5 @@
-using EventFlow.Domain.Entities;
-using EventFlow.Domain.Repositories;
+using EventFlow.Domain.Photos;
 using EventFlow.Domain.ValueObjects;
-using EventFlow.Domain.ValueObjects.Photos;
 using EventFlow.Infrastructure.Data.Contexts;
 using EventFlow.Infrastructure.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +17,7 @@ public class PhotoReadRepository : IPhotoReadRepository
 
     public async Task<IReadOnlyList<Photo>> GetByEventAsync(EventId eventId, int limit = 100) =>
         await _db
-            .Photos.Where(p => p.EventId == eventId.ToString())
+            .Photos.Where(p => p.EventId == eventId.Value)
             .OrderByDescending(p => p.UploadedAt)
             .Take(limit)
             .Select(p => p.ToDomain())

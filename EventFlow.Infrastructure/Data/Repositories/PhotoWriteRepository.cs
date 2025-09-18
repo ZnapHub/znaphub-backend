@@ -1,5 +1,4 @@
-using EventFlow.Domain.Entities;
-using EventFlow.Domain.Repositories;
+using EventFlow.Domain.Photos;
 using EventFlow.Infrastructure.Data.Contexts;
 using EventFlow.Infrastructure.Data.Mappings;
 

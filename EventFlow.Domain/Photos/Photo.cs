@@ -1,8 +1,7 @@
 using EventFlow.Domain.Interfaces;
 using EventFlow.Domain.ValueObjects;
-using EventFlow.Domain.ValueObjects.Photos;
 
-namespace EventFlow.Domain.Entities;
+namespace EventFlow.Domain.Photos;
 
 public sealed class Photo : IEntity<PhotoId>
 {

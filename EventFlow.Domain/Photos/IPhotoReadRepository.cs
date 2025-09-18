@@ -1,8 +1,6 @@
-using EventFlow.Domain.Entities;
 using EventFlow.Domain.ValueObjects;
-using EventFlow.Domain.ValueObjects.Photos;
 
-namespace EventFlow.Domain.Repositories;
+namespace EventFlow.Domain.Photos;
 
 public interface IPhotoReadRepository
 {
