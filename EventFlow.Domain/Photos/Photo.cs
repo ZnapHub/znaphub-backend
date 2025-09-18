@@ -1,9 +1,10 @@
 using EventFlow.Domain.Abstractions;
+using EventFlow.Domain.Interfaces;
 using EventFlow.Domain.ValueObjects;
 
 namespace EventFlow.Domain.Photos;
 
-public sealed class Photo : Entity<PhotoId>
+public sealed class Photo : Entity<PhotoId>, IAggregateRoot
 {
     public EventId EventId { get; }
     public FileName FileName { get; }
