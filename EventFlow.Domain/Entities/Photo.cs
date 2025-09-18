@@ -1,23 +1,27 @@
+using EventFlow.Domain.Interfaces;
 using EventFlow.Domain.ValueObjects;
+using EventFlow.Domain.ValueObjects.Photos;
 
 namespace EventFlow.Domain.Entities;
 
-public sealed class Photo
+public sealed class Photo : IEntity<PhotoId>
 {
     public PhotoId Id { get; }
     public EventId EventId { get; }
-    public string FileName { get; }
-    public string ObjectName { get; }
-    public string Url { get; private set; }
-    public DateTimeOffset UploadedAt { get; }
+    public FileName FileName { get; }
+    public ObjectName ObjectName { get; }
+    public PhotoUrl Url { get; private set; }
+    public DateTimeOffset CreatedAt { get; }
+    public DateTimeOffset? UpdatedAt { get; private set; }
 
     private Photo(
         PhotoId id,
         EventId eventId,
-        string fileName,
-        string objectName,
-        string url,
-        DateTimeOffset uploadedAt
+        FileName fileName,
+        ObjectName objectName,
+        PhotoUrl url,
+        DateTimeOffset uploadedAt,
+        DateTimeOffset? updatedAt = null
     )
     {
         Id = id;
@@ -25,30 +29,35 @@ public sealed class Photo
         FileName = fileName;
         ObjectName = objectName;
         Url = url;
-        UploadedAt = uploadedAt;
+        CreatedAt = uploadedAt;
+        UpdatedAt = updatedAt;
     }
 
-    public static Photo Create(EventId eventId, string fileName, string objectName, string url) =>
-        new Photo(PhotoId.New(), eventId, fileName, objectName, url, DateTimeOffset.UtcNow);
+    public static Photo Create(
+        EventId eventId,
+        FileName fileName,
+        ObjectName objectName,
+        PhotoUrl url
+    ) => new(PhotoId.New(), eventId, fileName, objectName, url, DateTimeOffset.UtcNow);
 
     public static Photo Rehydrate(
         PhotoId id,
         EventId eventId,
-        string fileName,
-        string objectName,
-        string url,
+        FileName fileName,
+        ObjectName objectName,
+        PhotoUrl url,
         DateTimeOffset uploadedAt
     )
     {
         ArgumentNullException.ThrowIfNull(id);
         ArgumentNullException.ThrowIfNull(eventId);
-        return new Photo(id, eventId, fileName.Trim(), objectName.Trim(), url.Trim(), uploadedAt);
+        return new Photo(id, eventId, fileName, objectName, url, uploadedAt);
     }
 
-    public void UpdateUrl(string newUrl)
+    public Photo UpdateUrl(string newUrl)
     {
-        if (string.IsNullOrWhiteSpace(newUrl))
-            throw new ArgumentException("Url cannot be empty");
-        Url = newUrl;
+        Url = PhotoUrl.FromString(newUrl);
+        UpdatedAt = DateTimeOffset.UtcNow;
+        return this;
     }
 }

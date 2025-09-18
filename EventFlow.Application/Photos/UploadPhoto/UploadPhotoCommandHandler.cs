@@ -4,6 +4,7 @@ using EventFlow.Application.Abstractions.Storage;
 using EventFlow.Domain.Entities;
 using EventFlow.Domain.Repositories;
 using EventFlow.Domain.ValueObjects;
+using EventFlow.Domain.ValueObjects.Photos;
 
 namespace EventFlow.Application.Photos.UploadPhoto;
 
@@ -36,7 +37,12 @@ internal sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoCom
 
         var url = await _storageService.GetUrlAsync(objectName);
 
-        var photo = Photo.Create(eventId, fileName, command.File.ContentType, url);
+        var photo = Photo.Create(
+            eventId,
+            FileName.FromString(fileName),
+            objectName,
+            PhotoUrl.FromString(url)
+        );
 
         await _repository.AddAsync(photo);
         await _unitOfWork.SaveChangesAsync();

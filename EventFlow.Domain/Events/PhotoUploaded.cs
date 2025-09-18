@@ -1,4 +1,5 @@
 using EventFlow.Domain.ValueObjects;
+using EventFlow.Domain.ValueObjects.Photos;
 
 namespace EventFlow.Domain.Events;
 

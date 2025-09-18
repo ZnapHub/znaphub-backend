@@ -1,6 +1,7 @@
 using EventFlow.Domain.Entities;
 using EventFlow.Domain.Repositories;
 using EventFlow.Domain.ValueObjects;
+using EventFlow.Domain.ValueObjects.Photos;
 using EventFlow.Infrastructure.Data.Contexts;
 using EventFlow.Infrastructure.Mappings;
 using Microsoft.EntityFrameworkCore;

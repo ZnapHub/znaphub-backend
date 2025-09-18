@@ -1,3 +1,5 @@
+using EventFlow.Domain.ValueObjects.Photos;
+
 namespace EventFlow.Domain.ValueObjects;
 
 public sealed record ObjectName(string Value)
@@ -7,6 +9,8 @@ public sealed record ObjectName(string Value)
         var cleanFileName = Path.GetFileName(fileName.Trim());
         return new ObjectName($"{eventId.Value}/{photoId.Value}-{cleanFileName}");
     }
+
+    public static ObjectName FromString(string value) => new(value.Trim());
 
     public override string ToString() => Value;
 

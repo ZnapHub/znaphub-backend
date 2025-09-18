@@ -1,5 +1,6 @@
 using EventFlow.Domain.Entities;
 using EventFlow.Domain.ValueObjects;
+using EventFlow.Domain.ValueObjects.Photos;
 using EventFlow.Infrastructure.Data.Entities;
 
 namespace EventFlow.Infrastructure.Mappings;
@@ -10,12 +11,13 @@ internal static class PhotoMappings
     {
         if (e is null)
             return null!;
+
         return Photo.Rehydrate(
-            new PhotoId(e.Id),
-            new EventId(e.EventId),
-            e.FileName,
-            e.ObjectName,
-            e.Url,
+            PhotoId.FromGuid(e.Id),
+            EventId.FromString(e.EventId),
+            FileName.FromString(e.FileName),
+            ObjectName.FromString(e.ObjectName),
+            PhotoUrl.FromString(e.Url),
             e.UploadedAt
         );
     }
@@ -28,6 +30,6 @@ internal static class PhotoMappings
             FileName = domain.FileName,
             ObjectName = domain.ObjectName,
             Url = domain.Url,
-            UploadedAt = domain.UploadedAt,
+            UploadedAt = domain.CreatedAt,
         };
 }

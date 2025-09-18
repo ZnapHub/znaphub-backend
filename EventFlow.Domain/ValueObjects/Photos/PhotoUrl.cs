@@ -1,4 +1,4 @@
-namespace EventFlow.Domain.ValueObjects;
+namespace EventFlow.Domain.ValueObjects.Photos;
 
 public sealed record PhotoUrl(string Value)
 {
