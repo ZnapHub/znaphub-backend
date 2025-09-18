@@ -5,8 +5,8 @@ namespace EventFlow.Infrastructure.Dispatchers;
 internal static class DispatcherErrors
 {
     internal static Error QueryExecutionError(Exception ex) =>
-        new(DispatcherErrorCodes.QueryExecutionError, ex.Message);
+        new($"QueryExecutionError: {ex.Message}");
 
     internal static Error CommandExecutionError(Exception ex) =>
-        new(DispatcherErrorCodes.CommandExecutionError, ex.Message);
+        new($"CommandExecutionError: {ex.Message}");
 };
