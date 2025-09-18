@@ -46,12 +46,13 @@ public sealed class Photo : IEntity<PhotoId>
         FileName fileName,
         ObjectName objectName,
         PhotoUrl url,
-        DateTimeOffset uploadedAt
+        DateTimeOffset uploadedAt,
+        DateTimeOffset? updatedAt = null
     )
     {
         ArgumentNullException.ThrowIfNull(id);
         ArgumentNullException.ThrowIfNull(eventId);
-        return new Photo(id, eventId, fileName, objectName, url, uploadedAt);
+        return new Photo(id, eventId, fileName, objectName, url, uploadedAt, updatedAt);
     }
 
     public Photo UpdateUrl(string newUrl)

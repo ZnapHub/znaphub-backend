@@ -1,3 +1,5 @@
+using EventFlow.Shared.Messages;
+
 namespace EventFlow.Shared.Abstractions;
 
 public class Result
@@ -6,7 +8,7 @@ public class Result
     {
         if (isSuccess && error != Error.None || !isSuccess && error == Error.None)
         {
-            throw new ArgumentException("Invalid error", nameof(error));
+            throw new ArgumentException(ResultMessages.InvalidError, nameof(error));
         }
 
         IsSuccess = isSuccess;
@@ -39,11 +41,7 @@ public class Result<TValue> : Result
     }
 
     public TValue Value =>
-        IsSuccess
-            ? _value!
-            : throw new InvalidOperationException(
-                "The value of a failure result can't be accessed"
-            );
+        IsSuccess ? _value! : throw new InvalidOperationException(ResultMessages.ValueAccessDenied);
 
     public static implicit operator Result<TValue>(TValue? value) =>
         value is not null ? Success(value) : Failure<TValue>(Error.NullValue);

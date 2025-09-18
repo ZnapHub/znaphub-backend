@@ -3,7 +3,7 @@ using EventFlow.Domain.ValueObjects;
 using EventFlow.Domain.ValueObjects.Photos;
 using EventFlow.Infrastructure.Data.Entities;
 
-namespace EventFlow.Infrastructure.Mappings;
+namespace EventFlow.Infrastructure.Data.Mappings;
 
 internal static class PhotoMappings
 {
@@ -31,5 +31,6 @@ internal static class PhotoMappings
             ObjectName = domain.ObjectName,
             Url = domain.Url,
             UploadedAt = domain.CreatedAt,
+            UpdatedAt = domain.UpdatedAt,
         };
 }

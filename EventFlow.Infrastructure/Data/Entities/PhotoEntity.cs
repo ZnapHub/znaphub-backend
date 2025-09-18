@@ -8,4 +8,5 @@ public sealed class PhotoEntity
     public string ObjectName { get; set; } = null!;
     public string Url { get; set; } = null!;
     public DateTimeOffset UploadedAt { get; set; }
+    public DateTimeOffset? UpdatedAt { get; set; }
 }

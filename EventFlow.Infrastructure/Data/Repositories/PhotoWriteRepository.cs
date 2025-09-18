@@ -1,7 +1,7 @@
 using EventFlow.Domain.Entities;
 using EventFlow.Domain.Repositories;
 using EventFlow.Infrastructure.Data.Contexts;
-using EventFlow.Infrastructure.Mappings;
+using EventFlow.Infrastructure.Data.Mappings;
 
 namespace EventFlow.Infrastructure.Data.Repositories;
 

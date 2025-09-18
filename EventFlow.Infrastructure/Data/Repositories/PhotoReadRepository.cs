@@ -3,7 +3,7 @@ using EventFlow.Domain.Repositories;
 using EventFlow.Domain.ValueObjects;
 using EventFlow.Domain.ValueObjects.Photos;
 using EventFlow.Infrastructure.Data.Contexts;
-using EventFlow.Infrastructure.Mappings;
+using EventFlow.Infrastructure.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventFlow.Infrastructure.Data.Repositories;
