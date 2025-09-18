@@ -1,17 +1,14 @@
-using EventFlow.Domain.Interfaces;
+using EventFlow.Domain.Abstractions;
 using EventFlow.Domain.ValueObjects;
 
 namespace EventFlow.Domain.Photos;
 
-public sealed class Photo : IEntity<PhotoId>
+public sealed class Photo : Entity<PhotoId>
 {
-    public PhotoId Id { get; }
     public EventId EventId { get; }
     public FileName FileName { get; }
     public ObjectName ObjectName { get; }
-    public PhotoUrl Url { get; private set; }
-    public DateTimeOffset CreatedAt { get; }
-    public DateTimeOffset? UpdatedAt { get; private set; }
+    public PhotoUrl Url { get; }
 
     private Photo(
         PhotoId id,
@@ -37,7 +34,12 @@ public sealed class Photo : IEntity<PhotoId>
         FileName fileName,
         ObjectName objectName,
         PhotoUrl url
-    ) => new(PhotoId.New(), eventId, fileName, objectName, url, DateTimeOffset.UtcNow);
+    )
+    {
+        Photo photo = new(PhotoId.New(), eventId, fileName, objectName, url, DateTimeOffset.UtcNow);
+        photo.Raise(new PhotoUploaded(photo.Id, photo.EventId, photo.FileName, photo.CreatedAt));
+        return photo;
+    }
 
     public static Photo Rehydrate(
         PhotoId id,
@@ -52,12 +54,5 @@ public sealed class Photo : IEntity<PhotoId>
         ArgumentNullException.ThrowIfNull(id);
         ArgumentNullException.ThrowIfNull(eventId);
         return new Photo(id, eventId, fileName, objectName, url, uploadedAt, updatedAt);
-    }
-
-    public Photo UpdateUrl(string newUrl)
-    {
-        Url = PhotoUrl.FromString(newUrl);
-        UpdatedAt = DateTimeOffset.UtcNow;
-        return this;
     }
 }
