@@ -3,6 +3,7 @@ using EventFlow.Application.Abstractions.Messaging.Commands;
 using EventFlow.Application.Abstractions.Storage;
 using EventFlow.Domain.Photos;
 using EventFlow.Domain.ValueObjects;
+using EventFlow.Shared.Abstractions;
 
 namespace EventFlow.Application.Photos.UploadPhoto;
 
@@ -23,7 +24,7 @@ internal sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoCom
         _storageService = storageService ?? throw new ArgumentNullException(nameof(storageService));
     }
 
-    public async Task HandleAsync(UploadPhotoCommand command)
+    public async Task<Result> HandleAsync(UploadPhotoCommand command)
     {
         var eventId = EventId.FromGuid(command.EventId);
         var photoId = PhotoId.New();
@@ -44,5 +45,6 @@ internal sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoCom
 
         await _repository.AddAsync(photo);
         await _unitOfWork.SaveChangesAsync();
+        return Result.Success();
     }
 }

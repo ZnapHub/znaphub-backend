@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\EventFlow.Domain\EventFlow.Domain.csproj" />
+      <ProjectReference Include="..\EventFlow.Shared\EventFlow.Shared.csproj" />
     </ItemGroup>
 
 </Project>

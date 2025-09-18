@@ -1,21 +1,33 @@
 using EventFlow.Application.Abstractions.Messaging.Commands;
+using EventFlow.Shared.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace EventFlow.Infrastructure.Dispatchers;
 
 internal sealed class InMemoryCommandDispatcher : ICommandDispatcher
 {
     private readonly IServiceProvider _serviceProvider;
+    private readonly ILogger<InMemoryCommandDispatcher> _logger;
 
-    public InMemoryCommandDispatcher(IServiceProvider serviceProvider) =>
-        _serviceProvider = serviceProvider;
+    public InMemoryCommandDispatcher(
+        IServiceProvider serviceProvider,
+        ILogger<InMemoryCommandDispatcher> logger
+    ) => (_serviceProvider, _logger) = (serviceProvider, logger);
 
-    public async Task DispatchAsync<TCommand>(TCommand command)
+    public async Task<Result> DispatchAsync<TCommand>(TCommand command)
         where TCommand : class, ICommand
     {
-        using var scope = _serviceProvider.CreateScope();
-        var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<TCommand>>();
-
-        await handler.HandleAsync(command);
+        try
+        {
+            using var scope = _serviceProvider.CreateScope();
+            var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<TCommand>>();
+            return await handler.HandleAsync(command);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error dispatching command {CommandType}", typeof(TCommand).Name);
+            return Result.Failure(DispatcherErrors.CommandExecutionError(ex));
+        }
     }
 }

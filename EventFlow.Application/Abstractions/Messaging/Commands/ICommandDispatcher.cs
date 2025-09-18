@@ -1,7 +1,9 @@
+using EventFlow.Shared.Abstractions;
+
 namespace EventFlow.Application.Abstractions.Messaging.Commands;
 
 public interface ICommandDispatcher
 {
-    Task DispatchAsync<TCommand>(TCommand command)
+    Task<Result> DispatchAsync<TCommand>(TCommand command)
         where TCommand : class, ICommand;
 }
