@@ -1,4 +1,4 @@
-namespace EventFlow.Infrastructure.Storage;
+namespace EventFlow.Application.Abstractions.Storage;
 
 public interface IStorageService
 {
@@ -8,4 +8,6 @@ public interface IStorageService
         string contentType,
         CancellationToken ct = default
     );
+
+    Task<string> GetUrlAsync(string objectName);
 }

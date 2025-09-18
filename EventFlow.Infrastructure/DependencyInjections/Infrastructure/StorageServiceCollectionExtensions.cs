@@ -1,3 +1,4 @@
+using EventFlow.Application.Abstractions.Storage;
 using EventFlow.Infrastructure.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
