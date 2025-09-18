@@ -1,7 +1,7 @@
 using EventFlow.Application.Abstractions.Data;
-using EventFlow.Infrastructure.Persistence.Contexts;
+using EventFlow.Infrastructure.Data.Contexts;
 
-namespace EventFlow.Infrastructure.Persistence;
+namespace EventFlow.Infrastructure.Data;
 
 internal sealed class UnitOfWork : IUnitOfWork
 {

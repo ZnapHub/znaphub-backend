@@ -1,4 +1,4 @@
-using EventFlow.Infrastructure.Persistence.Contexts;
+using EventFlow.Infrastructure.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

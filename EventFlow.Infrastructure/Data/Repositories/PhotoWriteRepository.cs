@@ -1,9 +1,9 @@
 using EventFlow.Domain.Entities;
 using EventFlow.Domain.Repositories;
+using EventFlow.Infrastructure.Data.Contexts;
 using EventFlow.Infrastructure.Mappings;
-using EventFlow.Infrastructure.Persistence.Contexts;
 
-namespace EventFlow.Infrastructure.Persistence.Repositories;
+namespace EventFlow.Infrastructure.Data.Repositories;
 
 public class PhotoWriteRepository : IPhotoWriteRepository
 {

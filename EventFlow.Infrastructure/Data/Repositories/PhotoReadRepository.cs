@@ -1,11 +1,11 @@
 using EventFlow.Domain.Entities;
 using EventFlow.Domain.Repositories;
 using EventFlow.Domain.ValueObjects;
+using EventFlow.Infrastructure.Data.Contexts;
 using EventFlow.Infrastructure.Mappings;
-using EventFlow.Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace EventFlow.Infrastructure.Persistence.Repositories;
+namespace EventFlow.Infrastructure.Data.Repositories;
 
 public class PhotoReadRepository : IPhotoReadRepository
 {

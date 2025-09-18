@@ -1,4 +1,4 @@
-namespace EventFlow.Infrastructure.Persistence.Entities;
+namespace EventFlow.Infrastructure.Data.Entities;
 
 public sealed class PhotoEntity
 {

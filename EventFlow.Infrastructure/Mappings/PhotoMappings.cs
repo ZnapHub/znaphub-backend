@@ -1,6 +1,6 @@
 using EventFlow.Domain.Entities;
 using EventFlow.Domain.ValueObjects;
-using EventFlow.Infrastructure.Persistence.Entities;
+using EventFlow.Infrastructure.Data.Entities;
 
 namespace EventFlow.Infrastructure.Mappings;
 

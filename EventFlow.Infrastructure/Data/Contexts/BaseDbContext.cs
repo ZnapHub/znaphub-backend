@@ -1,7 +1,7 @@
-using EventFlow.Infrastructure.Persistence.Entities;
+using EventFlow.Infrastructure.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace EventFlow.Infrastructure.Persistence.Contexts;
+namespace EventFlow.Infrastructure.Data.Contexts;
 
 public abstract class BaseDbContext : DbContext
 {

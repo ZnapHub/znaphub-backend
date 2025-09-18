@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace EventFlow.Infrastructure.Persistence.Contexts;
+namespace EventFlow.Infrastructure.Data.Contexts;
 
 public sealed class EventFlowReadContext : BaseDbContext
 {

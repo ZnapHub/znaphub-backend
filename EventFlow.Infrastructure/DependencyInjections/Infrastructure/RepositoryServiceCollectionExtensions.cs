@@ -1,7 +1,7 @@
 using EventFlow.Application.Abstractions.Data;
 using EventFlow.Domain.Repositories;
-using EventFlow.Infrastructure.Persistence;
-using EventFlow.Infrastructure.Persistence.Repositories;
+using EventFlow.Infrastructure.Data;
+using EventFlow.Infrastructure.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EventFlow.Infrastructure.DependencyInjections.Infrastructure;
