@@ -13,5 +13,6 @@ public static class InfrastructureServiceCollectionExtensions
             .AddDbContexts(configuration)
             .AddUnitOfWork()
             .AddRepositories()
-            .AddStorage(configuration);
+            .AddStorage(configuration)
+            .AddHealthChecks(configuration);
 }

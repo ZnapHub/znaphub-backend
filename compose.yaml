@@ -1,7 +1,46 @@
-﻿services:
-  eventflow:
-    image: eventflow
+﻿version: '3.8'
+
+services:
+  eventflow-api:
     build:
       context: .
-      dockerfile: EventFlow/Dockerfile
+      dockerfile: EventFlow.Api/Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__EventFlowContext=Host=eventflow-db;Port=5432;Database=EventFlow;Username=postgres;Password=postgrespw;Timeout=300;CommandTimeout=300
+    depends_on:
+      eventflow-db:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - eventflow-network
 
+  eventflow-db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=EventFlow
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgrespw
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - eventflow-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  eventflow-network:
+    driver: bridge
