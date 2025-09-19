@@ -11,6 +11,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__EventFlowContext=Host=eventflow-db;Port=5432;Database=EventFlow;Username=postgres;Password=postgrespw;Timeout=300;CommandTimeout=300
+      - Minio__Endpoint=eventflow-minio:9000
+      - Minio__AccessKey=minioadmin
+      - Minio__SecretKey=minioadmin
+      - Minio__Secure=false
+      - Minio__Bucket=eventphotos
     depends_on:
       eventflow-db:
         condition: service_healthy
@@ -36,9 +41,32 @@ services:
     restart: unless-stopped
     networks:
       - eventflow-network
+    
+  eventflow-minio:
+    image: minio/minio:latest
+    ports:
+      - "9000:9000"
+      - "9001:9001" 
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+      - MINIO_BROWSER_REDIRECT_URL=http://localhost:9001
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - eventflow-network
 
 volumes:
   postgres_data:
+    driver: local
+  minio_data:
     driver: local
 
 networks:
