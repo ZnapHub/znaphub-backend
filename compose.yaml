@@ -4,7 +4,7 @@ services:
   eventflow-api:
     build:
       context: .
-      dockerfile: EventFlow.Api/Dockerfile
+      dockerfile: src/EventFlow.Api/Dockerfile
     ports:
       - "8080:8080"
       - "8081:8081"
