@@ -2,9 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using ZnapHub.Domain.Photos;
 using ZnapHub.Domain.ValueObjects;
 using ZnapHub.Infrastructure.Data.Contexts;
-using ZnapHub.Infrastructure.Data.Mappings;
 
-namespace ZnapHub.Infrastructure.Data.Repositories;
+namespace ZnapHub.Infrastructure.Data.Photos;
 
 public class PhotoReadRepository : IPhotoReadRepository
 {

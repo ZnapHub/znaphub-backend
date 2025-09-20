@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ZnapHub.Application.Abstractions.Data;
 using ZnapHub.Domain.Photos;
 using ZnapHub.Infrastructure.Data;
-using ZnapHub.Infrastructure.Data.Repositories;
+using ZnapHub.Infrastructure.Data.Photos;
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 

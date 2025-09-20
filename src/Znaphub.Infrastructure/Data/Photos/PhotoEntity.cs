@@ -1,4 +1,6 @@
-namespace ZnapHub.Infrastructure.Data.Entities;
+using ZnapHub.Infrastructure.Data.Events;
+
+namespace ZnapHub.Infrastructure.Data.Photos;
 
 public sealed class PhotoEntity
 {

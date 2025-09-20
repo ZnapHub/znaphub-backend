@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ZnapHub.Infrastructure.Data.Entities;
 
-namespace ZnapHub.Infrastructure.Data.Configurations;
+namespace ZnapHub.Infrastructure.Data.Events;
 
 public class EventConfiguration : IEntityTypeConfiguration<EventEntity>
 {

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using ZnapHub.Infrastructure.Data.Configurations;
-using ZnapHub.Infrastructure.Data.Entities;
+using ZnapHub.Infrastructure.Data.Events;
+using ZnapHub.Infrastructure.Data.Photos;
 
 namespace ZnapHub.Infrastructure.Data.Contexts;
 
