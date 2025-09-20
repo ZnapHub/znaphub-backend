@@ -14,7 +14,7 @@ public class PhotoConfiguration : IEntityTypeConfiguration<PhotoEntity>
         builder.Property(x => x.ObjectName).IsRequired().HasMaxLength(1024);
         builder.Property(x => x.Url).IsRequired().HasMaxLength(2048);
         builder.Property(x => x.UploadedAt).IsRequired();
-        builder.Property(x => x.UpdatedAt).IsRequired();
+        builder.Property(x => x.UpdatedAt).IsRequired(false);
         builder.HasIndex(x => new { x.EventId, x.UploadedAt });
     }
 }
