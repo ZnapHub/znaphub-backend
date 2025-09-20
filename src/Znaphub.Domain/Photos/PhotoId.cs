@@ -1,0 +1,12 @@
+namespace Znaphub.Domainz.Photos;
+
+public sealed record PhotoId(Guid Value)
+{
+    public static PhotoId New() => new(Guid.NewGuid());
+
+    public static PhotoId FromGuid(Guid value) => new(value);
+
+    public override string ToString() => Value.ToString();
+
+    public static implicit operator string(PhotoId photoId) => photoId.ToString();
+}

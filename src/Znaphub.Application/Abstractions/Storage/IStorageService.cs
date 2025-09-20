@@ -1,0 +1,13 @@
+namespace ZnapHub.Applicationz.Abstractions.Storage;
+
+public interface IStorageService
+{
+    Task UploadAsync(
+        string objectName,
+        Stream data,
+        string contentType,
+        CancellationToken ct = default
+    );
+
+    Task<string> GetUrlAsync(string objectName);
+}
