@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ZnapHub.Infrastructure.Data.Contexts;
@@ -11,9 +12,11 @@ using ZnapHub.Infrastructure.Data.Contexts;
 namespace ZnapHub.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ZnapHubWriteContext))]
-    partial class ZnapHubWriteContextModelSnapshot : ModelSnapshot
+    [Migration("20250920025221_AddEventEntity")]
+    partial class AddEventEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
