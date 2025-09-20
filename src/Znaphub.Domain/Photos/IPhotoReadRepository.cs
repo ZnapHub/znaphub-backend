@@ -1,6 +1,6 @@
-using Znaphub.Domainz.ValueObjects;
+using ZnapHub.Domain.ValueObjects;
 
-namespace Znaphub.Domainz.Photos;
+namespace ZnapHub.Domain.Photos;
 
 public interface IPhotoReadRepository
 {

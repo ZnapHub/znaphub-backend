@@ -1,4 +1,4 @@
-namespace ZnapHub.Infrastructurez.Data.Entities;
+namespace ZnapHub.Infrastructure.Data.Entities;
 
 public sealed class PhotoEntity
 {

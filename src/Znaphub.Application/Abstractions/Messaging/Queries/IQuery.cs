@@ -1,4 +1,4 @@
-namespace ZnapHub.Applicationz.Abstractions.Messaging.Queries;
+namespace ZnapHub.Application.Abstractions.Messaging.Queries;
 
 public interface IQuery;
 

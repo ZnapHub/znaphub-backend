@@ -1,6 +1,6 @@
-using Znaphub.Domainz.Photos;
+using ZnapHub.Domain.Photos;
 
-namespace Znaphub.Domainz.ValueObjects;
+namespace ZnapHub.Domain.ValueObjects;
 
 public sealed record ObjectName(string Value)
 {

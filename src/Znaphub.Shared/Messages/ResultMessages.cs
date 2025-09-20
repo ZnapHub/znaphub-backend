@@ -1,4 +1,4 @@
-namespace Znaphub.Sharedz.Messages;
+namespace ZnapHub.Shared.Messages;
 
 public static class ResultMessages
 {

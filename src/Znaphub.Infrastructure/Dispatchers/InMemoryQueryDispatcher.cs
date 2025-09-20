@@ -1,9 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Znaphub.Application.Abstractions.Messaging.Queries;
+using ZnapHub.Application.Abstractions.Messaging.Queries;
 using ZnapHub.Shared.Abstractions;
 
-namespace ZnapHub.Infrastructurez.Dispatchers;
+namespace ZnapHub.Infrastructure.Dispatchers;
 
 internal sealed class InMemoryQueryDispatcher : IQueryDispatcher
 {

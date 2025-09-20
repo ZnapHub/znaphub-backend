@@ -1,6 +1,6 @@
 using ZnapHub.Shared.Abstractions;
 
-namespace ZnapHub.Applicationz.Abstractions.Messaging.Commands;
+namespace ZnapHub.Application.Abstractions.Messaging.Commands;
 
 public interface ICommandHandler<in TCommand>
     where TCommand : class, ICommand

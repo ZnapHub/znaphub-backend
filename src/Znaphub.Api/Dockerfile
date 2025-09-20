@@ -2,23 +2,23 @@
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-COPY Znaphub.sln ./
+COPY ZnapHub.sln ./
 
-COPY src/Znaphub.Api ./src/Znaphub.Api
-COPY src/Znaphub.Application ./src/Znaphub.Application
-COPY src/Znaphub.Domain ./src/Znaphub.Domain
-COPY src/Znaphub.Infrastructure ./src/Znaphub.Infrastructure
-COPY src/Znaphub.Shared ./src/Znaphub.Shared
+COPY src/ZnapHub.Api ./src/ZnapHub.Api
+COPY src/ZnapHub.Application ./src/ZnapHub.Application
+COPY src/ZnapHub.Domain ./src/ZnapHub.Domain
+COPY src/ZnapHub.Infrastructure ./src/ZnapHub.Infrastructure
+COPY src/ZnapHub.Shared ./src/ZnapHub.Shared
 
-RUN dotnet restore Znaphub.sln
+RUN dotnet restore ZnapHub.sln
 
-WORKDIR /src/src/Znaphub.Api
-RUN dotnet build Znaphub.Api.csproj -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR /src/src/ZnapHub.Api
+RUN dotnet build ZnapHub.Api.csproj -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-WORKDIR /src/src/Znaphub.Api
-RUN dotnet publish Znaphub.Api.csproj -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+WORKDIR /src/src/ZnapHub.Api
+RUN dotnet publish ZnapHub.Api.csproj -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
@@ -38,4 +38,4 @@ USER appuser
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:8080/health || exit 1
 
-ENTRYPOINT ["dotnet", "Znaphub.Api.dll"]
+ENTRYPOINT ["dotnet", "ZnapHub.Api.dll"]

@@ -1,13 +1,13 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ZnapHub.Infrastructurez.DependencyInjections.Infrastructure;
-using ZnapHub.Infrastructurez.DependencyInjections.Messaging;
+using ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
+using ZnapHub.Infrastructure.DependencyInjections.Messaging;
 
-namespace ZnapHub.Infrastructurez.DependencyInjections;
+namespace ZnapHub.Infrastructure.DependencyInjections;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddEventFlow(
+    public static IServiceCollection AddZnapHub(
         this IServiceCollection services,
         IConfiguration configuration
     ) => services.AddCommandHandlers().AddQueryHandlers().AddInfrastructure(configuration);

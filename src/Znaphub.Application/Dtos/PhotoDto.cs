@@ -1,4 +1,4 @@
-namespace ZnapHub.Applicationz.Dtos;
+namespace ZnapHub.Application.Dtos;
 
 public sealed record PhotoDto(
     Guid Id,

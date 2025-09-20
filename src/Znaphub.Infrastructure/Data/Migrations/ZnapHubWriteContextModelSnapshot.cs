@@ -2,21 +2,18 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Znaphub.Infrastructure.Data.Contexts;
+using ZnapHub.Infrastructure.Data.Contexts;
 
 #nullable disable
 
-namespace Znaphub.Infrastructure.Data.Migrations
+namespace ZnapHub.Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(EventFlowWriteContext))]
-    [Migration("20250919142854_Initial")]
-    partial class Initial
+    [DbContext(typeof(ZnapHubWriteContext))]
+    partial class ZnapHubWriteContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +22,7 @@ namespace Znaphub.Infrastructure.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Znaphub.Infrastructure.Data.Entities.PhotoEntity", b =>
+            modelBuilder.Entity("ZnapHub.Infrastructure.Data.Entities.PhotoEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

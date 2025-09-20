@@ -1,8 +1,8 @@
-using Znaphub.Domain.Photos;
-using Znaphub.Domain.ValueObjects;
-using ZnapHub.Infrastructurez.Data.Entities;
+using ZnapHub.Domain.Photos;
+using ZnapHub.Domain.ValueObjects;
+using ZnapHub.Infrastructure.Data.Entities;
 
-namespace ZnapHub.Infrastructurez.Data.Mappings;
+namespace ZnapHub.Infrastructure.Data.Mappings;
 
 internal static class PhotoMappings
 {

@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ZnapHub.Infrastructurez.DependencyInjections.Infrastructure;
+namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 public static class InfrastructureServiceCollectionExtensions
 {

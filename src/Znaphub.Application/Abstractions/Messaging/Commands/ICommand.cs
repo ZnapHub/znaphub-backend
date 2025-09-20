@@ -1,3 +1,3 @@
-namespace ZnapHub.Applicationz.Abstractions.Messaging.Commands;
+namespace ZnapHub.Application.Abstractions.Messaging.Commands;
 
 public interface ICommand;

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
-using ZnapHub.Applicationz.Abstractions.Messaging.Commands;
+using ZnapHub.Application.Abstractions.Messaging.Commands;
 
-namespace ZnapHub.Applicationz.Photos.UploadPhoto;
+namespace ZnapHub.Application.Photos.UploadPhoto;
 
 public sealed record UploadPhotoCommand(Guid EventId, IFormFile File) : ICommand;

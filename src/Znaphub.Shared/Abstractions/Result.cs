@@ -1,6 +1,6 @@
-using Znaphub.Sharedz.Messages;
+using ZnapHub.Shared.Messages;
 
-namespace Znaphub.Sharedz.Abstractions;
+namespace ZnapHub.Shared.Abstractions;
 
 public class Result
 {

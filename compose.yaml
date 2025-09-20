@@ -1,32 +1,32 @@
 ﻿version: '3.8'
 
 services:
-  eventflow-api:
+  znaphub-api:
     build:
       context: .
-      dockerfile: src/EventFlow.Api/Dockerfile
+      dockerfile: src/ZnapHub.Api/Dockerfile
     ports:
       - "8080:8080"
       - "8081:8081"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__EventFlowContext=Host=eventflow-db;Port=5432;Database=EventFlow;Username=postgres;Password=postgrespw;Timeout=300;CommandTimeout=300
-      - Minio__Endpoint=eventflow-minio:9000
+      - ConnectionStrings__ZnapHubContext=Host=znaphub-db;Port=5432;Database=ZnapHub;Username=postgres;Password=postgrespw;Timeout=300;CommandTimeout=300
+      - Minio__Endpoint=znaphub-minio:9000
       - Minio__AccessKey=minioadmin
       - Minio__SecretKey=minioadmin
       - Minio__Secure=false
       - Minio__Bucket=eventphotos
     depends_on:
-      eventflow-db:
+      znaphub-db:
         condition: service_healthy
     restart: unless-stopped
     networks:
-      - eventflow-network
+      - znaphub-network
 
-  eventflow-db:
+  znaphub-db:
     image: postgres:15-alpine
     environment:
-      - POSTGRES_DB=EventFlow
+      - POSTGRES_DB=ZnapHub
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgrespw
     ports:
@@ -40,9 +40,9 @@ services:
       retries: 10
     restart: unless-stopped
     networks:
-      - eventflow-network
+      - znaphub-network
     
-  eventflow-minio:
+  znaphub-minio:
     image: minio/minio:latest
     ports:
       - "9000:9000"
@@ -61,7 +61,7 @@ services:
       retries: 3
     restart: unless-stopped
     networks:
-      - eventflow-network
+      - znaphub-network
 
 volumes:
   postgres_data:
@@ -70,5 +70,5 @@ volumes:
     driver: local
 
 networks:
-  eventflow-network:
+  znaphub-network:
     driver: bridge

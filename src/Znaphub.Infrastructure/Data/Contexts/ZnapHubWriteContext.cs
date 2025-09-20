@@ -2,8 +2,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ZnapHub.Infrastructure.Data.Contexts;
 
-public sealed class EventFlowWriteContext : BaseDbContext
+public sealed class ZnapHubWriteContext : BaseDbContext
 {
-    public EventFlowWriteContext(DbContextOptions<EventFlowWriteContext> opts)
+    public ZnapHubWriteContext(DbContextOptions<ZnapHubWriteContext> opts)
         : base(opts) { }
 }

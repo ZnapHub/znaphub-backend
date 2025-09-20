@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ZnapHub.Infrastructure.Data.Contexts;
 
-public sealed class EventFlowReadContext : BaseDbContext
+public sealed class ZnapHubReadContext : BaseDbContext
 {
-    public EventFlowReadContext(DbContextOptions<EventFlowReadContext> opts)
+    public ZnapHubReadContext(DbContextOptions<ZnapHubReadContext> opts)
         : base(opts)
     {
         ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;

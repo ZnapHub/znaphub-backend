@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace EventFlow.Infrastructure.Data.Migrations
+namespace ZnapHub.Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

@@ -1,11 +1,11 @@
-using ZnapHub.Applicationz.Abstractions.Data;
-using ZnapHub.Applicationz.Abstractions.Messaging.Commands;
-using ZnapHub.Applicationz.Abstractions.Storage;
+using ZnapHub.Application.Abstractions.Data;
+using ZnapHub.Application.Abstractions.Messaging.Commands;
+using ZnapHub.Application.Abstractions.Storage;
 using ZnapHub.Domain.Photos;
 using ZnapHub.Domain.ValueObjects;
 using ZnapHub.Shared.Abstractions;
 
-namespace ZnapHub.Applicationz.Photos.UploadPhoto;
+namespace ZnapHub.Application.Photos.UploadPhoto;
 
 internal sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoCommand>
 {

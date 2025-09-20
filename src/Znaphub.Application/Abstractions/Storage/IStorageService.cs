@@ -1,4 +1,4 @@
-namespace ZnapHub.Applicationz.Abstractions.Storage;
+namespace ZnapHub.Application.Abstractions.Storage;
 
 public interface IStorageService
 {

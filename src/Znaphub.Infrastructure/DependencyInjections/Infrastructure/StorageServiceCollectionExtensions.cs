@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Minio;
-using Znaphub.Application.Abstractions.Storage;
-using ZnapHub.Infrastructurez.Storage;
+using ZnapHub.Application.Abstractions.Storage;
+using ZnapHub.Infrastructure.Storage;
 
-namespace ZnapHub.Infrastructurez.DependencyInjections.Infrastructure;
+namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 public static class StorageServiceCollectionExtensions
 {

@@ -1,4 +1,4 @@
-namespace Znaphub.Domainz.Photos;
+namespace ZnapHub.Domain.Photos;
 
 public sealed record PhotoUrl(string Value)
 {

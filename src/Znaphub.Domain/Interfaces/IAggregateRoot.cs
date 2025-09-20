@@ -1,3 +1,3 @@
-namespace Znaphub.Domainz.Interfaces;
+namespace ZnapHub.Domain.Interfaces;
 
 public interface IAggregateRoot;

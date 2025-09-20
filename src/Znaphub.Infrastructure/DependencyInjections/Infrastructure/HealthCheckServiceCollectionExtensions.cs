@@ -2,7 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace ZnapHub.Infrastructurez.DependencyInjections.Infrastructure;
+namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 public static class HealthCheckServiceCollectionExtensions
 {
@@ -14,8 +14,8 @@ public static class HealthCheckServiceCollectionExtensions
         services
             .AddHealthChecks()
             .AddNpgSql(
-                configuration.GetConnectionString("EventFlowContext")
-                    ?? throw new InvalidOperationException("EventFlowContext not found"),
+                configuration.GetConnectionString("ZnapHubContext")
+                    ?? throw new InvalidOperationException("ZnapHubContext not found"),
                 name: "Postgres",
                 healthQuery: "SELECT 1;",
                 failureStatus: HealthStatus.Unhealthy,

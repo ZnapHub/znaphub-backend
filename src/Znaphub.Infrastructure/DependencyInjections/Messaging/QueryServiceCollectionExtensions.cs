@@ -1,9 +1,9 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using Znaphub.Application.Abstractions.Messaging.Queries;
-using ZnapHub.Infrastructurez.Dispatchers;
+using ZnapHub.Application.Abstractions.Messaging.Queries;
+using ZnapHub.Infrastructure.Dispatchers;
 
-namespace ZnapHub.Infrastructurez.DependencyInjections.Messaging;
+namespace ZnapHub.Infrastructure.DependencyInjections.Messaging;
 
 public static class QueryServiceCollectionExtensions
 {

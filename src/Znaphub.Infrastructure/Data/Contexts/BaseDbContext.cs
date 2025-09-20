@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using ZnapHub.Infrastructurez.Data.Configurations;
-using ZnapHub.Infrastructurez.Data.Entities;
+using ZnapHub.Infrastructure.Data.Configurations;
+using ZnapHub.Infrastructure.Data.Entities;
 
-namespace ZnapHub.Infrastructurez.Data.Contexts;
+namespace ZnapHub.Infrastructure.Data.Contexts;
 
 public abstract class BaseDbContext : DbContext
 {

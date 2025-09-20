@@ -1,16 +1,16 @@
 using Microsoft.EntityFrameworkCore;
-using Znaphub.Domain.Photos;
-using Znaphub.Domain.ValueObjects;
-using ZnapHub.Infrastructurez.Data.Contexts;
-using ZnapHub.Infrastructurez.Data.Mappings;
+using ZnapHub.Domain.Photos;
+using ZnapHub.Domain.ValueObjects;
+using ZnapHub.Infrastructure.Data.Contexts;
+using ZnapHub.Infrastructure.Data.Mappings;
 
-namespace ZnapHub.Infrastructurez.Data.Repositories;
+namespace ZnapHub.Infrastructure.Data.Repositories;
 
 public class PhotoReadRepository : IPhotoReadRepository
 {
-    private readonly EventFlowReadContext _db;
+    private readonly ZnapHubReadContext _db;
 
-    public PhotoReadRepository(EventFlowReadContext db) => _db = db;
+    public PhotoReadRepository(ZnapHubReadContext db) => _db = db;
 
     public async Task<Photo?> GetAsync(PhotoId id) =>
         await _db.Photos.Select(p => p.ToDomain()).FirstOrDefaultAsync(p => p.Id == id);

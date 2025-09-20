@@ -1,4 +1,4 @@
-namespace ZnapHub.Applicationz.Abstractions.Data;
+namespace ZnapHub.Application.Abstractions.Data;
 
 public interface IUnitOfWork
 {

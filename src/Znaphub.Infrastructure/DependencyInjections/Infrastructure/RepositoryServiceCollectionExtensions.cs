@@ -1,10 +1,10 @@
 using Microsoft.Extensions.DependencyInjection;
-using Znaphub.Application.Abstractions.Data;
-using Znaphub.Domain.Photos;
-using ZnapHub.Infrastructurez.Data;
-using ZnapHub.Infrastructurez.Data.Repositories;
+using ZnapHub.Application.Abstractions.Data;
+using ZnapHub.Domain.Photos;
+using ZnapHub.Infrastructure.Data;
+using ZnapHub.Infrastructure.Data.Repositories;
 
-namespace ZnapHub.Infrastructurez.DependencyInjections.Infrastructure;
+namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 public static class RepositoryServiceCollectionExtensions
 {

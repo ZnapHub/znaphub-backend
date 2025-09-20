@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Znaphub.Application.Abstractions.Messaging.Commands;
-using Znaphub.Application.Photos.UploadPhoto;
+using ZnapHub.Application.Abstractions.Messaging.Commands;
+using ZnapHub.Application.Photos.UploadPhoto;
 
-namespace ZnapHub.Apiz.Controllers;
+namespace ZnapHub.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]

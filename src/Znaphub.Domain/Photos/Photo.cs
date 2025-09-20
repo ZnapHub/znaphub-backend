@@ -1,8 +1,8 @@
-using Znaphub.Domainz.Abstractions;
-using Znaphub.Domainz.Interfaces;
-using Znaphub.Domainz.ValueObjects;
+using ZnapHub.Domain.Abstractions;
+using ZnapHub.Domain.Interfaces;
+using ZnapHub.Domain.ValueObjects;
 
-namespace Znaphub.Domainz.Photos;
+namespace ZnapHub.Domain.Photos;
 
 public sealed class Photo : Entity<PhotoId>, IAggregateRoot
 {

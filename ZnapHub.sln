@@ -5,15 +5,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		compose.yaml = compose.yaml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Znaphub.Api", "src\Znaphub.Api\Znaphub.Api.csproj", "{2987968D-B9BE-4BB6-B0A6-0344B3F58FE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZnapHub.Api", "src\ZnapHub.Api\ZnapHub.Api.csproj", "{2987968D-B9BE-4BB6-B0A6-0344B3F58FE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Znaphub.Infrastructure", "src\Znaphub.Infrastructure\Znaphub.Infrastructure.csproj", "{4591FFD7-D226-4CEE-8EBE-4C0728395CE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZnapHub.Infrastructure", "src\ZnapHub.Infrastructure\ZnapHub.Infrastructure.csproj", "{4591FFD7-D226-4CEE-8EBE-4C0728395CE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Znaphub.Application", "src\Znaphub.Application\Znaphub.Application.csproj", "{BE98B169-9E9B-4DCF-8E39-B5C6F6FAF3BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZnapHub.Application", "src\ZnapHub.Application\ZnapHub.Application.csproj", "{BE98B169-9E9B-4DCF-8E39-B5C6F6FAF3BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Znaphub.Domain", "src\Znaphub.Domain\Znaphub.Domain.csproj", "{D33AC082-904C-478E-9286-84FD87F68739}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZnapHub.Domain", "src\ZnapHub.Domain\ZnapHub.Domain.csproj", "{D33AC082-904C-478E-9286-84FD87F68739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Znaphub.Shared", "src\Znaphub.Shared\Znaphub.Shared.csproj", "{FC6ED422-55E9-4A21-AD31-73D92D6EDEAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZnapHub.Shared", "src\ZnapHub.Shared\ZnapHub.Shared.csproj", "{FC6ED422-55E9-4A21-AD31-73D92D6EDEAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
-using Znaphub.Domainz.Interfaces;
-using Znaphub.Domainz.ValueObjects;
+using ZnapHub.Domain.Interfaces;
+using ZnapHub.Domain.ValueObjects;
 
-namespace Znaphub.Domainz.Photos;
+namespace ZnapHub.Domain.Photos;
 
 public sealed record PhotoUploaded(
     PhotoId PhotoId,

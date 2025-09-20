@@ -1,6 +1,6 @@
-using Znaphub.Domainz.Interfaces;
+using ZnapHub.Domain.Interfaces;
 
-namespace Znaphub.Domainz.Abstractions;
+namespace ZnapHub.Domain.Abstractions;
 
 public abstract class Entity<TId> : IEntity<TId>
     where TId : notnull

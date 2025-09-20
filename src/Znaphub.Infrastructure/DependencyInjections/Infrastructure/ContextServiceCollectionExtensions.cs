@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ZnapHub.Infrastructurez.Data.Contexts;
+using ZnapHub.Infrastructure.Data.Contexts;
 
-namespace ZnapHub.Infrastructurez.DependencyInjections.Infrastructure;
+namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 public static class ContextServiceCollectionExtensions
 {
@@ -12,11 +12,11 @@ public static class ContextServiceCollectionExtensions
         IConfiguration configuration
     )
     {
-        services.AddDbContext<EventFlowWriteContext>(opts =>
-            opts.UseNpgsql(configuration.GetConnectionString("EventFlowContext"))
+        services.AddDbContext<ZnapHubWriteContext>(opts =>
+            opts.UseNpgsql(configuration.GetConnectionString("ZnapHubContext"))
         );
-        services.AddDbContext<EventFlowReadContext>(opts =>
-            opts.UseNpgsql(configuration.GetConnectionString("EventFlowContext"))
+        services.AddDbContext<ZnapHubReadContext>(opts =>
+            opts.UseNpgsql(configuration.GetConnectionString("ZnapHubContext"))
                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
         );
 

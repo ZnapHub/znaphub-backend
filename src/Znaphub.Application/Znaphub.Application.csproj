@@ -11,8 +11,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Znaphub.Domain\Znaphub.Domain.csproj" />
-      <ProjectReference Include="..\Znaphub.Shared\Znaphub.Shared.csproj" />
+      <ProjectReference Include="..\ZnapHub.Domain\ZnapHub.Domain.csproj" />
+      <ProjectReference Include="..\ZnapHub.Shared\ZnapHub.Shared.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,14 +1,14 @@
-using Znaphub.Domain.Photos;
-using ZnapHub.Infrastructurez.Data.Contexts;
-using ZnapHub.Infrastructurez.Data.Mappings;
+using ZnapHub.Domain.Photos;
+using ZnapHub.Infrastructure.Data.Contexts;
+using ZnapHub.Infrastructure.Data.Mappings;
 
-namespace ZnapHub.Infrastructurez.Data.Repositories;
+namespace ZnapHub.Infrastructure.Data.Repositories;
 
 public class PhotoWriteRepository : IPhotoWriteRepository
 {
-    private readonly EventFlowWriteContext _db;
+    private readonly ZnapHubWriteContext _db;
 
-    public PhotoWriteRepository(EventFlowWriteContext db) => _db = db;
+    public PhotoWriteRepository(ZnapHubWriteContext db) => _db = db;
 
     public async Task AddAsync(Photo photo) => await _db.Photos.AddAsync(photo.ToEntity());
 }

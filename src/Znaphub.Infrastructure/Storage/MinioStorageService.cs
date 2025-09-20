@@ -1,8 +1,8 @@
 using Minio;
 using Minio.DataModel.Args;
-using Znaphub.Application.Abstractions.Storage;
+using ZnapHub.Application.Abstractions.Storage;
 
-namespace ZnapHub.Infrastructurez.Storage;
+namespace ZnapHub.Infrastructure.Storage;
 
 internal sealed class MinioStorageService : IStorageService
 {

@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using Znaphub.Infrastructure.Data.Contexts;
-using Znaphub.Infrastructure.DependencyInjections;
+using ZnapHub.Infrastructure.Data.Contexts;
+using ZnapHub.Infrastructure.DependencyInjections;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
-builder.Services.AddEventFlow(builder.Configuration);
+builder.Services.AddZnapHub(builder.Configuration);
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -16,7 +16,7 @@ if (app.Environment.IsDevelopment())
 
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<EventFlowWriteContext>();
+    var db = scope.ServiceProvider.GetRequiredService<ZnapHubWriteContext>();
     await db.Database.MigrateAsync();
 }
 

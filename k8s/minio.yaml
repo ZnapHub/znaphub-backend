@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: minio-secret
-  namespace: eventflow
+  namespace: znaphub
 type: Opaque
 data:
   access-key: bWluaW9hZG1pbg==
@@ -12,15 +12,15 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: minio-config
-  namespace: eventflow
+  namespace: znaphub
 data:
-  MINIO_BROWSER_REDIRECT_URL: "http://minio.eventflow.svc.cluster.local:9001"
+  MINIO_BROWSER_REDIRECT_URL: "http://minio.znaphub.svc.cluster.local:9001"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: minio
-  namespace: eventflow
+  namespace: znaphub
 spec:
   replicas: 1
   selector:
@@ -78,7 +78,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: minio
-  namespace: eventflow
+  namespace: znaphub
 spec:
   selector:
     app: minio
@@ -94,7 +94,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: minio-pvc
-  namespace: eventflow
+  namespace: znaphub
 spec:
   accessModes:
     - ReadWriteOnce

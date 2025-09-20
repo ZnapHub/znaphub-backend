@@ -1,4 +1,4 @@
-namespace Znaphub.Domainz.Photos;
+namespace ZnapHub.Domain.Photos;
 
 public interface IPhotoWriteRepository
 {

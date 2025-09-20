@@ -1,4 +1,4 @@
-namespace Znaphub.Sharedz.Extensions;
+namespace ZnapHub.Shared.Extensions;
 
 public static class StreamExtensions
 {

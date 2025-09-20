@@ -1,6 +1,6 @@
 using ZnapHub.Shared.Abstractions;
 
-namespace ZnapHub.Infrastructurez.Dispatchers;
+namespace ZnapHub.Infrastructure.Dispatchers;
 
 internal static class DispatcherErrors
 {

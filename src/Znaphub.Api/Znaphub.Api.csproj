@@ -27,7 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Znaphub.Infrastructure\Znaphub.Infrastructure.csproj" />
+      <ProjectReference Include="..\ZnapHub.Infrastructure\ZnapHub.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
