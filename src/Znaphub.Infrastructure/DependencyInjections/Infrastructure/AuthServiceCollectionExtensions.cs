@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ZnapHub.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ZnapHub.Infrastructure.Data.Contexts;
 
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;

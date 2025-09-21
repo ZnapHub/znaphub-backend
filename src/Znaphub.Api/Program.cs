@@ -20,8 +20,8 @@ if (app.Environment.IsDevelopment())
 
 await app.ApplyMigrationAsync();
 app.UseHttpsRedirection();
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 app.MapHealthChecks("/health");
