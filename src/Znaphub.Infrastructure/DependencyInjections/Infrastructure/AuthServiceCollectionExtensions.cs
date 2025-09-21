@@ -18,9 +18,6 @@ public static class AuthServiceCollectionExtensions
                 options.User.RequireUniqueEmail = true;
             })
             .AddEntityFrameworkStores<AuthDbContext>();
-        
-        var jwt = configuration.GetSection("Jwt");
-        var key = Encoding.UTF8.GetBytes(jwt["Key"]!);
 
         return services;
     }
