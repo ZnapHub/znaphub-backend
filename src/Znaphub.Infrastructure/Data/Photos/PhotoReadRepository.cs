@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ZnapHub.Domain.Events;
 using ZnapHub.Domain.Photos;
 using ZnapHub.Domain.ValueObjects;
 using ZnapHub.Infrastructure.Data.Contexts;

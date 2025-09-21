@@ -1,6 +1,7 @@
 using ZnapHub.Application.Abstractions.Data;
 using ZnapHub.Application.Abstractions.Messaging.Commands;
 using ZnapHub.Application.Abstractions.Storage;
+using ZnapHub.Domain.Events;
 using ZnapHub.Domain.Photos;
 using ZnapHub.Domain.ValueObjects;
 using ZnapHub.Shared.Abstractions;
