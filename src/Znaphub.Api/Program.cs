@@ -11,7 +11,11 @@ builder.Services.AddZnapHub(builder.Configuration);
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.MapOpenApi("/openapi/v1/swagger.json");
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1/swagger.json", "v1");
+    });
 }
 
 using (var scope = app.Services.CreateScope())
