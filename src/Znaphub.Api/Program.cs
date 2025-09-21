@@ -1,5 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using ZnapHub.Infrastructure.Data.Contexts;
+using ZnapHub.Api.Extensions;
 using ZnapHub.Infrastructure.DependencyInjections;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,17 +17,11 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-using (var scope = app.Services.CreateScope())
-{
-    var appDb = scope.ServiceProvider.GetRequiredService<ZnapHubWriteContext>();
-    await appDb.Database.MigrateAsync();
-    
-    var authDb = scope.ServiceProvider.GetRequiredService<AuthDbContext>();
-    await authDb.Database.MigrateAsync();
-}
 
+await app.ApplyMigrationAsync();
 app.UseHttpsRedirection();
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 app.MapHealthChecks("/health");
