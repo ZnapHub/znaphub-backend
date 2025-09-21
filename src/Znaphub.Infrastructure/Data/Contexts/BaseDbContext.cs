@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using ZnapHub.Infrastructure.Data.Constants;
 using ZnapHub.Infrastructure.Data.Events;
 using ZnapHub.Infrastructure.Data.Photos;
 
@@ -11,7 +10,7 @@ public abstract class BaseDbContext : DbContext
         : base(options) { }
 
     public DbSet<PhotoEntity> Photos => Set<PhotoEntity>();
-    
+
     public DbSet<EventEntity> Events => Set<EventEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -19,6 +18,5 @@ public abstract class BaseDbContext : DbContext
         modelBuilder.ApplyConfiguration(new PhotoConfiguration());
         modelBuilder.ApplyConfiguration(new EventConfiguration());
         base.OnModelCreating(modelBuilder);
-        modelBuilder.HasDefaultSchema(DbSchemas.Public);
     }
 }

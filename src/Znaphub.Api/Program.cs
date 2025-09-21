@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddZnapHub(builder.Configuration);
+builder.Services.AddAuthentication(builder.Configuration);
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -17,7 +19,6 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-
 await app.ApplyMigrationAsync();
 app.UseHttpsRedirection();
 app.UseAuthentication();
@@ -25,5 +26,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapHealthChecks("/health");
-
 await app.RunAsync();

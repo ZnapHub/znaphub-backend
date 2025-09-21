@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ZnapHub.Infrastructure.Data.Contexts;
-using ZnapHub.Infrastructure.Identity;
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
@@ -20,8 +19,6 @@ public static class ContextServiceCollectionExtensions
             opts.UseNpgsql(configuration.GetConnectionString("ZnapHubContext"))
                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
         );
-        services.AddDbContext<AuthDbContext>(opts => opts.UseNpgsql(configuration.GetConnectionString("ZnapHubContext")));
-        
         return services;
     }
 }

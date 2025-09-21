@@ -16,9 +16,13 @@ services:
       - Minio__SecretKey=minioadmin
       - Minio__Secure=false
       - Minio__Bucket=eventphotos
+      - Authentication__Authority=http://znaphub-keycloak:8080/realms/znaphub
+      - Authentication__Audience=znaphub-api
     depends_on:
       znaphub-db:
         condition: service_healthy
+      znaphub-keycloak:
+        condition: service_started
     restart: unless-stopped
     networks:
       - znaphub-network
@@ -41,12 +45,12 @@ services:
     restart: unless-stopped
     networks:
       - znaphub-network
-    
+  
   znaphub-minio:
     image: minio/minio:latest
     ports:
       - "9000:9000"
-      - "9001:9001" 
+      - "9001:9001"
     environment:
       - MINIO_ROOT_USER=minioadmin
       - MINIO_ROOT_PASSWORD=minioadmin
@@ -59,6 +63,18 @@ services:
       interval: 30s
       timeout: 20s
       retries: 3
+    restart: unless-stopped
+    networks:
+      - znaphub-network
+
+  znaphub-keycloak:
+    image: quay.io/keycloak/keycloak:26.0.2
+    command: start-dev
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    ports:
+      - "8082:8080"
     restart: unless-stopped
     networks:
       - znaphub-network

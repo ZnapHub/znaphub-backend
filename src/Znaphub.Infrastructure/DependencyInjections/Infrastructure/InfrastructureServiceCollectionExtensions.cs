@@ -14,6 +14,5 @@ public static class InfrastructureServiceCollectionExtensions
             .AddUnitOfWork()
             .AddRepositories()
             .AddStorage(configuration)
-            .AddHealthChecks(configuration)
-            .AddAuth(configuration);
+            .AddHealthChecks(configuration);
 }
