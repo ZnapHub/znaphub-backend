@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ZnapHub.Infrastructure.Data.Contexts;
+using ZnapHub.Infrastructure.Identity;
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 

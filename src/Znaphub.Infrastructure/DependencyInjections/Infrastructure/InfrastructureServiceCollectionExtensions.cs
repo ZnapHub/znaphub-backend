@@ -15,5 +15,5 @@ public static class InfrastructureServiceCollectionExtensions
             .AddRepositories()
             .AddStorage(configuration)
             .AddHealthChecks(configuration)
-            .AddAuth();
+            .AddAuth(configuration);
 }

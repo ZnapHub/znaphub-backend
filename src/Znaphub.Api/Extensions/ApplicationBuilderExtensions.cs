@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using ZnapHub.Infrastructure.Data.Contexts;
+using ZnapHub.Infrastructure.Identity;
 
 namespace ZnapHub.Api.Extensions;
 
-public static class MigrationExtensions
+public static class ApplicationBuilderExtensions
 {
     public static async Task ApplyMigrationAsync(this IApplicationBuilder app)
     {

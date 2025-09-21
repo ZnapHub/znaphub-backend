@@ -1,10 +1,9 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ZnapHub.Infrastructure.Data.Constants;
-using ZnapHub.Infrastructure.Identity;
 
-namespace ZnapHub.Infrastructure.Data.Contexts;
+namespace ZnapHub.Infrastructure.Identity;
 
 public class AuthDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
 {
