@@ -20,8 +20,11 @@ if (app.Environment.IsDevelopment())
 
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<ZnapHubWriteContext>();
-    await db.Database.MigrateAsync();
+    var appDb = scope.ServiceProvider.GetRequiredService<ZnapHubWriteContext>();
+    await appDb.Database.MigrateAsync();
+    
+    var authDb = scope.ServiceProvider.GetRequiredService<AuthDbContext>();
+    await authDb.Database.MigrateAsync();
 }
 
 app.UseHttpsRedirection();

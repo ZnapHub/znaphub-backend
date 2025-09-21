@@ -2,21 +2,18 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ZnapHub.Infrastructure.Data.Contexts;
 
 #nullable disable
 
-namespace ZnapHub.Infrastructure.Data.Migrations
+namespace ZnapHub.Infrastructure.Data.Migrations.Auth
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20250921054051_InitialSetupForAuth")]
-    partial class InitialSetupForAuth
+    partial class AuthDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

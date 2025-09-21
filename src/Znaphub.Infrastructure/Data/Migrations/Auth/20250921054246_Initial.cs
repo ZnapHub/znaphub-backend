@@ -4,10 +4,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ZnapHub.Infrastructure.Data.Migrations
+namespace ZnapHub.Infrastructure.Data.Migrations.Auth
 {
     /// <inheritdoc />
-    public partial class InitialSetupForAuth : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

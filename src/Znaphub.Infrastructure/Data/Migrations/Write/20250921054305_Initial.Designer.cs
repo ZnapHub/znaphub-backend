@@ -9,23 +9,24 @@ using ZnapHub.Infrastructure.Data.Contexts;
 
 #nullable disable
 
-namespace ZnapHub.Infrastructure.Data.Migrations
+namespace ZnapHub.Infrastructure.Data.Migrations.Write
 {
     [DbContext(typeof(ZnapHubWriteContext))]
-    [Migration("20250920025221_AddEventEntity")]
-    partial class AddEventEntity
+    [Migration("20250921054305_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("public")
                 .HasAnnotation("ProductVersion", "9.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ZnapHub.Infrastructure.Data.Entities.EventEntity", b =>
+            modelBuilder.Entity("ZnapHub.Infrastructure.Data.Events.EventEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,10 +73,10 @@ namespace ZnapHub.Infrastructure.Data.Migrations
                     b.HasIndex("Slug")
                         .IsUnique();
 
-                    b.ToTable("Events");
+                    b.ToTable("Events", "public");
                 });
 
-            modelBuilder.Entity("ZnapHub.Infrastructure.Data.Entities.PhotoEntity", b =>
+            modelBuilder.Entity("ZnapHub.Infrastructure.Data.Photos.PhotoEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -109,12 +110,12 @@ namespace ZnapHub.Infrastructure.Data.Migrations
 
                     b.HasIndex("EventId", "UploadedAt");
 
-                    b.ToTable("Photos");
+                    b.ToTable("Photos", "public");
                 });
 
-            modelBuilder.Entity("ZnapHub.Infrastructure.Data.Entities.PhotoEntity", b =>
+            modelBuilder.Entity("ZnapHub.Infrastructure.Data.Photos.PhotoEntity", b =>
                 {
-                    b.HasOne("ZnapHub.Infrastructure.Data.Entities.EventEntity", "Event")
+                    b.HasOne("ZnapHub.Infrastructure.Data.Events.EventEntity", "Event")
                         .WithMany("Photos")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -123,7 +124,7 @@ namespace ZnapHub.Infrastructure.Data.Migrations
                     b.Navigation("Event");
                 });
 
-            modelBuilder.Entity("ZnapHub.Infrastructure.Data.Entities.EventEntity", b =>
+            modelBuilder.Entity("ZnapHub.Infrastructure.Data.Events.EventEntity", b =>
                 {
                     b.Navigation("Photos");
                 });
