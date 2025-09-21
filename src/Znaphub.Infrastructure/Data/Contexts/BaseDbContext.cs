@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ZnapHub.Infrastructure.Data.Constants;
 using ZnapHub.Infrastructure.Data.Events;
 using ZnapHub.Infrastructure.Data.Photos;
 
@@ -18,5 +19,6 @@ public abstract class BaseDbContext : DbContext
         modelBuilder.ApplyConfiguration(new PhotoConfiguration());
         modelBuilder.ApplyConfiguration(new EventConfiguration());
         base.OnModelCreating(modelBuilder);
+        modelBuilder.HasDefaultSchema(DbSchemas.Public);
     }
 }

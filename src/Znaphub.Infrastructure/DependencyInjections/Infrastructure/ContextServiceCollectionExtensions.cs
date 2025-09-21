@@ -19,6 +19,8 @@ public static class ContextServiceCollectionExtensions
             opts.UseNpgsql(configuration.GetConnectionString("ZnapHubContext"))
                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
         );
+        
+        services.AddDbContext<AuthDbContext>(opts => opts.UseNpgsql(configuration.GetConnectionString("ZnapHubContext")));
 
         return services;
     }
