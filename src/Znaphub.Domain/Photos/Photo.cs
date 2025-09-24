@@ -1,5 +1,6 @@
 using ZnapHub.Domain.Abstractions;
 using ZnapHub.Domain.Events;
+using ZnapHub.Domain.Events.ValueObjects;
 using ZnapHub.Domain.Interfaces;
 using ZnapHub.Domain.ValueObjects;
 

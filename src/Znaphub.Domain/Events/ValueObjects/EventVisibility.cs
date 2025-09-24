@@ -1,4 +1,4 @@
-namespace ZnapHub.Domain.Events;
+namespace ZnapHub.Domain.Events.ValueObjects;
 
 public abstract record EventVisibility
 {

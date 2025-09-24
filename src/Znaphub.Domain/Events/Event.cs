@@ -1,4 +1,5 @@
 using ZnapHub.Domain.Abstractions;
+using ZnapHub.Domain.Events.ValueObjects;
 using ZnapHub.Domain.Interfaces;
 
 namespace ZnapHub.Domain.Events;

@@ -1,4 +1,5 @@
 using ZnapHub.Domain.Events;
+using ZnapHub.Domain.Events.ValueObjects;
 
 namespace ZnapHub.Domain.Photos;
 

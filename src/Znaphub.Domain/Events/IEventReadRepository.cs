@@ -1,3 +1,5 @@
+using ZnapHub.Domain.Events.ValueObjects;
+
 namespace ZnapHub.Domain.Events;
 
 public interface IEventReadRepository

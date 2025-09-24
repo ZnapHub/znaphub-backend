@@ -1,4 +1,5 @@
 using ZnapHub.Domain.Events;
+using ZnapHub.Domain.Events.ValueObjects;
 using ZnapHub.Infrastructure.Data.Contexts;
 
 namespace ZnapHub.Infrastructure.Data.Events;

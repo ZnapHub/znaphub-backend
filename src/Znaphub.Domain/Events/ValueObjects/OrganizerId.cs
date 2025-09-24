@@ -1,4 +1,4 @@
-namespace ZnapHub.Domain.Events;
+namespace ZnapHub.Domain.Events.ValueObjects;
 
 public sealed record OrganizerId(Guid Value)
 {
