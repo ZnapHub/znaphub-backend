@@ -27,7 +27,8 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
         EventDescription description,
         EventTimeRange timeRange,
         EventVisibility visibility,
-        DateTimeOffset createdAt
+        DateTimeOffset createdAt,
+        DateTimeOffset? updatedAt = null
     )
     {
         Id = eventId;
@@ -38,6 +39,7 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
         TimeRange = timeRange;
         Visibility = visibility;
         CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 
     public static Event Create(
@@ -62,6 +64,29 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
         @event.Raise(new EventCreated(@event.Id, @event.OrganizerId, @event.CreatedAt));
         return @event;
     }
+
+    public static Event Rehydrate(
+        EventId eventId,
+        OrganizerId organizerId,
+        EventName name,
+        EventSlug slug,
+        EventVisibility visibility,
+        EventTimeRange timeRange,
+        DateTimeOffset createdAt,
+        EventDescription? description = null,
+        DateTimeOffset? updatedAt = null
+    ) =>
+        new(
+            eventId,
+            organizerId,
+            name,
+            slug,
+            description ?? EventDescription.Empty,
+            timeRange,
+            visibility,
+            createdAt,
+            updatedAt
+        );
 
     public Event UpdateVisibility(EventVisibility visibility)
     {
