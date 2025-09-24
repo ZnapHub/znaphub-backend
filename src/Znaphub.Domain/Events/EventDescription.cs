@@ -2,6 +2,8 @@ namespace ZnapHub.Domain.Events;
 
 public sealed record EventDescription(string Value)
 {
+    public static EventDescription Empty => new(string.Empty);
+
     public static EventDescription FromString(string value) => new(value.Trim());
 
     public override string ToString() => Value;
