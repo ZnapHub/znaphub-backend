@@ -1,6 +1,8 @@
 using ZnapHub.Domain.Events;
 using ZnapHub.Domain.Events.ValueObjects;
 using ZnapHub.Domain.Photos;
+using ZnapHub.Domain.Photos.Entities;
+using ZnapHub.Domain.Photos.ValueObjects;
 using ZnapHub.Domain.ValueObjects;
 
 namespace ZnapHub.Infrastructure.Data.Photos;

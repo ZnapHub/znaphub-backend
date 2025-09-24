@@ -1,4 +1,4 @@
-namespace ZnapHub.Domain.Photos;
+namespace ZnapHub.Domain.Photos.ValueObjects;
 
 public sealed record PhotoId(Guid Value)
 {

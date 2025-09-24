@@ -1,9 +1,9 @@
-using ZnapHub.Domain.Events;
 using ZnapHub.Domain.Events.ValueObjects;
 using ZnapHub.Domain.Interfaces;
+using ZnapHub.Domain.Photos.ValueObjects;
 using ZnapHub.Domain.ValueObjects;
 
-namespace ZnapHub.Domain.Photos;
+namespace ZnapHub.Domain.Photos.Events;
 
 public sealed record PhotoUploaded(
     PhotoId PhotoId,

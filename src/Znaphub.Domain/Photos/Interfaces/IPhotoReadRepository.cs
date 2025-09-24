@@ -1,7 +1,8 @@
-using ZnapHub.Domain.Events;
 using ZnapHub.Domain.Events.ValueObjects;
+using ZnapHub.Domain.Photos.Entities;
+using ZnapHub.Domain.Photos.ValueObjects;
 
-namespace ZnapHub.Domain.Photos;
+namespace ZnapHub.Domain.Photos.Interfaces;
 
 public interface IPhotoReadRepository
 {

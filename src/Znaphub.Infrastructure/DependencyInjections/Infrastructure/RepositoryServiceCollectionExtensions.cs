@@ -1,7 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using ZnapHub.Application.Abstractions.Data;
 using ZnapHub.Domain.Events;
+using ZnapHub.Domain.Events.Interfaces;
 using ZnapHub.Domain.Photos;
+using ZnapHub.Domain.Photos.Interfaces;
 using ZnapHub.Infrastructure.Data;
 using ZnapHub.Infrastructure.Data.Events;
 using ZnapHub.Infrastructure.Data.Photos;

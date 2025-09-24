@@ -1,8 +1,9 @@
 using ZnapHub.Domain.Abstractions;
+using ZnapHub.Domain.Events.Events;
 using ZnapHub.Domain.Events.ValueObjects;
 using ZnapHub.Domain.Interfaces;
 
-namespace ZnapHub.Domain.Events;
+namespace ZnapHub.Domain.Events.Entities;
 
 public sealed class Event : Entity<EventId>, IAggregateRoot
 {

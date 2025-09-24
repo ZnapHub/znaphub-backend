@@ -1,10 +1,11 @@
 using ZnapHub.Domain.Abstractions;
-using ZnapHub.Domain.Events;
 using ZnapHub.Domain.Events.ValueObjects;
 using ZnapHub.Domain.Interfaces;
+using ZnapHub.Domain.Photos.Events;
+using ZnapHub.Domain.Photos.ValueObjects;
 using ZnapHub.Domain.ValueObjects;
 
-namespace ZnapHub.Domain.Photos;
+namespace ZnapHub.Domain.Photos.Entities;
 
 public sealed class Photo : Entity<PhotoId>, IAggregateRoot
 {

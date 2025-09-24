@@ -1,7 +1,7 @@
 using ZnapHub.Domain.Events.ValueObjects;
 using ZnapHub.Domain.Interfaces;
 
-namespace ZnapHub.Domain.Events;
+namespace ZnapHub.Domain.Events.Events;
 
 public sealed record EventCreated(
     EventId EventId,

@@ -1,4 +1,6 @@
 using ZnapHub.Domain.Events;
+using ZnapHub.Domain.Events.Entities;
+using ZnapHub.Domain.Events.Interfaces;
 using ZnapHub.Infrastructure.Data.Contexts;
 
 namespace ZnapHub.Infrastructure.Data.Events;
