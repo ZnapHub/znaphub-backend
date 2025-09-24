@@ -12,5 +12,5 @@ public sealed record OrganizerId
 
     public static OrganizerId FromGuid(Guid value) => new(value);
 
-    public static implicit operator string(OrganizerId organizerId) => organizerId.ToString();
+    public static implicit operator Guid(OrganizerId organizerId) => organizerId.Value;
 }

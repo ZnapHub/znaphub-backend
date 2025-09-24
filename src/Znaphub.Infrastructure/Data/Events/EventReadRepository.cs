@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using ZnapHub.Domain.Events.Entities;
 using ZnapHub.Domain.Events.Interfaces;
 using ZnapHub.Domain.Events.ValueObjects;
@@ -14,13 +15,15 @@ internal sealed class EventReadRepository : IEventReadRepository
         _db = db;
     }
 
-    public Task<Event?> GetAsync(EventId id)
+    public async Task<Event?> GetAsync(EventId id)
     {
-        throw new NotImplementedException();
+        var @event = await _db.Events.FindAsync(id);
+        return @event.ToDomain();
     }
 
-    public Task<IReadOnlyList<Event>> GetByOrganizerIdAsync(OrganizerId id)
+    public async Task<IReadOnlyList<Event>> GetByOrganizerIdAsync(OrganizerId id)
     {
-        throw new NotImplementedException();
+        var events = await _db.Events.Where(e => e.OrganizerId == id).ToListAsync();
+        return events.Select(e => e.ToDomain()).ToList();
     }
 }

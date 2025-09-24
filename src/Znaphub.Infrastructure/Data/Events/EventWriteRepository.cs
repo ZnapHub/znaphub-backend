@@ -13,8 +13,5 @@ internal sealed class EventWriteRepository : IEventWriteRepository
         _db = db;
     }
 
-    public async Task AddAsync(Event @event)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task AddAsync(Event @event) => await _db.AddAsync(@event.ToEntity());
 }

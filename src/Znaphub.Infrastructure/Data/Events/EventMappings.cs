@@ -5,8 +5,11 @@ namespace ZnapHub.Infrastructure.Data.Events;
 
 internal static class EventMappings
 {
-    public static Event ToDomain(this EventEntity entity)
+    public static Event ToDomain(this EventEntity? entity)
     {
+        if (entity is null)
+            return null!;
+
         EventTimeRange timeRange = entity.EndsAt.HasValue
             ? new EventTimeRange.Fixed(
                 EventDate.FromDateTimeOffset(entity.StartsAt),

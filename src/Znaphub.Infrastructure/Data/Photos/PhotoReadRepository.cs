@@ -13,14 +13,20 @@ internal sealed class PhotoReadRepository : IPhotoReadRepository
 
     public PhotoReadRepository(ZnapHubReadContext db) => _db = db;
 
-    public async Task<Photo?> GetAsync(PhotoId id) =>
-        await _db.Photos.Select(p => p.ToDomain()).FirstOrDefaultAsync(p => p.Id == id);
+    public async Task<Photo?> GetAsync(PhotoId id)
+    {
+        var photo = await _db.Photos.FindAsync(id);
+        return photo.ToDomain();
+    }
 
-    public async Task<IReadOnlyList<Photo>> GetByEventAsync(EventId eventId, int limit = 100) =>
-        await _db
+    public async Task<IReadOnlyList<Photo>> GetByEventAsync(EventId eventId, int limit = 100)
+    {
+        var photos = await _db
             .Photos.Where(p => p.EventId == eventId.Value)
             .OrderByDescending(p => p.UploadedAt)
             .Take(limit)
-            .Select(p => p.ToDomain())
             .ToListAsync();
+
+        return photos.Select(p => p.ToDomain()).ToList();
+    }
 }
