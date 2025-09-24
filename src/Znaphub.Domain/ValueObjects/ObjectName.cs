@@ -5,8 +5,12 @@ using ZnapHub.Domain.Photos.ValueObjects;
 
 namespace ZnapHub.Domain.ValueObjects;
 
-public sealed record ObjectName(string Value)
+public sealed record ObjectName
 {
+    public string Value { get; }
+
+    private ObjectName(string value) => Value = value;
+
     public static ObjectName ForEvent(EventId eventId, PhotoId photoId, string fileName)
     {
         var cleanFileName = Path.GetFileName(fileName.Trim());

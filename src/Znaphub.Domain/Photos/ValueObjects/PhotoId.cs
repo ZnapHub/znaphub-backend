@@ -1,7 +1,11 @@
 namespace ZnapHub.Domain.Photos.ValueObjects;
 
-public sealed record PhotoId(Guid Value)
+public sealed record PhotoId
 {
+    public Guid Value { get; }
+
+    private PhotoId(Guid value) => Value = value;
+
     public static PhotoId New() => new(Guid.NewGuid());
 
     public static PhotoId FromGuid(Guid value) => new(value);

@@ -9,16 +9,16 @@ internal static class EventMappings
     {
         EventTimeRange timeRange = entity.EndsAt.HasValue
             ? new EventTimeRange.Fixed(
-                new EventDate(entity.StartsAt),
-                new EventDate(entity.EndsAt.Value)
+                EventDate.FromDateTimeOffset(entity.StartsAt),
+                EventDate.FromDateTimeOffset(entity.EndsAt.Value)
             )
-            : new EventTimeRange.OpenEnded(new EventDate(entity.StartsAt));
+            : new EventTimeRange.OpenEnded(EventDate.FromDateTimeOffset(entity.StartsAt));
 
         var domain = Event.Rehydrate(
-            new EventId(entity.Id),
-            new OrganizerId(entity.OrganizerId),
-            new EventName(entity.Name),
-            new EventSlug(entity.Slug),
+            EventId.FromGuid(entity.Id),
+            OrganizerId.FromGuid(entity.OrganizerId),
+            EventName.FromString(entity.Name),
+            EventSlug.FromString(entity.Slug),
             EventVisibility.FromBool(entity.IsPublic),
             timeRange,
             entity.CreatedAt,

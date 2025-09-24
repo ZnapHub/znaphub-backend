@@ -1,7 +1,11 @@
 namespace ZnapHub.Domain.Photos.ValueObjects;
 
-public sealed record PhotoUrl(string Value)
+public sealed record PhotoUrl
 {
+    public string Value { get; }
+
+    private PhotoUrl(string value) => Value = value;
+
     public static PhotoUrl FromString(string value) => new(value.Trim());
 
     public override string ToString() => Value;
