@@ -1,9 +1,7 @@
 using ZnapHub.Application.Abstractions.Data;
 using ZnapHub.Application.Abstractions.Messaging.Commands;
 using ZnapHub.Application.Abstractions.Storage;
-using ZnapHub.Domain.Events;
 using ZnapHub.Domain.Events.ValueObjects;
-using ZnapHub.Domain.Photos;
 using ZnapHub.Domain.Photos.Entities;
 using ZnapHub.Domain.Photos.Interfaces;
 using ZnapHub.Domain.Photos.ValueObjects;

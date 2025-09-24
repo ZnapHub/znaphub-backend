@@ -16,7 +16,7 @@ public class PhotoController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Upload([FromForm] UploadPhotoCommand command)
+    public async Task<IActionResult> UploadAsync([FromForm] UploadPhotoCommand command)
     {
         await _dispatcher.DispatchAsync(command);
         return Ok();
