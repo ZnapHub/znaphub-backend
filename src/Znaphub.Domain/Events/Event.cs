@@ -7,6 +7,8 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
 {
     public OrganizerId OrganizerId { get; }
 
+    public EventName Name { get; }
+
     private Event(EventId eventId, OrganizerId organizerId)
     {
         Id = eventId;
