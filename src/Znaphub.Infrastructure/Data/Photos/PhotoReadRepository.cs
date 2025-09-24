@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ZnapHub.Domain.Events;
 using ZnapHub.Domain.Events.ValueObjects;
-using ZnapHub.Domain.Photos;
 using ZnapHub.Domain.Photos.Entities;
 using ZnapHub.Domain.Photos.Interfaces;
 using ZnapHub.Domain.Photos.ValueObjects;
@@ -9,7 +7,7 @@ using ZnapHub.Infrastructure.Data.Contexts;
 
 namespace ZnapHub.Infrastructure.Data.Photos;
 
-public sealed class PhotoReadRepository : IPhotoReadRepository
+internal sealed class PhotoReadRepository : IPhotoReadRepository
 {
     private readonly ZnapHubReadContext _db;
 

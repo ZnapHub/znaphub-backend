@@ -1,11 +1,13 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using ZnapHub.Infrastructure.Data.Contexts;
 
-namespace ZnapHub.Api.Extensions;
+namespace ZnapHub.Infrastructure.Data.Migrations;
 
-internal static class ApplicationBuilderExtensions
+public static class ApplicationBuilderExtensions
 {
-    internal static async Task ApplyMigrationAsync(this IApplicationBuilder app)
+    public static async Task ApplyMigrationAsync(this IApplicationBuilder app)
     {
         using var scope = app.ApplicationServices.CreateScope();
         var appDb = scope.ServiceProvider.GetRequiredService<ZnapHubWriteContext>();

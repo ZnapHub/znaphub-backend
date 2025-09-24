@@ -4,7 +4,7 @@ using ZnapHub.Infrastructure.Data.Photos;
 
 namespace ZnapHub.Infrastructure.Data.Contexts;
 
-public abstract class BaseDbContext : DbContext
+internal abstract class BaseDbContext : DbContext
 {
     protected BaseDbContext(DbContextOptions options)
         : base(options) { }

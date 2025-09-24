@@ -1,4 +1,5 @@
 using ZnapHub.Api.Extensions;
+using ZnapHub.Infrastructure.Data.Migrations;
 using ZnapHub.Infrastructure.DependencyInjections;
 
 var builder = WebApplication.CreateBuilder(args);

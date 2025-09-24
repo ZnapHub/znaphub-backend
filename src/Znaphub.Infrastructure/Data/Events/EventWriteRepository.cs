@@ -1,11 +1,10 @@
-using ZnapHub.Domain.Events;
 using ZnapHub.Domain.Events.Entities;
 using ZnapHub.Domain.Events.Interfaces;
 using ZnapHub.Infrastructure.Data.Contexts;
 
 namespace ZnapHub.Infrastructure.Data.Events;
 
-public sealed class EventWriteRepository : IEventWriteRepository
+internal sealed class EventWriteRepository : IEventWriteRepository
 {
     private readonly ZnapHubWriteContext _db;
 

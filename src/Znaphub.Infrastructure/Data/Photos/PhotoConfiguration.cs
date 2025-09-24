@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ZnapHub.Infrastructure.Data.Photos;
 
-public class PhotoConfiguration : IEntityTypeConfiguration<PhotoEntity>
+internal class PhotoConfiguration : IEntityTypeConfiguration<PhotoEntity>
 {
     public void Configure(EntityTypeBuilder<PhotoEntity> builder)
     {
@@ -14,7 +14,7 @@ public class PhotoConfiguration : IEntityTypeConfiguration<PhotoEntity>
         builder.Property(x => x.UploadedAt).IsRequired();
         builder.Property(x => x.UpdatedAt).IsRequired(false);
         builder.HasIndex(x => new { x.EventId, x.UploadedAt });
-        
+
         builder
             .HasOne(x => x.Event)
             .WithMany(e => e.Photos)

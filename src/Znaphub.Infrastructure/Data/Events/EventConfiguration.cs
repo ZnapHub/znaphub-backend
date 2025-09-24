@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ZnapHub.Infrastructure.Data.Events;
 
-public class EventConfiguration : IEntityTypeConfiguration<EventEntity>
+internal class EventConfiguration : IEntityTypeConfiguration<EventEntity>
 {
     public void Configure(EntityTypeBuilder<EventEntity> builder)
     {
