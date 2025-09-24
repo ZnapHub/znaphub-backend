@@ -5,7 +5,7 @@ using ZnapHub.Infrastructure.Data.Contexts;
 
 namespace ZnapHub.Infrastructure.Data.Photos;
 
-public class PhotoReadRepository : IPhotoReadRepository
+public sealed class PhotoReadRepository : IPhotoReadRepository
 {
     private readonly ZnapHubReadContext _db;
 
