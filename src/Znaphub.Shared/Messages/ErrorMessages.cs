@@ -2,9 +2,6 @@ namespace ZnapHub.Shared.Messages;
 
 public static class ErrorMessages
 {
-    public static class NullValue
-    {
-        public const string Code = "Error.NullValue";
-        public const string Text = "Null value was provided";
-    }
+    public const string NullValue = "Null value was provided";
+    public const string NotFound = "Not found";
 }

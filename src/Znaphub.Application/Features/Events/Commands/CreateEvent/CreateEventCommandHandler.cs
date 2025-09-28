@@ -29,7 +29,7 @@ public sealed class CreateEventCommandHandler : ICommandHandler<CreateEventComma
     {
         var userId = _currentUserService.UserId;
         if (userId is null)
-            return Result.Failure(Error.NullValue);
+            return Error.NullValue;
 
         var @event = Event.Create(
             OrganizerId.FromGuid(userId.Value),
