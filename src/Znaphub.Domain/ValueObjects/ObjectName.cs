@@ -1,5 +1,5 @@
-using ZnapHub.Domain.Events.ValueObjects;
-using ZnapHub.Domain.Photos.ValueObjects;
+using ZnapHub.Domain.Features.Events.ValueObjects;
+using ZnapHub.Domain.Features.Photos.ValueObjects;
 
 namespace ZnapHub.Domain.ValueObjects;
 

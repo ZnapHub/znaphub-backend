@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ZnapHub.Application.Abstractions.Messaging.Commands;
-using ZnapHub.Application.Photos.UploadPhoto;
+using ZnapHub.Application.Features.Photos.Commands.UploadPhoto;
 
 namespace ZnapHub.Api.Controllers;
 

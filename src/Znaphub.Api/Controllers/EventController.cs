@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ZnapHub.Application.Abstractions.Messaging.Commands;
 using ZnapHub.Application.Abstractions.Messaging.Queries;
-using ZnapHub.Application.Events.CreateEvent;
+using ZnapHub.Application.Features.Events.Commands.CreateEvent;
 
 namespace ZnapHub.Api.Controllers;
 
