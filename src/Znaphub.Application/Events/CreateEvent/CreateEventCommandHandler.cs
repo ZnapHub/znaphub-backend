@@ -8,7 +8,7 @@ using ZnapHub.Shared.Abstractions;
 
 namespace ZnapHub.Application.Events.CreateEvent;
 
-internal sealed class CreateEventCommandHandler : ICommandHandler<CreateEventCommand>
+public sealed class CreateEventCommandHandler : ICommandHandler<CreateEventCommand>
 {
     private readonly ICurrentUserService _currentUserService;
     private readonly IEventWriteRepository _eventWriteRepository;

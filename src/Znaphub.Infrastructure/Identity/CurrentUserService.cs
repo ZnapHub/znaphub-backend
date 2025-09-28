@@ -17,7 +17,7 @@ internal sealed class CurrentUserService : ICurrentUserService
         get
         {
             var user = _httpContextAccessor.HttpContext?.User;
-            var sub = user?.FindFirst("sub")?.Value;
+            var sub = user?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
             return sub != null ? Guid.Parse(sub) : null;
         }
     }

@@ -1,0 +1,233 @@
+{
+  "name": "ZnapHubApi",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "Photos",
+      "filename": "Photos",
+      "seq": 1,
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "Photos",
+          "seq": 1
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "UploadPhoto",
+          "filename": "UploadPhoto.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{host}}/photo",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "multipartForm",
+              "formUrlEncoded": [],
+              "multipartForm": [
+                {
+                  "type": "text",
+                  "name": "EventId",
+                  "value": "",
+                  "enabled": true
+                },
+                {
+                  "type": "file",
+                  "name": "File",
+                  "value": [
+                    "/Users/awingray/Pictures/company rename.png"
+                  ],
+                  "enabled": true
+                }
+              ],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Events",
+      "filename": "Events",
+      "seq": 2,
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "Events",
+          "seq": 2
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "CreateEvent",
+          "filename": "CreateEvent.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{host}}/event",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"eventName\": \"Wedding\",\n  \"eventSlug\": \"awin-and-paii\",\n  \"isPublic\": false\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Auth",
+      "filename": "Auth",
+      "seq": 3,
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "Auth",
+          "seq": 3
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "Login",
+          "filename": "Login.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "http://localhost:8080/realms/znaphub/protocol/openid-connect/token",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "formUrlEncoded",
+              "json": "{\n  \"username\": \"awingray\",\n  \"password\": \"test123\",\n  \"grant_type\": \"jwt\"\n}",
+              "formUrlEncoded": [
+                {
+                  "name": "username",
+                  "value": "awingray",
+                  "enabled": true
+                },
+                {
+                  "name": "password",
+                  "value": "test123",
+                  "enabled": true
+                },
+                {
+                  "name": "grant_type",
+                  "value": "password",
+                  "enabled": true
+                },
+                {
+                  "name": "client_id",
+                  "value": "znaphub-api",
+                  "enabled": true
+                }
+              ],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "activeEnvironmentUid": "uIvjzPIEbbTiAleHF9Yk3",
+  "environments": [
+    {
+      "variables": [
+        {
+          "name": "host",
+          "value": "http://localhost:5123",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "Development"
+    }
+  ],
+  "root": {
+    "request": {
+      "auth": {
+        "mode": "bearer",
+        "bearer": {
+          "token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJnWWNsM3pwMUh5cC1uZmxOQjFpTVFqUkFZUFhleXVjVkJwejdKSzFwMTVNIn0.eyJleHAiOjE3NTkwODI5OTgsImlhdCI6MTc1OTA0Njk5OCwianRpIjoib25ydHJvOjJmNTJiZWRjLWIyNjAtOTc3OC0wOTc0LTE1ZmE4MzU5MDUyYSIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvem5hcGh1YiIsImF1ZCI6WyJ6bmFwaHViLWFwaSIsImFjY291bnQiXSwic3ViIjoiNWU4N2M5MTQtOTY1NS00ZGIzLTk2ZjItMTg5MDFmM2E1MGNhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiem5hcGh1Yi1hcGkiLCJzaWQiOiJjMzNjNGMyMy1hYTA4LTQ0ODEtYWVkYy00YTA1ZjRkYmYwMmMiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtem5hcGh1YiIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkF3aW4gR3JheSIsInByZWZlcnJlZF91c2VybmFtZSI6ImF3aW5ncmF5IiwiZ2l2ZW5fbmFtZSI6IkF3aW4iLCJmYW1pbHlfbmFtZSI6IkdyYXkiLCJlbWFpbCI6ImF3aW5Aem5hcGh1Yi5jb20ifQ.qdaS3AGkgpkBpKwQ6L-A_9A6zVFlJyqRvA9P_sf-HMRAoq4IASYzHs1XyoCUED3QEyt7JbhlLNk-keTezqSySlWokEMkQfplemJvYithOInSOTB3tDHKkBc2fZTyjprQ5c7GdELyfBDRZBixAiInK99LTee9XytSZotgCNK0wHX7Y7k_JWMq9tDhg5-CAPPuyGbl7VHfO2L5Cy6iG3FIwxrr2R2dHDGWwE-lsH6eW2BhHcFqGx687Xb_8bh9YutrShq84aFUhJDknicjdbpTOn2G8x1gE5PkLpfVWjRry-1R7Nn7g-XQbBlnZUxt1QC0P8l6UXt_dPZM1jnT-1nwoQ"
+        }
+      },
+      "headers": [
+        {
+          "name": "",
+          "value": "",
+          "enabled": true,
+          "uid": "mS1pKVFBjPIOQtX3fzL51"
+        }
+      ]
+    }
+  },
+  "brunoConfig": {
+    "version": "1",
+    "name": "ZnapHubApi",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}

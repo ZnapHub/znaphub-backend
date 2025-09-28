@@ -9,7 +9,7 @@ public static class CommandServiceCollectionExtensions
 {
     public static IServiceCollection AddCommandHandlers(this IServiceCollection services)
     {
-        var assembly = Assembly.GetCallingAssembly();
+        var assembly = typeof(ICommand).Assembly;
 
         services.AddSingleton<ICommandDispatcher, InMemoryCommandDispatcher>();
         services.Scan(s =>

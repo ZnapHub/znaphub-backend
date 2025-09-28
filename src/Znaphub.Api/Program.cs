@@ -13,11 +13,7 @@ builder.Services.AddAuthorization();
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi("/openapi/v1/swagger.json");
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/openapi/v1/swagger.json", "v1");
-    });
+    app.MapOpenApi("/openapi/v1.json");
 }
 
 await app.ApplyMigrationAsync();

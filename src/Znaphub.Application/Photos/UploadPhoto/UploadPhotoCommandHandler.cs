@@ -10,7 +10,7 @@ using ZnapHub.Shared.Abstractions;
 
 namespace ZnapHub.Application.Photos.UploadPhoto;
 
-internal sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoCommand>
+public sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoCommand>
 {
     private readonly IStorageService _storageService;
     private readonly IPhotoWriteRepository _repository;
