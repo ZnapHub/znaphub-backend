@@ -3,7 +3,7 @@ using ZnapHub.Application.Abstractions.Identity;
 
 namespace ZnapHub.Infrastructure.Identity;
 
-public sealed class CurrentUserService : ICurrentUserService
+internal sealed class CurrentUserService : ICurrentUserService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
 

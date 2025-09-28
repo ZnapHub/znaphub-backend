@@ -8,7 +8,8 @@ public sealed record EventDescription
 
     public static EventDescription Empty => new(string.Empty);
 
-    public static EventDescription FromString(string value) => new(value.Trim());
+    public static EventDescription? FromString(string? value) =>
+        string.IsNullOrWhiteSpace(value) ? null : new(value.Trim());
 
     public override string ToString() => Value;
 

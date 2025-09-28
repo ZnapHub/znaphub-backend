@@ -1,6 +1,6 @@
 namespace ZnapHub.Application.Abstractions.Identity;
 
-public class ICurrentUserService
+public interface ICurrentUserService
 {
     Guid? UserId { get; }
 }
