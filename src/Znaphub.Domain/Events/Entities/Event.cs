@@ -15,8 +15,6 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
 
     public EventDescription Description { get; private set; }
 
-    public EventTimeRange TimeRange { get; }
-
     public EventVisibility Visibility { get; private set; }
 
     private Event(
@@ -25,7 +23,6 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
         EventName name,
         EventSlug slug,
         EventDescription description,
-        EventTimeRange timeRange,
         EventVisibility visibility,
         DateTimeOffset createdAt,
         DateTimeOffset? updatedAt = null
@@ -36,7 +33,6 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
         Name = name;
         Slug = slug;
         Description = description;
-        TimeRange = timeRange;
         Visibility = visibility;
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
@@ -47,7 +43,6 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
         EventName name,
         EventSlug slug,
         EventVisibility visibility,
-        EventTimeRange timeRange,
         EventDescription? description = null
     )
     {
@@ -57,7 +52,6 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
             name,
             slug,
             description ?? EventDescription.Empty,
-            timeRange,
             visibility,
             DateTimeOffset.UtcNow
         );
@@ -71,7 +65,6 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
         EventName name,
         EventSlug slug,
         EventVisibility visibility,
-        EventTimeRange timeRange,
         DateTimeOffset createdAt,
         EventDescription? description = null,
         DateTimeOffset? updatedAt = null
@@ -82,7 +75,6 @@ public sealed class Event : Entity<EventId>, IAggregateRoot
             name,
             slug,
             description ?? EventDescription.Empty,
-            timeRange,
             visibility,
             createdAt,
             updatedAt

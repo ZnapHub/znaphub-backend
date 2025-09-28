@@ -12,7 +12,6 @@ internal class EventConfiguration : IEntityTypeConfiguration<EventEntity>
         builder.Property(x => x.Name).IsRequired().HasMaxLength(200);
         builder.Property(x => x.Slug).IsRequired().HasMaxLength(200);
         builder.Property(x => x.Description).HasMaxLength(4000);
-        builder.Property(x => x.StartsAt).IsRequired();
         builder.Property(x => x.IsPublic).IsRequired().HasDefaultValue(false);
         builder.Property(x => x.CreatedAt).IsRequired();
         builder.Property(x => x.UpdatedAt).IsRequired(false);
