@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using ZnapHub.Application.Abstractions.Messaging.Commands;
 using ZnapHub.Application.Features.Photos.Commands.UploadPhoto;
@@ -18,7 +19,14 @@ public class PhotoController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> UploadAsync([FromForm] UploadPhotoCommand command)
     {
-        await _dispatcher.DispatchAsync(command);
-        return Ok();
+        var result = await _dispatcher.DispatchAsync(command);
+        return result.Match<IActionResult>(
+            Ok,
+            e =>
+                e switch
+                {
+                    _ => StatusCode((int)HttpStatusCode.InternalServerError, e),
+                }
+        );
     }
 }

@@ -1,4 +1,3 @@
-using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using ZnapHub.Application.Abstractions.Messaging.Commands;
 using ZnapHub.Infrastructure.Dispatchers;

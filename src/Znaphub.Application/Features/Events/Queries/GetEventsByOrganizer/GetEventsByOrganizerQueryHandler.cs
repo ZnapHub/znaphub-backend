@@ -1,4 +1,3 @@
-using ZnapHub.Application.Abstractions.Data;
 using ZnapHub.Application.Abstractions.Identity;
 using ZnapHub.Application.Abstractions.Messaging.Queries;
 using ZnapHub.Application.Features.Events.Dtos;

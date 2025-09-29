@@ -32,17 +32,29 @@ public class EventController : ControllerBase
             IReadOnlyList<EventDto>
         >(new GetEventsByOrganizerQuery());
 
-        return !result.IsSuccess
-            ? StatusCode((int)HttpStatusCode.InternalServerError, result.Error)
-            : Ok(result);
+        return result.Match<IActionResult>(
+            Ok,
+            e =>
+                e switch
+                {
+                    not null when e == Error.NullValue => BadRequest(e),
+                    _ => StatusCode((int)HttpStatusCode.InternalServerError, e),
+                }
+        );
     }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] CreateEventCommand command)
     {
         var result = await _commandDispatcher.DispatchAsync(command);
-        return !result.IsSuccess
-            ? StatusCode((int)HttpStatusCode.InternalServerError, result.Error)
-            : Ok();
+        return result.Match<IActionResult>(
+            Ok,
+            e =>
+                e switch
+                {
+                    not null when e == Error.NullValue => BadRequest(e),
+                    _ => StatusCode((int)HttpStatusCode.InternalServerError, e),
+                }
+        );
     }
 }
