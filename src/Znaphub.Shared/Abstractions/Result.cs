@@ -49,6 +49,8 @@ public class Result<TValue> : Result
     public static implicit operator Result<TValue>(TValue? value) =>
         value is not null ? Success(value) : Failure<TValue>(Error.NullValue);
 
+    public static implicit operator Result<TValue>(Error error) => Failure<TValue>(error);
+
     public TResult Match<TResult>(
         Func<TValue, TResult> onSuccess,
         Func<Error, TResult> onFailure

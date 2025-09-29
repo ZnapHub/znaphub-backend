@@ -5,6 +5,7 @@ using ZnapHub.Application.Abstractions.Messaging.Commands;
 using ZnapHub.Application.Abstractions.Messaging.Queries;
 using ZnapHub.Application.Features.Events.Commands.CreateEvent;
 using ZnapHub.Application.Features.Events.Dtos;
+using ZnapHub.Application.Features.Events.Queries.GetEventById;
 using ZnapHub.Application.Features.Events.Queries.GetEventsByOrganizer;
 using ZnapHub.Shared.Abstractions;
 
@@ -53,6 +54,24 @@ public class EventController : ControllerBase
                 e switch
                 {
                     not null when e == Error.NullValue => BadRequest(e),
+                    _ => StatusCode((int)HttpStatusCode.InternalServerError, e),
+                }
+        );
+    }
+
+    [HttpGet("{eventId:guid}")]
+    public async Task<IActionResult> GetAsync(Guid eventId)
+    {
+        var result = await _queryDispatcher.QueryAsync<GetEventByIdQuery, EventDto>(
+            new GetEventByIdQuery(eventId)
+        );
+
+        return result.Match<IActionResult>(
+            Ok,
+            e =>
+                e switch
+                {
+                    not null when e == Error.NotFound => NotFound(e),
                     _ => StatusCode((int)HttpStatusCode.InternalServerError, e),
                 }
         );
