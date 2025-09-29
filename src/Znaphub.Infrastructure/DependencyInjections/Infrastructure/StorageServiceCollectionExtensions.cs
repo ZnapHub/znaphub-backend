@@ -15,9 +15,12 @@ public static class StorageServiceCollectionExtensions
     {
         services.AddSingleton<IMinioClient>(_ =>
             new MinioClient()
-                .WithEndpoint(configuration["Minio:Endpoint"])
-                .WithCredentials(configuration["Minio:AccessKey"], configuration["Minio:SecretKey"])
-                .WithSSL(Convert.ToBoolean(configuration["Minio:Secure"]))
+                .WithEndpoint(configuration["Storage:Minio:Endpoint"])
+                .WithCredentials(
+                    configuration["Storage:Minio:AccessKey"],
+                    configuration["Storage:Minio:SecretKey"]
+                )
+                .WithSSL(Convert.ToBoolean(configuration["Storage:Minio:Secure"]))
                 .Build()
         );
 
@@ -25,8 +28,8 @@ public static class StorageServiceCollectionExtensions
         {
             var minioClient = service.GetRequiredService<IMinioClient>();
             var bucketName =
-                configuration["Minio:Bucket"]
-                ?? throw new InvalidOperationException("Minio:Bucket is required.");
+                configuration["Storage:Buckets:Photos"]
+                ?? throw new InvalidOperationException("Storage:Buckets:Photos is required.");
             return new MinioStorageService(minioClient, bucketName);
         });
 
@@ -34,8 +37,8 @@ public static class StorageServiceCollectionExtensions
         {
             var minioClient = service.GetRequiredService<IMinioClient>();
             var bucketName =
-                configuration["Minio:Bucket"]
-                ?? throw new InvalidOperationException("Minio:Bucket is required.");
+                configuration["Storage:Buckets:Photos"]
+                ?? throw new InvalidOperationException("Storage:Buckets:Photos is required.");
             return new MinioUrlService(minioClient, bucketName);
         });
         return services;
