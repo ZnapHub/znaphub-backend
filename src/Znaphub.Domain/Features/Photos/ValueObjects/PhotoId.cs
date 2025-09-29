@@ -12,5 +12,5 @@ public sealed record PhotoId
 
     public override string ToString() => Value.ToString();
 
-    public static implicit operator string(PhotoId photoId) => photoId.ToString();
+    public static implicit operator Guid(PhotoId photoId) => photoId.Value;
 }

@@ -12,5 +12,5 @@ public sealed record EventId
 
     public static EventId FromGuid(Guid value) => new(value);
 
-    public static implicit operator string(EventId eventId) => eventId.ToString();
+    public static implicit operator Guid(EventId eventId) => eventId.Value;
 }
