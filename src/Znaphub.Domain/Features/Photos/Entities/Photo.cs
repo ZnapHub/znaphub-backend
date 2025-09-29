@@ -12,14 +12,12 @@ public sealed class Photo : Entity<PhotoId>, IAggregateRoot
     public EventId EventId { get; }
     public FileName FileName { get; }
     public ObjectName ObjectName { get; }
-    public PhotoUrl Url { get; }
 
     private Photo(
         PhotoId id,
         EventId eventId,
         FileName fileName,
         ObjectName objectName,
-        PhotoUrl url,
         DateTimeOffset uploadedAt,
         DateTimeOffset? updatedAt = null
     )
@@ -28,19 +26,13 @@ public sealed class Photo : Entity<PhotoId>, IAggregateRoot
         EventId = eventId;
         FileName = fileName;
         ObjectName = objectName;
-        Url = url;
         CreatedAt = uploadedAt;
         UpdatedAt = updatedAt;
     }
 
-    public static Photo Create(
-        EventId eventId,
-        FileName fileName,
-        ObjectName objectName,
-        PhotoUrl url
-    )
+    public static Photo Create(EventId eventId, FileName fileName, ObjectName objectName)
     {
-        Photo photo = new(PhotoId.New(), eventId, fileName, objectName, url, DateTimeOffset.UtcNow);
+        Photo photo = new(PhotoId.New(), eventId, fileName, objectName, DateTimeOffset.UtcNow);
         photo.Raise(new PhotoUploaded(photo.Id, photo.EventId, photo.FileName, photo.CreatedAt));
         return photo;
     }
@@ -50,13 +42,12 @@ public sealed class Photo : Entity<PhotoId>, IAggregateRoot
         EventId eventId,
         FileName fileName,
         ObjectName objectName,
-        PhotoUrl url,
         DateTimeOffset uploadedAt,
         DateTimeOffset? updatedAt = null
     )
     {
         ArgumentNullException.ThrowIfNull(id);
         ArgumentNullException.ThrowIfNull(eventId);
-        return new Photo(id, eventId, fileName, objectName, url, uploadedAt, updatedAt);
+        return new Photo(id, eventId, fileName, objectName, uploadedAt, updatedAt);
     }
 }

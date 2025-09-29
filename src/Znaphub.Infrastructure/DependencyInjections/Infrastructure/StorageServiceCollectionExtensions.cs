@@ -29,6 +29,15 @@ public static class StorageServiceCollectionExtensions
                 ?? throw new InvalidOperationException("Minio:Bucket is required.");
             return new MinioStorageService(minioClient, bucketName);
         });
+
+        services.AddScoped<IUrlService>(service =>
+        {
+            var minioClient = service.GetRequiredService<IMinioClient>();
+            var bucketName =
+                configuration["Minio:Bucket"]
+                ?? throw new InvalidOperationException("Minio:Bucket is required.");
+            return new MinioUrlService(minioClient, bucketName);
+        });
         return services;
     }
 }

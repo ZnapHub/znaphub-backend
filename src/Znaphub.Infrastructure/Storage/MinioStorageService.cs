@@ -9,11 +9,8 @@ internal sealed class MinioStorageService : IStorageService
     private readonly IMinioClient _client;
     private readonly string _bucket;
 
-    public MinioStorageService(IMinioClient client, string bucket)
-    {
-        _client = client;
-        _bucket = bucket;
-    }
+    public MinioStorageService(IMinioClient client, string bucket) =>
+        (_client, _bucket) = (client, bucket);
 
     public async Task UploadAsync(
         string objectName,
@@ -30,15 +27,5 @@ internal sealed class MinioStorageService : IStorageService
             .WithContentType(contentType);
 
         await _client.PutObjectAsync(args, ct);
-    }
-
-    public async Task<string> GetUrlAsync(string objectName)
-    {
-        var args = new PresignedGetObjectArgs()
-            .WithBucket(_bucket)
-            .WithObject(objectName)
-            .WithExpiry((int)TimeSpan.FromDays(7).TotalSeconds);
-
-        return await _client.PresignedGetObjectAsync(args);
     }
 }

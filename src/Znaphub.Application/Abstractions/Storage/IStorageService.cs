@@ -8,6 +8,4 @@ public interface IStorageService
         string contentType,
         CancellationToken ct = default
     );
-
-    Task<string> GetUrlAsync(string objectName);
 }

@@ -17,7 +17,6 @@ internal static class PhotoMapper
             EventId.FromGuid(e.EventId),
             FileName.FromString(e.FileName),
             ObjectName.FromString(e.ObjectName),
-            PhotoUrl.FromString(e.Url),
             e.UploadedAt
         );
     }
@@ -29,7 +28,6 @@ internal static class PhotoMapper
             EventId = domain.EventId.Value,
             FileName = domain.FileName,
             ObjectName = domain.ObjectName,
-            Url = domain.Url,
             UploadedAt = domain.CreatedAt,
             UpdatedAt = domain.UpdatedAt,
         };
