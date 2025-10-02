@@ -12,11 +12,11 @@ public sealed class GetPhotosByEventQueryHandler
     : IQueryHandler<GetPhotosByEventQuery, IReadOnlyList<PhotoDto>>
 {
     private readonly IPhotoReadRepository _photoReadRepository;
-    private readonly IUrlService _urlService;
+    private readonly IPhotoUrlService _urlService;
 
     public GetPhotosByEventQueryHandler(
         IPhotoReadRepository photoReadRepository,
-        IUrlService urlService
+        IPhotoUrlService urlService
     ) => (_photoReadRepository, _urlService) = (photoReadRepository, urlService);
 
     public async Task<Result<IReadOnlyList<PhotoDto>>> HandleAsync(GetPhotosByEventQuery query)

@@ -4,11 +4,11 @@ using ZnapHub.Infrastructure.Storage.Interfaces;
 
 namespace ZnapHub.Infrastructure.Storage.Providers;
 
-internal sealed class MinioStorageService : IStorageService
+internal sealed class MinioStorageProvider : IStorageProvider
 {
     private readonly IMinioClient _client;
 
-    public MinioStorageService(IMinioClient client) => _client = client;
+    public MinioStorageProvider(IMinioClient client) => _client = client;
 
     public async Task UploadAsync(
         string bucketName,

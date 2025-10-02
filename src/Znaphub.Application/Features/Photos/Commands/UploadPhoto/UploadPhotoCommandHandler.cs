@@ -12,12 +12,12 @@ namespace ZnapHub.Application.Features.Photos.Commands.UploadPhoto;
 
 public sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoCommand>
 {
-    private readonly IStorageService _storageService;
+    private readonly IPhotoStorageService _storageService;
     private readonly IPhotoWriteRepository _repository;
     private readonly IUnitOfWork _unitOfWork;
 
     public UploadPhotoCommandHandler(
-        IStorageService storageService,
+        IPhotoStorageService storageService,
         IPhotoWriteRepository repository,
         IUnitOfWork unitOfWork
     )

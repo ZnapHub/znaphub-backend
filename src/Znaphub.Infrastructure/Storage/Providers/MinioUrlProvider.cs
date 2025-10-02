@@ -4,18 +4,18 @@ using ZnapHub.Infrastructure.Storage.Interfaces;
 
 namespace ZnapHub.Infrastructure.Storage.Providers;
 
-public sealed class MinioUrlService : IUrlService
+internal sealed class MinioUrlProvider : IUrlProvider
 {
     private readonly IMinioClient _client;
 
-    public MinioUrlService(IMinioClient client) => _client = client;
+    public MinioUrlProvider(IMinioClient client) => _client = client;
 
-    public async Task<string> GetUrlAsync(string objectName, TimeSpan? expiry = null)
+    public async Task<string> GetUrlAsync(string bucket, string objectName, TimeSpan? expiry = null)
     {
         var expiryTimespan = expiry ?? TimeSpan.FromMinutes(7);
 
         var args = new PresignedGetObjectArgs()
-            .WithBucket(_bucket)
+            .WithBucket(bucket)
             .WithObject(objectName)
             .WithExpiry((int)expiryTimespan.TotalSeconds);
 

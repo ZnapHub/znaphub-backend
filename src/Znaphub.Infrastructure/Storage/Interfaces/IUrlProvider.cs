@@ -1,6 +1,6 @@
 namespace ZnapHub.Infrastructure.Storage.Interfaces;
 
-public interface IUrlService
+internal interface IUrlProvider
 {
     Task<string> GetUrlAsync(string bucket, string objectName, TimeSpan? expiry = null);
 }

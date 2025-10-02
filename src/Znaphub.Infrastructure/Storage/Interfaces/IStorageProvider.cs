@@ -1,6 +1,6 @@
 namespace ZnapHub.Infrastructure.Storage.Interfaces;
 
-public interface IStorageService
+internal interface IStorageProvider
 {
     Task UploadAsync(
         string bucketName,
