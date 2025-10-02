@@ -1,4 +1,5 @@
 using ZnapHub.Infrastructure.Data.Features.Photos;
+using ZnapHub.Infrastructure.Data.Features.QrCodes;
 
 namespace ZnapHub.Infrastructure.Data.Features.Events;
 
@@ -14,4 +15,5 @@ internal sealed class EventEntity
     public DateTimeOffset? UpdatedAt { get; set; }
 
     public ICollection<PhotoEntity> Photos { get; set; } = [];
+    public ICollection<QrCodeEntity> QrCodes { get; set; } = [];
 }

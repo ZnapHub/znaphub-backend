@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ZnapHub.Infrastructure.Data.Features.Events;
 using ZnapHub.Infrastructure.Data.Features.Photos;
+using ZnapHub.Infrastructure.Data.Features.QrCodes;
 
 namespace ZnapHub.Infrastructure.Data.Contexts;
 
@@ -12,6 +13,8 @@ internal abstract class BaseDbContext : DbContext
     public DbSet<PhotoEntity> Photos => Set<PhotoEntity>();
 
     public DbSet<EventEntity> Events => Set<EventEntity>();
+
+    public DbSet<QrCodeEntity> QrCodes => Set<QrCodeEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
