@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ZnapHub.Shared\ZnapHub.Shared.csproj" />
+    </ItemGroup>
+
 </Project>

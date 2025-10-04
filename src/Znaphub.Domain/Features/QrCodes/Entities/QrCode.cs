@@ -1,9 +1,11 @@
 using ZnapHub.Domain.Abstractions;
 using ZnapHub.Domain.Features.Events.ValueObjects;
+using ZnapHub.Domain.Features.QrCodes.Errors;
 using ZnapHub.Domain.Features.QrCodes.Events;
 using ZnapHub.Domain.Features.QrCodes.ValueObjects;
 using ZnapHub.Domain.Interfaces;
 using ZnapHub.Domain.ValueObjects;
+using ZnapHub.Shared.Abstractions;
 
 namespace ZnapHub.Domain.Features.QrCodes.Entities;
 
@@ -32,8 +34,15 @@ public sealed class QrCode : Entity<QrCodeId>, IAggregateRoot
         UpdatedAt = updatedAt;
     }
 
-    public static QrCode Create(QrCodeId id, ShortId shortId, EventId eventId, QrCodeState state)
+    public static QrCode Create(
+        ShortId shortId,
+        EventId eventId,
+        int maxUploads,
+        DateTimeOffset? expiresAt = null
+    )
     {
+        var id = QrCodeId.New();
+        var state = new QrCodeState.Active(expiresAt, maxUploads, 0);
         var qrCode = new QrCode(id, shortId, eventId, state, DateTimeOffset.UtcNow);
         qrCode.Raise(new QrCodeGenerated(id, eventId, state));
         return qrCode;
@@ -47,4 +56,45 @@ public sealed class QrCode : Entity<QrCodeId>, IAggregateRoot
         DateTimeOffset createdAt,
         DateTimeOffset? updatedAt = null
     ) => new(id, shortId, eventId, state, createdAt, updatedAt);
+
+    public Result IncrementUploadCount()
+    {
+        if (State is not QrCodeState.Active active)
+            return QrCodeErrors.CannotIncrementInactive;
+
+        var newCount = active.UploadCount + 1;
+
+        if (active.MaxUploads > 0 && newCount >= active.MaxUploads)
+        {
+            State = new QrCodeState.Expired(DateTimeOffset.UtcNow, active.MaxUploads, newCount);
+            Raise(new QrCodeExpired(Id, EventId));
+        }
+        else
+        {
+            State = active with { UploadCount = newCount };
+        }
+
+        UpdatedAt = DateTimeOffset.UtcNow;
+        return Result.Success();
+    }
+
+    public void Deactivate()
+    {
+        if (State is not QrCodeState.Active active)
+            return;
+
+        State = new QrCodeState.Deactivated(active.MaxUploads, active.UploadCount);
+        UpdatedAt = DateTimeOffset.UtcNow;
+
+        Raise(new QrCodeDeactivated(Id, EventId));
+    }
+
+    public bool CanUpload() =>
+        State switch
+        {
+            QrCodeState.Active active => (
+                !active.ExpiresAt.HasValue || active.ExpiresAt > DateTimeOffset.UtcNow
+            ) && (active.MaxUploads == 0 || active.UploadCount < active.MaxUploads),
+            _ => false,
+        };
 }
