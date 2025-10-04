@@ -5,9 +5,9 @@ using ZnapHub.Infrastructure.Data.Contexts;
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
-public static class ContextServiceCollectionExtensions
+internal static class ContextServiceCollectionExtensions
 {
-    public static IServiceCollection AddDbContexts(
+    internal static IServiceCollection AddDbContexts(
         this IServiceCollection services,
         IConfiguration configuration
     )

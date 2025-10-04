@@ -11,9 +11,9 @@ using ZnapHub.Infrastructure.Features.QrCodes.Data;
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
-public static class RepositoryServiceCollectionExtensions
+internal static class RepositoryServiceCollectionExtensions
 {
-    public static IServiceCollection AddRepositories(this IServiceCollection services)
+    internal static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IPhotoWriteRepository, PhotoWriteRepository>();
         services.AddScoped<IPhotoReadRepository, PhotoReadRepository>();
@@ -26,7 +26,7 @@ public static class RepositoryServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddUnitOfWork(this IServiceCollection services)
+    internal static IServiceCollection AddUnitOfWork(this IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         return services;

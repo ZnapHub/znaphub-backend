@@ -4,9 +4,9 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
-public static class HealthCheckServiceCollectionExtensions
+internal static class HealthCheckServiceCollectionExtensions
 {
-    public static IServiceCollection AddHealthChecks(
+    internal static IServiceCollection AddHealthChecks(
         this IServiceCollection services,
         IConfiguration configuration
     )

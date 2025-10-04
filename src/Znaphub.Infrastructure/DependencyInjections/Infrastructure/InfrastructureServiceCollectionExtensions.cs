@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
-public static class InfrastructureServiceCollectionExtensions
+internal static class InfrastructureServiceCollectionExtensions
 {
-    public static IServiceCollection AddInfrastructure(
+    internal static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration
     ) =>
@@ -15,5 +15,7 @@ public static class InfrastructureServiceCollectionExtensions
             .AddRepositories()
             .AddStorage(configuration)
             .AddHealthChecks(configuration)
+            .AddFactories()
+            .AddServices()
             .AddAuth();
 }

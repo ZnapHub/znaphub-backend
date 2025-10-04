@@ -4,9 +4,9 @@ using ZnapHub.Infrastructure.Identity;
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
-public static class AuthServiceCollectionExtensions
+internal static class AuthServiceCollectionExtensions
 {
-    public static IServiceCollection AddAuth(this IServiceCollection services)
+    internal static IServiceCollection AddAuth(this IServiceCollection services)
     {
         services.AddHttpContextAccessor();
 

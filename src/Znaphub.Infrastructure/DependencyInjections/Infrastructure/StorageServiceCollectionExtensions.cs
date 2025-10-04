@@ -9,9 +9,9 @@ using ZnapHub.Infrastructure.Storage.Providers;
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
-public static class StorageServiceCollectionExtensions
+internal static class StorageServiceCollectionExtensions
 {
-    public static IServiceCollection AddStorage(
+    internal static IServiceCollection AddStorage(
         this IServiceCollection services,
         IConfiguration configuration
     ) => services.AddStorageProviders(configuration).AddStorageServices(configuration);
