@@ -7,7 +7,7 @@ namespace ZnapHub.Infrastructure.Data.Features.Photos;
 
 internal static class PhotoMapper
 {
-    public static Photo ToDomain(this PhotoEntity? e)
+    internal static Photo ToDomain(this PhotoEntity? e)
     {
         if (e is null)
             return null!;
@@ -21,7 +21,7 @@ internal static class PhotoMapper
         );
     }
 
-    public static PhotoEntity ToEntity(this Photo domain) =>
+    internal static PhotoEntity ToEntity(this Photo domain) =>
         new()
         {
             Id = domain.Id.Value,

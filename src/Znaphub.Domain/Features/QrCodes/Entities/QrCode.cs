@@ -45,6 +45,6 @@ public sealed class QrCode : Entity<QrCodeId>, IAggregateRoot
         EventId eventId,
         QrCodeState state,
         DateTimeOffset createdAt,
-        DateTimeOffset updatedAt
+        DateTimeOffset? updatedAt = null
     ) => new(id, shortId, eventId, state, createdAt, updatedAt);
 }

@@ -5,7 +5,7 @@ namespace ZnapHub.Infrastructure.Data.Features.Events;
 
 internal static class EventMapper
 {
-    public static Event ToDomain(this EventEntity? entity)
+    internal static Event ToDomain(this EventEntity? entity)
     {
         if (entity is null)
             return null!;
@@ -24,7 +24,7 @@ internal static class EventMapper
         return domain;
     }
 
-    public static EventEntity ToEntity(this Event domain) =>
+    internal static EventEntity ToEntity(this Event domain) =>
         new()
         {
             Id = domain.Id.Value,

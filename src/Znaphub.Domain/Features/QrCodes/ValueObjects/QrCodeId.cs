@@ -13,4 +13,6 @@ public sealed record QrCodeId
     public override string ToString() => Value.ToString();
 
     public static implicit operator Guid(QrCodeId qrCodeId) => qrCodeId.Value;
+
+    public static implicit operator QrCodeId(Guid value) => FromGuid(value);
 }

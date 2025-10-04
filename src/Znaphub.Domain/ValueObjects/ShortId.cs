@@ -11,4 +11,6 @@ public sealed record ShortId
     public override string ToString() => Value;
 
     public static implicit operator string(ShortId value) => value.Value;
+
+    public static implicit operator ShortId(string value) => FromString(value);
 }
