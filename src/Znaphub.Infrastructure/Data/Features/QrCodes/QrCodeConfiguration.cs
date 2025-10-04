@@ -10,10 +10,11 @@ internal class QrCodeConfiguration : IEntityTypeConfiguration<QrCodeEntity>
     {
         builder.HasKey(q => q.Id);
         builder.Property(q => q.Id).ValueGeneratedNever();
-        builder.Property(q => q.ShortId).IsRequired().HasMaxLength(16);
+        builder.Property(q => q.ShortId).IsRequired().HasMaxLength(32);
         builder.HasIndex(q => q.ShortId).IsUnique();
         builder.Property(q => q.EventId).IsRequired();
         builder.Property(q => q.CreatedAt).IsRequired();
+        builder.Property(q => q.UpdatedAt).IsRequired(false);
         builder.Property(q => q.ExpiresAt).IsRequired(false);
         builder.Property(q => q.MaxUploads).IsRequired();
         builder.Property(q => q.UploadCount).IsRequired();
