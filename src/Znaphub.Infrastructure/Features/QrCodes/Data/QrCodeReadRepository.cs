@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using ZnapHub.Domain.Features.QrCodes.Entities;
 using ZnapHub.Domain.Features.QrCodes.Repositories;
 using ZnapHub.Domain.Features.QrCodes.ValueObjects;
@@ -11,9 +12,15 @@ internal sealed class QrCodeReadRepository : IQrCodeReadRepository
 
     public QrCodeReadRepository(ZnapHubReadContext db) => _db = db;
 
-    public async Task<QrCode?> GetAsync(QrCodeId id)
+    public async Task<QrCode?> GetAsync(QrCodeId id, CancellationToken ct = default)
     {
-        var qrCode = await _db.QrCodes.FindAsync(id);
+        var qrCode = await _db.QrCodes.FirstOrDefaultAsync(qr => qr.Id.Equals(id), ct);
+        return qrCode.ToDomain();
+    }
+
+    public async Task<QrCode?> GetByShortIdAsync(ShortId id, CancellationToken ct = default)
+    {
+        var qrCode = await _db.QrCodes.FirstOrDefaultAsync(qr => qr.ShortId == id, ct);
         return qrCode.ToDomain();
     }
 }

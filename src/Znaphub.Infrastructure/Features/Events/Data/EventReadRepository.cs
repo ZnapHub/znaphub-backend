@@ -15,15 +15,18 @@ internal sealed class EventReadRepository : IEventReadRepository
         _db = db;
     }
 
-    public async Task<Event?> GetAsync(EventId id)
+    public async Task<Event?> GetAsync(EventId id, CancellationToken ct = default)
     {
-        var @event = await _db.Events.FindAsync(id);
+        var @event = await _db.Events.Where(e => e.Id == id).FirstOrDefaultAsync(ct);
         return @event.ToDomain();
     }
 
-    public async Task<IReadOnlyList<Event>> GetByOrganizerIdAsync(OrganizerId id)
+    public async Task<IReadOnlyList<Event>> GetByOrganizerIdAsync(
+        OrganizerId id,
+        CancellationToken ct = default
+    )
     {
-        var events = await _db.Events.Where(e => e.OrganizerId == id).ToListAsync();
+        var events = await _db.Events.Where(e => e.OrganizerId == id).ToListAsync(ct);
         return events.Select(e => e.ToDomain()).ToList();
     }
 }

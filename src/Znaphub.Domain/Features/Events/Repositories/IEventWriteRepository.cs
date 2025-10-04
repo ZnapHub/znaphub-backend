@@ -4,5 +4,5 @@ namespace ZnapHub.Domain.Features.Events.Repositories;
 
 public interface IEventWriteRepository
 {
-    Task AddAsync(Event @event);
+    Task AddAsync(Event @event, CancellationToken ct = default);
 }

@@ -13,5 +13,6 @@ internal sealed class EventWriteRepository : IEventWriteRepository
         _db = db;
     }
 
-    public async Task AddAsync(Event @event) => await _db.AddAsync(@event.ToEntity());
+    public async Task AddAsync(Event @event, CancellationToken ct = default) =>
+        await _db.AddAsync(@event.ToEntity(), ct);
 }

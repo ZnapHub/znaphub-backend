@@ -4,5 +4,5 @@ namespace ZnapHub.Domain.Features.QrCodes.Services;
 
 public interface IShortIdGenerator
 {
-    Task<ShortId> GenerateUniqueAsync();
+    Task<ShortId> GenerateUniqueAsync(CancellationToken ct = default);
 }

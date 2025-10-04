@@ -5,7 +5,10 @@ namespace ZnapHub.Domain.Features.Events.Repositories;
 
 public interface IEventReadRepository
 {
-    Task<Event?> GetAsync(EventId id);
+    Task<Event?> GetAsync(EventId id, CancellationToken ct = default);
 
-    Task<IReadOnlyList<Event>> GetByOrganizerIdAsync(OrganizerId id);
+    Task<IReadOnlyList<Event>> GetByOrganizerIdAsync(
+        OrganizerId id,
+        CancellationToken ct = default
+    );
 }
