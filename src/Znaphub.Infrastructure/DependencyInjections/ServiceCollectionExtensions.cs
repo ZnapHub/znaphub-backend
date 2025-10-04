@@ -10,5 +10,10 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddZnapHub(
         this IServiceCollection services,
         IConfiguration configuration
-    ) => services.AddCommandHandlers().AddQueryHandlers().AddInfrastructure(configuration);
+    ) =>
+        services
+            .AddZnapHubOptions(configuration)
+            .AddCommandHandlers()
+            .AddQueryHandlers()
+            .AddInfrastructure(configuration);
 }
