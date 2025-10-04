@@ -2,7 +2,7 @@ namespace ZnapHub.Domain.ValueObjects;
 
 public sealed record ShortId
 {
-    public string Value { get; }
+    private string Value { get; }
 
     private ShortId(string value) => Value = value;
 

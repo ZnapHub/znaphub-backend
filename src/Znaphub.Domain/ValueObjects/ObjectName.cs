@@ -5,15 +5,9 @@ namespace ZnapHub.Domain.ValueObjects;
 
 public sealed record ObjectName
 {
-    public string Value { get; }
+    private string Value { get; }
 
     private ObjectName(string value) => Value = value;
-
-    public static ObjectName ForEvent(EventId eventId, PhotoId photoId, string fileName)
-    {
-        var cleanFileName = Path.GetFileName(fileName.Trim());
-        return new ObjectName($"{eventId.Value}/{photoId.Value}-{cleanFileName}");
-    }
 
     public static ObjectName FromString(string value) => new(value.Trim());
 

@@ -2,7 +2,7 @@ namespace ZnapHub.Domain.ValueObjects;
 
 public sealed record FileName
 {
-    public string Value { get; }
+    private string Value { get; }
 
     private FileName(string value) => Value = value;
 

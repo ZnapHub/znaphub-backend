@@ -20,7 +20,7 @@ public sealed class QrCode : Entity<QrCodeId>, IAggregateRoot
         EventId eventId,
         QrCodeState state,
         DateTimeOffset createdAt,
-        DateTimeOffset? updatedAt
+        DateTimeOffset? updatedAt = null
     )
     {
         Id = id;
@@ -30,4 +30,7 @@ public sealed class QrCode : Entity<QrCodeId>, IAggregateRoot
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
     }
+
+    public static QrCode Create(QrCodeId id, ShortId shortId, EventId eventId, QrCodeState state) =>
+        new(id, shortId, eventId, state, DateTimeOffset.UtcNow);
 }

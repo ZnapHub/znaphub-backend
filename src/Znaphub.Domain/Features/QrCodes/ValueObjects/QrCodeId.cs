@@ -2,7 +2,7 @@ namespace ZnapHub.Domain.Features.QrCodes.ValueObjects;
 
 public sealed record QrCodeId
 {
-    public Guid Value { get; }
+    private Guid Value { get; }
 
     private QrCodeId(Guid value) => Value = value;
 

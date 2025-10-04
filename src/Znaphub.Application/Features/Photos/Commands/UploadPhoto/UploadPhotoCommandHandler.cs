@@ -3,6 +3,7 @@ using ZnapHub.Application.Abstractions.Messaging.Commands;
 using ZnapHub.Application.Abstractions.Storage;
 using ZnapHub.Domain.Features.Events.ValueObjects;
 using ZnapHub.Domain.Features.Photos.Entities;
+using ZnapHub.Domain.Features.Photos.Factories;
 using ZnapHub.Domain.Features.Photos.Interfaces;
 using ZnapHub.Domain.Features.Photos.ValueObjects;
 using ZnapHub.Domain.ValueObjects;
@@ -32,7 +33,7 @@ public sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoComma
         var eventId = EventId.FromGuid(command.EventId);
         var photoId = PhotoId.New();
         var fileName = command.File.FileName;
-        var objectName = ObjectName.ForEvent(eventId, photoId, fileName);
+        var objectName = ObjectNameFactory.ForEvent(eventId, photoId, fileName);
 
         await using var stream = command.File.OpenReadStream();
         await _storageService.UploadAsync(objectName, stream, command.File.ContentType);
