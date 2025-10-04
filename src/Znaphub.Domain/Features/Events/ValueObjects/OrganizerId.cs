@@ -2,7 +2,7 @@ namespace ZnapHub.Domain.Features.Events.ValueObjects;
 
 public sealed record OrganizerId
 {
-    public Guid Value { get; }
+    private Guid Value { get; }
 
     private OrganizerId(Guid value) => Value = value;
 

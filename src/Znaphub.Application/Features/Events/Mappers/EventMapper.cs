@@ -8,7 +8,7 @@ public static class EventMapper
 {
     public static EventDto ToDto(this Event @event) =>
         new(
-            @event.Id.Value,
+            @event.Id,
             @event.Name,
             @event.Slug,
             @event.Description,

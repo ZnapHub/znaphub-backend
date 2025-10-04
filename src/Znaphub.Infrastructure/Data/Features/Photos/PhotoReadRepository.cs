@@ -22,7 +22,7 @@ internal sealed class PhotoReadRepository : IPhotoReadRepository
     public async Task<IReadOnlyList<Photo>> GetByEventAsync(EventId eventId, int limit = 100)
     {
         var photos = await _db
-            .Photos.Where(p => p.EventId == eventId.Value)
+            .Photos.Where(p => p.EventId == eventId)
             .OrderByDescending(p => p.UploadedAt)
             .Take(limit)
             .ToListAsync();

@@ -9,6 +9,6 @@ public static class ObjectNameFactory
     public static ObjectName ForEvent(EventId eventId, PhotoId photoId, string fileName)
     {
         var cleanFileName = Path.GetFileName(fileName.Trim());
-        return ObjectName.FromString($"{eventId.Value}/{photoId.Value}-{cleanFileName}");
+        return ObjectName.FromString($"{eventId}/{photoId.Value}-{cleanFileName}");
     }
 }

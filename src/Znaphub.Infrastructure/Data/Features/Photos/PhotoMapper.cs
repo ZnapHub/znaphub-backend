@@ -25,7 +25,7 @@ internal static class PhotoMapper
         new()
         {
             Id = domain.Id.Value,
-            EventId = domain.EventId.Value,
+            EventId = domain.EventId,
             FileName = domain.FileName,
             ObjectName = domain.ObjectName,
             UploadedAt = domain.CreatedAt,

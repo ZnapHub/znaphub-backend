@@ -2,7 +2,7 @@ namespace ZnapHub.Domain.Features.Events.ValueObjects;
 
 public sealed record EventId
 {
-    public Guid Value { get; }
+    private Guid Value { get; }
 
     private EventId(Guid value) => Value = value;
 
@@ -13,6 +13,4 @@ public sealed record EventId
     public static EventId FromGuid(Guid value) => new(value);
 
     public static implicit operator Guid(EventId eventId) => eventId.Value;
-
-    public static implicit operator EventId(Guid value) => FromGuid(value);
 }

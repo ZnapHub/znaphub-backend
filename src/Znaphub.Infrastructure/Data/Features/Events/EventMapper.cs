@@ -27,11 +27,11 @@ internal static class EventMapper
     internal static EventEntity ToEntity(this Event domain) =>
         new()
         {
-            Id = domain.Id.Value,
-            OrganizerId = domain.OrganizerId.Value,
+            Id = domain.Id,
+            OrganizerId = domain.OrganizerId,
             Name = domain.Name.Value,
-            Slug = domain.Slug.Value,
-            Description = domain.Description.Value,
+            Slug = domain.Slug,
+            Description = domain.Description,
             IsPublic = domain.Visibility is EventVisibility.Public,
             CreatedAt = domain.CreatedAt,
             UpdatedAt = domain.UpdatedAt,

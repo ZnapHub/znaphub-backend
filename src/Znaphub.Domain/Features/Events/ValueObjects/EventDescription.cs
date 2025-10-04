@@ -2,7 +2,7 @@ namespace ZnapHub.Domain.Features.Events.ValueObjects;
 
 public sealed record EventDescription
 {
-    public string Value { get; }
+    private string Value { get; }
 
     private EventDescription(string value) => Value = value;
 
@@ -15,4 +15,7 @@ public sealed record EventDescription
 
     public static implicit operator string(EventDescription eventDescription) =>
         eventDescription.Value;
+
+    public static implicit operator EventDescription?(string? value) =>
+        string.IsNullOrWhiteSpace(value) ? null : FromString(value);
 }
