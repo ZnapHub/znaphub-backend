@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ZnapHub.Domain.Features.Events.ValueObjects;
 using ZnapHub.Domain.Features.Photos.Entities;
-using ZnapHub.Domain.Features.Photos.Interfaces;
+using ZnapHub.Domain.Features.Photos.Repositories;
 using ZnapHub.Domain.Features.Photos.ValueObjects;
 using ZnapHub.Infrastructure.Data.Contexts;
 

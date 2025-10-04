@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ZnapHub.Domain.Features.Events.Entities;
-using ZnapHub.Domain.Features.Events.Interfaces;
+using ZnapHub.Domain.Features.Events.Repositories;
 using ZnapHub.Domain.Features.Events.ValueObjects;
 using ZnapHub.Infrastructure.Data.Contexts;
 

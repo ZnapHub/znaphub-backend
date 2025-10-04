@@ -1,4 +1,4 @@
-namespace ZnapHub.Domain.ValueObjects;
+namespace ZnapHub.Domain.Features.QrCodes.ValueObjects;
 
 public sealed record ShortId
 {

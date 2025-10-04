@@ -1,7 +1,7 @@
 using ZnapHub.Application.Abstractions.Messaging.Queries;
 using ZnapHub.Application.Features.Events.Dtos;
 using ZnapHub.Application.Features.Events.Mappers;
-using ZnapHub.Domain.Features.Events.Interfaces;
+using ZnapHub.Domain.Features.Events.Repositories;
 using ZnapHub.Domain.Features.Events.ValueObjects;
 using ZnapHub.Shared.Abstractions;
 

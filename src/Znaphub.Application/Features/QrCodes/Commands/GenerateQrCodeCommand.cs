@@ -1,3 +1,7 @@
+using ZnapHub.Application.Abstractions.Messaging.Commands;
+using ZnapHub.Domain.Features.Events.ValueObjects;
+
 namespace ZnapHub.Application.Features.QrCodes.Commands;
 
-public record GenerateQrCodeCommand();
+public sealed record GenerateQrCodeCommand(EventId EventId, DateTimeOffset? ExpiresAt = null)
+    : ICommand;

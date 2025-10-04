@@ -1,5 +1,5 @@
 using ZnapHub.Domain.Features.QrCodes.Entities;
-using ZnapHub.Domain.Features.QrCodes.Interfaces;
+using ZnapHub.Domain.Features.QrCodes.Repositories;
 using ZnapHub.Domain.Features.QrCodes.ValueObjects;
 using ZnapHub.Infrastructure.Data.Contexts;
 

@@ -2,7 +2,7 @@ using ZnapHub.Application.Abstractions.Data;
 using ZnapHub.Application.Abstractions.Identity;
 using ZnapHub.Application.Abstractions.Messaging.Commands;
 using ZnapHub.Domain.Features.Events.Entities;
-using ZnapHub.Domain.Features.Events.Interfaces;
+using ZnapHub.Domain.Features.Events.Repositories;
 using ZnapHub.Domain.Features.Events.ValueObjects;
 using ZnapHub.Shared.Abstractions;
 

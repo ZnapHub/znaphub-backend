@@ -1,8 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using ZnapHub.Application.Abstractions.Data;
-using ZnapHub.Domain.Features.Events.Interfaces;
-using ZnapHub.Domain.Features.Photos.Interfaces;
-using ZnapHub.Domain.Features.QrCodes.Interfaces;
+using ZnapHub.Domain.Features.Events.Repositories;
+using ZnapHub.Domain.Features.Photos.Repositories;
+using ZnapHub.Domain.Features.QrCodes.Repositories;
 using ZnapHub.Infrastructure.Data;
 using ZnapHub.Infrastructure.Data.Features.Events;
 using ZnapHub.Infrastructure.Data.Features.Photos;

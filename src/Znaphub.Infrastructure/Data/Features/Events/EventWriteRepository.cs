@@ -1,5 +1,5 @@
 using ZnapHub.Domain.Features.Events.Entities;
-using ZnapHub.Domain.Features.Events.Interfaces;
+using ZnapHub.Domain.Features.Events.Repositories;
 using ZnapHub.Infrastructure.Data.Contexts;
 
 namespace ZnapHub.Infrastructure.Data.Features.Events;

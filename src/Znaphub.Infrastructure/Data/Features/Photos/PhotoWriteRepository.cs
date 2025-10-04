@@ -1,5 +1,5 @@
 using ZnapHub.Domain.Features.Photos.Entities;
-using ZnapHub.Domain.Features.Photos.Interfaces;
+using ZnapHub.Domain.Features.Photos.Repositories;
 using ZnapHub.Infrastructure.Data.Contexts;
 
 namespace ZnapHub.Infrastructure.Data.Features.Photos;

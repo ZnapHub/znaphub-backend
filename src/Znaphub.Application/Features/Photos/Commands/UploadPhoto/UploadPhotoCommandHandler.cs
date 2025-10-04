@@ -4,7 +4,7 @@ using ZnapHub.Application.Abstractions.Storage;
 using ZnapHub.Domain.Features.Events.ValueObjects;
 using ZnapHub.Domain.Features.Photos.Entities;
 using ZnapHub.Domain.Features.Photos.Factories;
-using ZnapHub.Domain.Features.Photos.Interfaces;
+using ZnapHub.Domain.Features.Photos.Repositories;
 using ZnapHub.Domain.Features.Photos.ValueObjects;
 using ZnapHub.Domain.ValueObjects;
 using ZnapHub.Shared.Abstractions;

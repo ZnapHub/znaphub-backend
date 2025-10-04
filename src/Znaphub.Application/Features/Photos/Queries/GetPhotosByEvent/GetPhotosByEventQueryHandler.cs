@@ -3,7 +3,7 @@ using ZnapHub.Application.Abstractions.Storage;
 using ZnapHub.Application.Features.Photos.Dtos;
 using ZnapHub.Application.Features.Photos.Mappers;
 using ZnapHub.Domain.Features.Events.ValueObjects;
-using ZnapHub.Domain.Features.Photos.Interfaces;
+using ZnapHub.Domain.Features.Photos.Repositories;
 using ZnapHub.Shared.Abstractions;
 
 namespace ZnapHub.Application.Features.Photos.Queries.GetPhotosByEvent;
