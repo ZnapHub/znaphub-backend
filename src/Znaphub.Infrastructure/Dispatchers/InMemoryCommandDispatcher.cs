@@ -15,14 +15,17 @@ internal sealed class InMemoryCommandDispatcher : ICommandDispatcher
         ILogger<InMemoryCommandDispatcher> logger
     ) => (_serviceProvider, _logger) = (serviceProvider, logger);
 
-    public async Task<Result> DispatchAsync<TCommand>(TCommand command)
+    public async Task<Result> DispatchAsync<TCommand>(
+        TCommand command,
+        CancellationToken ct = default
+    )
         where TCommand : class, ICommand
     {
         try
         {
             using var scope = _serviceProvider.CreateScope();
             var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<TCommand>>();
-            return await handler.HandleAsync(command);
+            return await handler.HandleAsync(command, ct);
         }
         catch (Exception ex)
         {

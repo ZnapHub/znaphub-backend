@@ -28,7 +28,10 @@ public sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoComma
         _storageService = storageService ?? throw new ArgumentNullException(nameof(storageService));
     }
 
-    public async Task<Result> HandleAsync(UploadPhotoCommand command)
+    public async Task<Result> HandleAsync(
+        UploadPhotoCommand command,
+        CancellationToken ct = default
+    )
     {
         var eventId = EventId.FromGuid(command.EventId);
         var photoId = PhotoId.New();
@@ -36,12 +39,12 @@ public sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoComma
         var objectName = ObjectNameFactory.ForEvent(eventId, photoId, fileName);
 
         await using var stream = command.File.OpenReadStream();
-        await _storageService.UploadAsync(objectName, stream, command.File.ContentType);
+        await _storageService.UploadAsync(objectName, stream, command.File.ContentType, ct);
 
         var photo = Photo.Create(eventId, FileName.FromString(fileName), objectName);
 
-        await _repository.AddAsync(photo);
-        await _unitOfWork.SaveChangesAsync();
+        await _repository.AddAsync(photo, ct);
+        await _unitOfWork.SaveChangesAsync(ct);
         return Result.Success();
     }
 }

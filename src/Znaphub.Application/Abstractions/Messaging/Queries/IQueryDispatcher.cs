@@ -4,6 +4,6 @@ namespace ZnapHub.Application.Abstractions.Messaging.Queries;
 
 public interface IQueryDispatcher
 {
-    Task<Result<TResult>> QueryAsync<TQuery, TResult>(TQuery query)
+    Task<Result<TResult>> QueryAsync<TQuery, TResult>(TQuery query, CancellationToken ct = default)
         where TQuery : class, IQuery<TResult>;
 }

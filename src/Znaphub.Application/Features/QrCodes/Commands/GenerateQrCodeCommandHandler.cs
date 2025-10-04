@@ -9,7 +9,7 @@ using ZnapHub.Shared.Options;
 
 namespace ZnapHub.Application.Features.QrCodes.Commands;
 
-public sealed class GenerateQrCodeCommandHandler : ICommandHandler<GenerateQrCodeCommand>
+public sealed class GenerateQrCodeCommandHandler : ICommandHandler<GenerateQrCodeCommand, string>
 {
     private readonly IShortIdGenerator _shortIdGenerator;
     private readonly IQrCodeWriteRepository _qrCodeWriteRepository;
@@ -29,14 +29,23 @@ public sealed class GenerateQrCodeCommandHandler : ICommandHandler<GenerateQrCod
         _options = options.Value;
     }
 
-    public async Task<Result> HandleAsync(GenerateQrCodeCommand command)
+    public async Task<Result<string>> HandleAsync(
+        GenerateQrCodeCommand command,
+        CancellationToken ct = default
+    )
     {
-        var shortId = await _shortIdGenerator.GenerateUniqueAsync();
+        var shortId = await _shortIdGenerator.GenerateUniqueAsync(ct);
+        var qrCode = QrCode.Create(
+            shortId,
+            command.EventId,
+            _options.DefaultMaxUploads,
+            command.ExpiresAt
+        );
 
-        var qrCode = QrCode.Create(shortId, command.EventId, _options.DefaultMaxUploads);
+        await _qrCodeWriteRepository.AddAsync(qrCode, ct);
+        await _unitOfWork.SaveChangesAsync(ct);
 
-        await _qrCodeWriteRepository.AddAsync(qrCode);
-        await _unitOfWork.SaveChangesAsync();
-        return Result.Success();
+        var uploadUrl = $"{_options.BaseUploadUrl}/{shortId}";
+        return Result.Success(uploadUrl);
     }
 }

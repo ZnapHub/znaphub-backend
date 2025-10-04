@@ -19,10 +19,13 @@ public sealed class GetPhotosByEventQueryHandler
         IPhotoUrlService urlService
     ) => (_photoReadRepository, _urlService) = (photoReadRepository, urlService);
 
-    public async Task<Result<IReadOnlyList<PhotoDto>>> HandleAsync(GetPhotosByEventQuery query)
+    public async Task<Result<IReadOnlyList<PhotoDto>>> HandleAsync(
+        GetPhotosByEventQuery query,
+        CancellationToken ct = default
+    )
     {
         var eventId = EventId.FromGuid(query.EventId);
-        var photos = await _photoReadRepository.GetByEventAsync(eventId);
+        var photos = await _photoReadRepository.GetByEventAsync(eventId, ct);
         var photoTasks = photos
             .Select(async p =>
             {

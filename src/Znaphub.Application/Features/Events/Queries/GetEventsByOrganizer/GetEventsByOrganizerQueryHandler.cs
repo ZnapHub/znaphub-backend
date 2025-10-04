@@ -19,14 +19,18 @@ public sealed class GetEventsByOrganizerQueryHandler
         IEventReadRepository eventReadRepository
     ) => (_currentUserService, _eventReadRepository) = (currentUserService, eventReadRepository);
 
-    public async Task<Result<IReadOnlyList<EventDto>>> HandleAsync(GetEventsByOrganizerQuery query)
+    public async Task<Result<IReadOnlyList<EventDto>>> HandleAsync(
+        GetEventsByOrganizerQuery query,
+        CancellationToken ct = default
+    )
     {
         var organizerId = _currentUserService.UserId;
         if (organizerId is null)
             return Result.Failure<IReadOnlyList<EventDto>>(Error.NullValue);
 
         var events = await _eventReadRepository.GetByOrganizerIdAsync(
-            OrganizerId.FromGuid(organizerId.Value)
+            OrganizerId.FromGuid(organizerId.Value),
+            ct
         );
 
         return events.Select(e => e.ToDto()).ToList();

@@ -4,5 +4,5 @@ namespace ZnapHub.Domain.Features.Photos.Repositories;
 
 public interface IPhotoWriteRepository
 {
-    Task AddAsync(Photo photo);
+    Task AddAsync(Photo photo, CancellationToken ct = default);
 }

@@ -10,5 +10,6 @@ internal class PhotoWriteRepository : IPhotoWriteRepository
 
     public PhotoWriteRepository(ZnapHubWriteContext db) => _db = db;
 
-    public async Task AddAsync(Photo photo) => await _db.Photos.AddAsync(photo.ToEntity());
+    public async Task AddAsync(Photo photo, CancellationToken ct = default) =>
+        await _db.Photos.AddAsync(photo.ToEntity(), ct);
 }

@@ -15,7 +15,10 @@ internal sealed class InMemoryQueryDispatcher : IQueryDispatcher
         ILogger<InMemoryQueryDispatcher> logger
     ) => (_serviceProvider, _logger) = (serviceProvider, logger);
 
-    public async Task<Result<TResult>> QueryAsync<TQuery, TResult>(TQuery query)
+    public async Task<Result<TResult>> QueryAsync<TQuery, TResult>(
+        TQuery query,
+        CancellationToken ct = default
+    )
         where TQuery : class, IQuery<TResult>
     {
         try
@@ -25,7 +28,7 @@ internal sealed class InMemoryQueryDispatcher : IQueryDispatcher
                 IQueryHandler<TQuery, TResult>
             >();
 
-            return await handler.HandleAsync(query);
+            return await handler.HandleAsync(query, ct);
         }
         catch (Exception ex)
         {

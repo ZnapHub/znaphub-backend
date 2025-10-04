@@ -4,5 +4,5 @@ namespace ZnapHub.Domain.Features.QrCodes.Repositories;
 
 public interface IQrCodeWriteRepository
 {
-    Task AddAsync(QrCode qrCode);
+    Task AddAsync(QrCode qrCode, CancellationToken ct = default);
 }

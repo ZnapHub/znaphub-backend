@@ -14,9 +14,12 @@ public sealed class GetEventByIdQueryHandler : IQueryHandler<GetEventByIdQuery, 
     public GetEventByIdQueryHandler(IEventReadRepository eventReadRepository) =>
         _eventReadRepository = eventReadRepository;
 
-    public async Task<Result<EventDto>> HandleAsync(GetEventByIdQuery query)
+    public async Task<Result<EventDto>> HandleAsync(
+        GetEventByIdQuery query,
+        CancellationToken ct = default
+    )
     {
-        var @event = await _eventReadRepository.GetAsync(EventId.FromGuid(query.EventId));
+        var @event = await _eventReadRepository.GetAsync(EventId.FromGuid(query.EventId), ct);
         if (@event is null)
             return Error.NotFound;
 

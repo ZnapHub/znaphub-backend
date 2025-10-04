@@ -25,7 +25,10 @@ public sealed class CreateEventCommandHandler : ICommandHandler<CreateEventComma
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Result> HandleAsync(CreateEventCommand command)
+    public async Task<Result> HandleAsync(
+        CreateEventCommand command,
+        CancellationToken ct = default
+    )
     {
         var userId = _currentUserService.UserId;
         if (userId is null)
@@ -39,8 +42,8 @@ public sealed class CreateEventCommandHandler : ICommandHandler<CreateEventComma
             EventDescription.FromString(command.Description)
         );
 
-        await _eventWriteRepository.AddAsync(@event);
-        await _unitOfWork.SaveChangesAsync();
+        await _eventWriteRepository.AddAsync(@event, ct);
+        await _unitOfWork.SaveChangesAsync(ct);
 
         return Result.Success();
     }

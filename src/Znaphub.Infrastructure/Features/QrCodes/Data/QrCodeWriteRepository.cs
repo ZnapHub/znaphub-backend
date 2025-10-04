@@ -10,5 +10,6 @@ internal sealed class QrCodeWriteRepository : IQrCodeWriteRepository
 
     public QrCodeWriteRepository(ZnapHubWriteContext db) => _db = db;
 
-    public async Task AddAsync(QrCode qrCode) => await _db.AddAsync(qrCode.ToEntity());
+    public async Task AddAsync(QrCode qrCode, CancellationToken ct = default) =>
+        await _db.AddAsync(qrCode.ToEntity(), ct);
 }
