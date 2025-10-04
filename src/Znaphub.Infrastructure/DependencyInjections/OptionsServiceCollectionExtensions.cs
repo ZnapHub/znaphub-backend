@@ -11,8 +11,8 @@ public static class OptionsServiceCollectionExtensions
         IConfiguration configuration
     )
     {
-        services.Configure<ApplicationOptions>(configuration);
-        services.AddOptions<ApplicationOptions>().Bind(configuration);
+        services.Configure<StorageOptions>(configuration.GetSection("Storage"));
+        services.AddOptions<StorageOptions>().Bind(configuration.GetSection("Storage"));
 
         return services;
     }
