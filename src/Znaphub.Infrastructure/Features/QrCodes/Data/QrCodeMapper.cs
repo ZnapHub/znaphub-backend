@@ -2,7 +2,7 @@ using ZnapHub.Domain.Features.Events.ValueObjects;
 using ZnapHub.Domain.Features.QrCodes.Entities;
 using ZnapHub.Domain.Features.QrCodes.ValueObjects;
 
-namespace ZnapHub.Infrastructure.Features.QrCodes;
+namespace ZnapHub.Infrastructure.Features.QrCodes.Data;
 
 internal static class QrCodeMapper
 {

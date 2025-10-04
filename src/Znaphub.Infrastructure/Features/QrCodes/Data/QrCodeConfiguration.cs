@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ZnapHub.Domain.Features.Events.Entities;
 
-namespace ZnapHub.Infrastructure.Features.QrCodes;
+namespace ZnapHub.Infrastructure.Features.QrCodes.Data;
 
 internal class QrCodeConfiguration : IEntityTypeConfiguration<QrCodeEntity>
 {

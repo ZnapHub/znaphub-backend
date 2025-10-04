@@ -1,8 +1,7 @@
-using ZnapHub.Infrastructure.Features.Photos;
 using ZnapHub.Infrastructure.Features.Photos.Data;
-using ZnapHub.Infrastructure.Features.QrCodes;
+using ZnapHub.Infrastructure.Features.QrCodes.Data;
 
-namespace ZnapHub.Infrastructure.Features.Events;
+namespace ZnapHub.Infrastructure.Features.Events.Data;
 
 internal sealed class EventEntity
 {

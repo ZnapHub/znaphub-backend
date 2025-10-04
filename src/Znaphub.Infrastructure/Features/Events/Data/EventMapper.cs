@@ -1,7 +1,7 @@
 using ZnapHub.Domain.Features.Events.Entities;
 using ZnapHub.Domain.Features.Events.ValueObjects;
 
-namespace ZnapHub.Infrastructure.Features.Events;
+namespace ZnapHub.Infrastructure.Features.Events.Data;
 
 internal static class EventMapper
 {

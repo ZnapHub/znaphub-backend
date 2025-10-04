@@ -1,6 +1,6 @@
 using ZnapHub.Infrastructure.Features.Events.Data;
 
-namespace ZnapHub.Infrastructure.Features.QrCodes;
+namespace ZnapHub.Infrastructure.Features.QrCodes.Data;
 
 internal sealed class QrCodeEntity
 {

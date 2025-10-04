@@ -3,7 +3,7 @@ using ZnapHub.Domain.Features.Photos.Entities;
 using ZnapHub.Domain.Features.Photos.ValueObjects;
 using ZnapHub.Domain.ValueObjects;
 
-namespace ZnapHub.Infrastructure.Features.Photos;
+namespace ZnapHub.Infrastructure.Features.Photos.Data;
 
 internal static class PhotoMapper
 {

@@ -4,7 +4,7 @@ using ZnapHub.Domain.Features.Events.Repositories;
 using ZnapHub.Domain.Features.Events.ValueObjects;
 using ZnapHub.Infrastructure.Data.Contexts;
 
-namespace ZnapHub.Infrastructure.Features.Events;
+namespace ZnapHub.Infrastructure.Features.Events.Data;
 
 internal sealed class EventReadRepository : IEventReadRepository
 {

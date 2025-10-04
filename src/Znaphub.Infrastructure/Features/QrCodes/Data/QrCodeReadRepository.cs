@@ -3,7 +3,7 @@ using ZnapHub.Domain.Features.QrCodes.Repositories;
 using ZnapHub.Domain.Features.QrCodes.ValueObjects;
 using ZnapHub.Infrastructure.Data.Contexts;
 
-namespace ZnapHub.Infrastructure.Features.QrCodes;
+namespace ZnapHub.Infrastructure.Features.QrCodes.Data;
 
 internal sealed class QrCodeReadRepository : IQrCodeReadRepository
 {

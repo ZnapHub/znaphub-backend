@@ -2,7 +2,7 @@ using ZnapHub.Domain.Features.QrCodes.Entities;
 using ZnapHub.Domain.Features.QrCodes.Repositories;
 using ZnapHub.Infrastructure.Data.Contexts;
 
-namespace ZnapHub.Infrastructure.Features.QrCodes;
+namespace ZnapHub.Infrastructure.Features.QrCodes.Data;
 
 internal sealed class QrCodeWriteRepository : IQrCodeWriteRepository
 {

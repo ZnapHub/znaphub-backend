@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ZnapHub.Infrastructure.Features.Photos;
+namespace ZnapHub.Infrastructure.Features.Photos.Data;
 
 internal class PhotoConfiguration : IEntityTypeConfiguration<PhotoEntity>
 {

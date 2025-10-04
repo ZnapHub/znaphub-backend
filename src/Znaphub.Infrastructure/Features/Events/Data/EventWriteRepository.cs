@@ -2,7 +2,7 @@ using ZnapHub.Domain.Features.Events.Entities;
 using ZnapHub.Domain.Features.Events.Repositories;
 using ZnapHub.Infrastructure.Data.Contexts;
 
-namespace ZnapHub.Infrastructure.Features.Events;
+namespace ZnapHub.Infrastructure.Features.Events.Data;
 
 internal sealed class EventWriteRepository : IEventWriteRepository
 {

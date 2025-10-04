@@ -1,7 +1,7 @@
 using ZnapHub.Application.Abstractions.Storage;
 using ZnapHub.Infrastructure.Storage.Interfaces;
 
-namespace ZnapHub.Infrastructure.Features.Photos;
+namespace ZnapHub.Infrastructure.Features.Photos.Services;
 
 internal sealed class PhotoStorageService : IPhotoStorageService
 {

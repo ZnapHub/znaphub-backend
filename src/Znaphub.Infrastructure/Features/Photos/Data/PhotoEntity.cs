@@ -1,6 +1,6 @@
-using ZnapHub.Infrastructure.Features.Events;
+using ZnapHub.Infrastructure.Features.Events.Data;
 
-namespace ZnapHub.Infrastructure.Features.Photos;
+namespace ZnapHub.Infrastructure.Features.Photos.Data;
 
 internal sealed class PhotoEntity
 {

@@ -5,7 +5,7 @@ using ZnapHub.Domain.Features.Photos.Repositories;
 using ZnapHub.Domain.Features.Photos.ValueObjects;
 using ZnapHub.Infrastructure.Data.Contexts;
 
-namespace ZnapHub.Infrastructure.Features.Photos;
+namespace ZnapHub.Infrastructure.Features.Photos.Data;
 
 internal sealed class PhotoReadRepository : IPhotoReadRepository
 {

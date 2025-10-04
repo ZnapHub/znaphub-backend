@@ -2,7 +2,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Minio;
 using ZnapHub.Application.Abstractions.Storage;
-using ZnapHub.Infrastructure.Storage.Features.Photos;
+using ZnapHub.Infrastructure.Features.Photos;
+using ZnapHub.Infrastructure.Features.Photos.Services;
 using ZnapHub.Infrastructure.Storage.Interfaces;
 using ZnapHub.Infrastructure.Storage.Providers;
 
