@@ -1,6 +1,7 @@
 using ZnapHub.Domain.Features.QrCodes.Repositories;
 using ZnapHub.Domain.Features.QrCodes.Services;
 using ZnapHub.Domain.Features.QrCodes.ValueObjects;
+using ZnapHub.Infrastructure.Features.QrCodes.Messages;
 
 namespace ZnapHub.Infrastructure.Features.QrCodes.Services;
 
@@ -32,6 +33,6 @@ internal sealed class ShortIdGenerator : IShortIdGenerator
                 return id;
         }
 
-        throw new InvalidOperationException("Failed to generate unique short ID");
+        throw new InvalidOperationException(QrCodesErrorMessages.GenerateShortIdFailed);
     }
 }
