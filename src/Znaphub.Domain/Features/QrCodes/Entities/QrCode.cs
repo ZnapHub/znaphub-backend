@@ -1,5 +1,6 @@
 using ZnapHub.Domain.Abstractions;
 using ZnapHub.Domain.Features.Events.ValueObjects;
+using ZnapHub.Domain.Features.QrCodes.Events;
 using ZnapHub.Domain.Features.QrCodes.ValueObjects;
 using ZnapHub.Domain.Interfaces;
 using ZnapHub.Domain.ValueObjects;
@@ -31,6 +32,19 @@ public sealed class QrCode : Entity<QrCodeId>, IAggregateRoot
         UpdatedAt = updatedAt;
     }
 
-    public static QrCode Create(QrCodeId id, ShortId shortId, EventId eventId, QrCodeState state) =>
-        new(id, shortId, eventId, state, DateTimeOffset.UtcNow);
+    public static QrCode Create(QrCodeId id, ShortId shortId, EventId eventId, QrCodeState state)
+    {
+        var qrCode = new QrCode(id, shortId, eventId, state, DateTimeOffset.UtcNow);
+        qrCode.Raise(new QrCodeGenerated(id, eventId, state));
+        return qrCode;
+    }
+
+    public static QrCode Rehydrate(
+        QrCodeId id,
+        ShortId shortId,
+        EventId eventId,
+        QrCodeState state,
+        DateTimeOffset createdAt,
+        DateTimeOffset updatedAt
+    ) => new(id, shortId, eventId, state, createdAt, updatedAt);
 }
