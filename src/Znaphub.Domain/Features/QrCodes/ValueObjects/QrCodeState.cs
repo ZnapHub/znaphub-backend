@@ -7,7 +7,8 @@ public abstract record QrCodeState
     public sealed record Active(DateTimeOffset? ExpiresAt, int MaxUploads, int UploadCount)
         : QrCodeState;
 
-    public sealed record Expired(DateTimeOffset ExpiredAt) : QrCodeState;
+    public sealed record Expired(DateTimeOffset ExpiredAt, int MaxUploads, int UploadCount)
+        : QrCodeState;
 
-    public sealed record Deactivated : QrCodeState;
+    public sealed record Deactivated(int MaxUploads, int UploadCount) : QrCodeState;
 }

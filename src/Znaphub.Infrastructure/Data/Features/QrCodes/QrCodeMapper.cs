@@ -13,10 +13,10 @@ internal static class QrCodeMapper
             return null!;
 
         return QrCode.Rehydrate(
-            QrCodeId.FromGuid(entity.Id),
-            ShortId.FromString(entity.ShortId),
+            entity.Id,
+            entity.ShortId,
             EventId.FromGuid(entity.EventId),
-            MapToState(entity),
+            entity.ToState(),
             entity.CreatedAt,
             entity.UpdatedAt
         );
@@ -45,28 +45,41 @@ internal static class QrCodeMapper
             case QrCodeState.Expired expired:
                 entity.IsActive = false;
                 entity.ExpiresAt = expired.ExpiredAt;
+                entity.MaxUploads = expired.MaxUploads;
+                entity.UploadCount = expired.UploadCount;
                 break;
 
-            case QrCodeState.Deactivated:
+            case QrCodeState.Deactivated deactivated:
                 entity.IsActive = false;
+                entity.ExpiresAt = null;
+                entity.MaxUploads = deactivated.MaxUploads;
+                entity.UploadCount = deactivated.UploadCount;
                 break;
         }
 
         return entity;
     }
 
-    private static QrCodeState MapToState(QrCodeEntity entity)
+    private static QrCodeState ToState(this QrCodeEntity entity)
     {
         if (entity.ExpiresAt.HasValue && entity.ExpiresAt.Value <= DateTimeOffset.UtcNow)
         {
-            return new QrCodeState.Expired(entity.ExpiresAt.Value);
+            return new QrCodeState.Expired(
+                entity.ExpiresAt.Value,
+                entity.MaxUploads,
+                entity.UploadCount
+            );
         }
 
         if (!entity.IsActive)
         {
             return entity.ExpiresAt.HasValue
-                ? new QrCodeState.Expired(entity.ExpiresAt.Value)
-                : new QrCodeState.Deactivated();
+                ? new QrCodeState.Expired(
+                    entity.ExpiresAt.Value,
+                    entity.MaxUploads,
+                    entity.UploadCount
+                )
+                : new QrCodeState.Deactivated(entity.MaxUploads, entity.UploadCount);
         }
 
         return new QrCodeState.Active(entity.ExpiresAt, entity.MaxUploads, entity.UploadCount);
