@@ -12,7 +12,7 @@ internal sealed class MinioUrlProvider : IUrlProvider
 
     public async Task<string> GetUrlAsync(string bucket, string objectName, TimeSpan? expiry = null)
     {
-        var expiryTimespan = expiry ?? TimeSpan.FromMinutes(7);
+        var expiryTimespan = expiry ?? TimeSpan.FromMinutes(60);
 
         var args = new PresignedGetObjectArgs()
             .WithBucket(bucket)

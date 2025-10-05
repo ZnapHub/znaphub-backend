@@ -1,8 +1,8 @@
+using Amazon.S3;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Minio;
 using ZnapHub.Application.Abstractions.Storage;
-using ZnapHub.Infrastructure.Features.Photos;
 using ZnapHub.Infrastructure.Features.Photos.Services;
 using ZnapHub.Infrastructure.Storage.Interfaces;
 using ZnapHub.Infrastructure.Storage.Providers;
@@ -14,9 +14,34 @@ internal static class StorageServiceCollectionExtensions
     internal static IServiceCollection AddStorage(
         this IServiceCollection services,
         IConfiguration configuration
-    ) => services.AddStorageProviders(configuration).AddStorageServices(configuration);
+    ) => services.AddS3Storage(configuration).AddStorageServices(configuration);
 
-    private static IServiceCollection AddStorageProviders(
+    private static IServiceCollection AddS3Storage(
+        this IServiceCollection services,
+        IConfiguration configuration
+    )
+    {
+        services.AddSingleton<IAmazonS3>(_ => new AmazonS3Client(
+            configuration["Storage:Cloudflare:AccessKey"],
+            configuration["Storage:Cloudflare:SecretKey"]
+        ));
+
+        services.AddScoped<IStorageProvider>(service =>
+        {
+            var s3Client = service.GetRequiredService<IAmazonS3>();
+            return new S3StorageProvider(s3Client);
+        });
+
+        services.AddScoped<IUrlProvider>(service =>
+        {
+            var s3Client = service.GetRequiredService<IAmazonS3>();
+            return new S3UrlProvider(s3Client);
+        });
+
+        return services;
+    }
+
+    private static IServiceCollection AddMinioStorage(
         this IServiceCollection services,
         IConfiguration configuration
     )
