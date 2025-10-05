@@ -33,7 +33,7 @@ internal sealed class InMemoryQueryDispatcher : IQueryDispatcher
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error executing query {QueryType}", typeof(TQuery).Name);
-            return (Result<TResult>)Result.Failure(DispatcherErrors.QueryExecutionError(ex));
+            return Result.Failure<TResult>(DispatcherErrors.QueryExecutionError(ex));
         }
     }
 }

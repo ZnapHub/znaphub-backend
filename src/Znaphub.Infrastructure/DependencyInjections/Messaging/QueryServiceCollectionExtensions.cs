@@ -9,7 +9,7 @@ public static class QueryServiceCollectionExtensions
 {
     public static IServiceCollection AddQueryHandlers(this IServiceCollection services)
     {
-        var assembly = Assembly.GetCallingAssembly();
+        var assembly = typeof(IQuery).Assembly;
 
         services.AddSingleton<IQueryDispatcher, InMemoryQueryDispatcher>();
         services.Scan(s =>
