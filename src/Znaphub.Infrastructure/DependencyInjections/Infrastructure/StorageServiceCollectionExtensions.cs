@@ -23,7 +23,12 @@ internal static class StorageServiceCollectionExtensions
     {
         services.AddSingleton<IAmazonS3>(_ => new AmazonS3Client(
             configuration["Storage:Cloudflare:AccessKey"],
-            configuration["Storage:Cloudflare:SecretKey"]
+            configuration["Storage:Cloudflare:SecretKey"],
+            new AmazonS3Config
+            {
+                ServiceURL = configuration["Storage:Cloudflare:Endpoint"],
+                ForcePathStyle = true,
+            }
         ));
 
         services.AddScoped<IStorageProvider>(service =>
