@@ -33,4 +33,25 @@ internal sealed class InMemoryCommandDispatcher : ICommandDispatcher
             return Result.Failure(DispatcherErrors.CommandExecutionError(ex));
         }
     }
+
+    public async Task<Result<TResult>> DispatchAsync<TCommand, TResult>(
+        TCommand command,
+        CancellationToken ct = default
+    )
+        where TCommand : class, ICommand
+    {
+        try
+        {
+            using var scope = _serviceProvider.CreateScope();
+            var handler = scope.ServiceProvider.GetRequiredService<
+                ICommandHandler<TCommand, TResult>
+            >();
+            return await handler.HandleAsync(command, ct);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error dispatching command {CommandType}", typeof(TCommand).Name);
+            return Result.Failure<TResult>(DispatcherErrors.CommandExecutionError(ex));
+        }
+    }
 }

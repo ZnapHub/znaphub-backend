@@ -3,5 +3,5 @@ using ZnapHub.Domain.Features.Events.ValueObjects;
 
 namespace ZnapHub.Application.Features.QrCodes.Commands;
 
-public sealed record GenerateQrCodeCommand(EventId EventId, DateTimeOffset? ExpiresAt = null)
+public sealed record GenerateQrCodeCommand(Guid EventId, DateTimeOffset? ExpiresAt = null)
     : ICommand;

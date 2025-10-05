@@ -25,7 +25,10 @@ public class QrCodeController : ControllerBase
         CancellationToken ct
     )
     {
-        var result = await _commandDispatcher.DispatchAsync(command, ct);
+        var result = await _commandDispatcher.DispatchAsync<GenerateQrCodeCommand, string>(
+            command,
+            ct
+        );
         return result.Match<IActionResult>(
             Ok,
             e =>

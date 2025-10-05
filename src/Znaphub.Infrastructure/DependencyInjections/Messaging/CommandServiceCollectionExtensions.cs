@@ -13,7 +13,10 @@ public static class CommandServiceCollectionExtensions
         services.AddSingleton<ICommandDispatcher, InMemoryCommandDispatcher>();
         services.Scan(s =>
             s.FromAssemblies(assembly)
-                .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<>)))
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)))
+                .AsImplementedInterfaces()
+                .WithScopedLifetime()
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<,>)))
                 .AsImplementedInterfaces()
                 .WithScopedLifetime()
         );

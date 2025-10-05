@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Options;
 using ZnapHub.Application.Abstractions.Data;
 using ZnapHub.Application.Abstractions.Messaging.Commands;
+using ZnapHub.Domain.Features.Events.ValueObjects;
 using ZnapHub.Domain.Features.QrCodes.Entities;
 using ZnapHub.Domain.Features.QrCodes.Factories;
 using ZnapHub.Domain.Features.QrCodes.Repositories;
@@ -41,7 +42,7 @@ public sealed class GenerateQrCodeCommandHandler : ICommandHandler<GenerateQrCod
         var shortId = await _shortIdGenerator.GenerateUniqueAsync(ct);
         var qrCode = QrCode.Create(
             shortId,
-            command.EventId,
+            EventId.FromGuid(command.EventId),
             _options.DefaultMaxUploads,
             command.ExpiresAt
         );

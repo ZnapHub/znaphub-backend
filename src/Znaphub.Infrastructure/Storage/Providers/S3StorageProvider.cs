@@ -24,6 +24,7 @@ internal sealed class S3StorageProvider : IStorageProvider
             Key = objectName,
             InputStream = data,
             ContentType = contentType,
+            UseChunkEncoding = false,
         };
 
         await _s3Client.PutObjectAsync(putRequest, ct);

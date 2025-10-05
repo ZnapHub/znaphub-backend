@@ -4,120 +4,6 @@
   "items": [
     {
       "type": "folder",
-      "name": "Photos",
-      "filename": "Photos",
-      "seq": 1,
-      "root": {
-        "request": {
-          "auth": {
-            "mode": "inherit"
-          }
-        },
-        "meta": {
-          "name": "Photos",
-          "seq": 1
-        }
-      },
-      "items": [
-        {
-          "type": "http",
-          "name": "UploadPhoto",
-          "filename": "UploadPhoto.bru",
-          "seq": 1,
-          "settings": {
-            "encodeUrl": true
-          },
-          "tags": [],
-          "request": {
-            "url": "{{host}}/photo",
-            "method": "POST",
-            "headers": [],
-            "params": [],
-            "body": {
-              "mode": "multipartForm",
-              "formUrlEncoded": [],
-              "multipartForm": [
-                {
-                  "type": "text",
-                  "name": "EventId",
-                  "value": "",
-                  "enabled": true
-                },
-                {
-                  "type": "file",
-                  "name": "File",
-                  "value": [
-                    "/Users/awingray/Pictures/company rename.png"
-                  ],
-                  "enabled": true
-                }
-              ],
-              "file": []
-            },
-            "script": {},
-            "vars": {},
-            "assertions": [],
-            "tests": "",
-            "docs": "",
-            "auth": {
-              "mode": "inherit"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "type": "folder",
-      "name": "Events",
-      "filename": "Events",
-      "seq": 2,
-      "root": {
-        "request": {
-          "auth": {
-            "mode": "inherit"
-          }
-        },
-        "meta": {
-          "name": "Events",
-          "seq": 2
-        }
-      },
-      "items": [
-        {
-          "type": "http",
-          "name": "CreateEvent",
-          "filename": "CreateEvent.bru",
-          "seq": 1,
-          "settings": {
-            "encodeUrl": true
-          },
-          "tags": [],
-          "request": {
-            "url": "{{host}}/event",
-            "method": "POST",
-            "headers": [],
-            "params": [],
-            "body": {
-              "mode": "json",
-              "json": "{\n  \"eventName\": \"Wedding\",\n  \"eventSlug\": \"awin-and-paii\",\n  \"isPublic\": false\n}",
-              "formUrlEncoded": [],
-              "multipartForm": [],
-              "file": []
-            },
-            "script": {},
-            "vars": {},
-            "assertions": [],
-            "tests": "",
-            "docs": "",
-            "auth": {
-              "mode": "inherit"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "type": "folder",
       "name": "Auth",
       "filename": "Auth",
       "seq": 3,
@@ -186,9 +72,263 @@
           }
         }
       ]
+    },
+    {
+      "type": "folder",
+      "name": "Events",
+      "filename": "Events",
+      "seq": 2,
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "Events",
+          "seq": 2
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "CreateEvent",
+          "filename": "CreateEvent.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{host}}/event",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"eventName\": \"Wedding\",\n  \"eventSlug\": \"awin-and-paii\",\n  \"isPublic\": false\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "GetEvents",
+          "filename": "GetEvents.bru",
+          "seq": 2,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{host}}/event",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "GetEvent",
+          "filename": "GetEvent.bru",
+          "seq": 3,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{host}}/event/{{eventId}}",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Photos",
+      "filename": "Photos",
+      "seq": 1,
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "Photos",
+          "seq": 1
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "UploadPhoto",
+          "filename": "UploadPhoto.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{host}}/photo",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "multipartForm",
+              "formUrlEncoded": [],
+              "multipartForm": [
+                {
+                  "type": "text",
+                  "name": "ShortId",
+                  "value": "taar2qz5",
+                  "enabled": true
+                },
+                {
+                  "type": "file",
+                  "name": "File",
+                  "value": [
+                    "/Users/awingray/Desktop/Screenshot 2568-09-28 at 20.42.05.png"
+                  ],
+                  "enabled": true
+                }
+              ],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "GetPhotos",
+          "filename": "GetPhotos.bru",
+          "seq": 2,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{host}}/photo/{{eventId}}",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "QrCodes",
+      "filename": "QrCodes",
+      "seq": 4,
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "QrCodes",
+          "seq": 4
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "GenerateQrCode",
+          "filename": "GenerateQrCode.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{host}}/qrcode",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"eventId\": \"{{eventId}}\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
     }
   ],
-  "activeEnvironmentUid": "uIvjzPIEbbTiAleHF9Yk3",
+  "activeEnvironmentUid": "IlxsXzPNiHSOeY4aJr7I9",
   "environments": [
     {
       "variables": [
@@ -208,7 +348,7 @@
       "auth": {
         "mode": "bearer",
         "bearer": {
-          "token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJnWWNsM3pwMUh5cC1uZmxOQjFpTVFqUkFZUFhleXVjVkJwejdKSzFwMTVNIn0.eyJleHAiOjE3NTkwODI5OTgsImlhdCI6MTc1OTA0Njk5OCwianRpIjoib25ydHJvOjJmNTJiZWRjLWIyNjAtOTc3OC0wOTc0LTE1ZmE4MzU5MDUyYSIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvem5hcGh1YiIsImF1ZCI6WyJ6bmFwaHViLWFwaSIsImFjY291bnQiXSwic3ViIjoiNWU4N2M5MTQtOTY1NS00ZGIzLTk2ZjItMTg5MDFmM2E1MGNhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiem5hcGh1Yi1hcGkiLCJzaWQiOiJjMzNjNGMyMy1hYTA4LTQ0ODEtYWVkYy00YTA1ZjRkYmYwMmMiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtem5hcGh1YiIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkF3aW4gR3JheSIsInByZWZlcnJlZF91c2VybmFtZSI6ImF3aW5ncmF5IiwiZ2l2ZW5fbmFtZSI6IkF3aW4iLCJmYW1pbHlfbmFtZSI6IkdyYXkiLCJlbWFpbCI6ImF3aW5Aem5hcGh1Yi5jb20ifQ.qdaS3AGkgpkBpKwQ6L-A_9A6zVFlJyqRvA9P_sf-HMRAoq4IASYzHs1XyoCUED3QEyt7JbhlLNk-keTezqSySlWokEMkQfplemJvYithOInSOTB3tDHKkBc2fZTyjprQ5c7GdELyfBDRZBixAiInK99LTee9XytSZotgCNK0wHX7Y7k_JWMq9tDhg5-CAPPuyGbl7VHfO2L5Cy6iG3FIwxrr2R2dHDGWwE-lsH6eW2BhHcFqGx687Xb_8bh9YutrShq84aFUhJDknicjdbpTOn2G8x1gE5PkLpfVWjRry-1R7Nn7g-XQbBlnZUxt1QC0P8l6UXt_dPZM1jnT-1nwoQ"
+          "token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJnWWNsM3pwMUh5cC1uZmxOQjFpTVFqUkFZUFhleXVjVkJwejdKSzFwMTVNIn0.eyJleHAiOjE3NTk2OTYxNDQsImlhdCI6MTc1OTY2MDE0NCwianRpIjoib25ydHJvOjU0NjIyMjM0LWM3MDctZmJkZC05OWVmLTFkNjY2MzNjYmVjZCIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvem5hcGh1YiIsImF1ZCI6WyJ6bmFwaHViLWFwaSIsImFjY291bnQiXSwic3ViIjoiNWU4N2M5MTQtOTY1NS00ZGIzLTk2ZjItMTg5MDFmM2E1MGNhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiem5hcGh1Yi1hcGkiLCJzaWQiOiI2NzVlZWYyZS0zNWMzLTQ5NjgtODU1Zi05MWFmMGU0ZDRjOTMiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtem5hcGh1YiIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkF3aW4gR3JheSIsInByZWZlcnJlZF91c2VybmFtZSI6ImF3aW5ncmF5IiwiZ2l2ZW5fbmFtZSI6IkF3aW4iLCJmYW1pbHlfbmFtZSI6IkdyYXkiLCJlbWFpbCI6ImF3aW5Aem5hcGh1Yi5jb20ifQ.eoCVxnvBlJ2KuCKx_-GviwbnBzaj7gx5Is9Rh2RCBiipPJKkn2o64pPgfHlBG5MMy1nQT9Kx2oYqSIVaPgOgyLt-RonsEZ6AYCfQivGwbuQemN-0Rf9DK85VqsFwJrWW9odT14ieX643OclQcvKhil_MsS8FMoeeFE5RGaEZMQRxXlA4NQnfll1-m62-H70CSNnMaN9hJN_LxRo0CQIH9Rqb3MzUddcpepUL3cRO4kCs41DqI9ywicHR2Jcul7ggJHdGaEGgzZ1btaP8O6QYndfGWn0I88p_Xxkt-CPF2c6MBT3Ok1rae8CbWM2Rd4QbyjUi7CaWIv2ijKwCgK234g"
         }
       },
       "headers": [
@@ -216,9 +356,20 @@
           "name": "",
           "value": "",
           "enabled": true,
-          "uid": "mS1pKVFBjPIOQtX3fzL51"
+          "uid": "9kyhC13sJ0Pp8OtnAnVTr"
         }
-      ]
+      ],
+      "vars": {
+        "req": [
+          {
+            "name": "eventId",
+            "value": "658a3ab6-f551-45e1-88b2-849288781b22",
+            "enabled": true,
+            "local": false,
+            "uid": "1osvjY4ffjM7VFdwbJ0Dk"
+          }
+        ]
+      }
     }
   },
   "brunoConfig": {
@@ -228,6 +379,8 @@
     "ignore": [
       "node_modules",
       ".git"
-    ]
+    ],
+    "size": 0.0024318695068359375,
+    "filesCount": 8
   }
 }

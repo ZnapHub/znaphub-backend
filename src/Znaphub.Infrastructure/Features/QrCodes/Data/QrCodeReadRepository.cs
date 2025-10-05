@@ -20,7 +20,7 @@ internal sealed class QrCodeReadRepository : IQrCodeReadRepository
 
     public async Task<QrCode?> GetByShortIdAsync(ShortId id, CancellationToken ct = default)
     {
-        var qrCode = await _db.QrCodes.FirstOrDefaultAsync(qr => qr.ShortId == id, ct);
+        var qrCode = await _db.QrCodes.FirstOrDefaultAsync(qr => qr.ShortId == id.ToString(), ct);
         return qrCode.ToDomain();
     }
 }
