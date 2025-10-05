@@ -11,7 +11,8 @@ using ZnapHub.Shared.Options;
 
 namespace ZnapHub.Application.Features.QrCodes.Commands;
 
-public sealed class GenerateQrCodeCommandHandler : ICommandHandler<GenerateQrCodeCommand, string>
+public sealed class GenerateQrCodeCommandHandler
+    : ICommandHandler<GenerateQrCodeCommand, GenerateQrCodeResponse>
 {
     private readonly IShortIdGenerator _shortIdGenerator;
     private readonly IQrCodeUrlFactory _qrCodeUrlFactory;
@@ -34,7 +35,7 @@ public sealed class GenerateQrCodeCommandHandler : ICommandHandler<GenerateQrCod
         _options = options.Value;
     }
 
-    public async Task<Result<string>> HandleAsync(
+    public async Task<Result<GenerateQrCodeResponse>> HandleAsync(
         GenerateQrCodeCommand command,
         CancellationToken ct = default
     )
@@ -51,6 +52,6 @@ public sealed class GenerateQrCodeCommandHandler : ICommandHandler<GenerateQrCod
         await _unitOfWork.SaveChangesAsync(ct);
 
         var uploadUrl = _qrCodeUrlFactory.CreateUploadUrl(shortId);
-        return Result.Success(uploadUrl);
+        return Result.Success(new GenerateQrCodeResponse(uploadUrl));
     }
 }
