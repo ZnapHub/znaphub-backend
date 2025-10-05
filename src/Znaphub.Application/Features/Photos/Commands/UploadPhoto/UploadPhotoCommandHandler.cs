@@ -46,8 +46,12 @@ public sealed class UploadPhotoCommandHandler : ICommandHandler<UploadPhotoComma
         var fileName = command.File.FileName;
         var objectName = ObjectNameFactory.ForEvent(eventId, photoId, fileName);
 
-        await using var stream = command.File.OpenReadStream();
-        await _storageService.UploadAsync(objectName, stream, command.File.ContentType, ct);
+        await _storageService.UploadAsync(
+            objectName,
+            command.File.Stream,
+            command.File.ContentType,
+            ct
+        );
 
         var photo = Photo.Create(eventId, FileName.FromString(fileName), objectName);
 

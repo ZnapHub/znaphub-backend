@@ -21,13 +21,21 @@ public class PhotoController : ControllerBase
         _commandDispatcher = commandDispatcher;
     }
 
-    [HttpPost]
+    [HttpPost("{shortId}")]
     public async Task<IActionResult> UploadAsync(
-        [FromForm] UploadPhotoCommand command,
+        string shortId,
+        IFormFile file,
         CancellationToken ct
     )
     {
-        var result = await _commandDispatcher.DispatchAsync(command, ct);
+        await using var stream = file.OpenReadStream();
+        var result = await _commandDispatcher.DispatchAsync(
+            new UploadPhotoCommand(
+                shortId,
+                new PhotoContentDto(file.FileName, stream, file.ContentType)
+            ),
+            ct
+        );
         return result.Match<IActionResult>(
             Ok,
             e =>

@@ -123,15 +123,15 @@
         },
         {
           "type": "http",
-          "name": "GetEvents",
-          "filename": "GetEvents.bru",
-          "seq": 2,
+          "name": "GetEvent",
+          "filename": "GetEvent.bru",
+          "seq": 3,
           "settings": {
             "encodeUrl": true
           },
           "tags": [],
           "request": {
-            "url": "{{host}}/event",
+            "url": "{{host}}/event/{{eventId}}",
             "method": "GET",
             "headers": [],
             "params": [],
@@ -153,15 +153,15 @@
         },
         {
           "type": "http",
-          "name": "GetEvent",
-          "filename": "GetEvent.bru",
-          "seq": 3,
+          "name": "GetEvents",
+          "filename": "GetEvents.bru",
+          "seq": 2,
           "settings": {
             "encodeUrl": true
           },
           "tags": [],
           "request": {
-            "url": "{{host}}/event/{{eventId}}",
+            "url": "{{host}}/event",
             "method": "GET",
             "headers": [],
             "params": [],
@@ -202,51 +202,6 @@
       "items": [
         {
           "type": "http",
-          "name": "UploadPhoto",
-          "filename": "UploadPhoto.bru",
-          "seq": 1,
-          "settings": {
-            "encodeUrl": true
-          },
-          "tags": [],
-          "request": {
-            "url": "{{host}}/photo",
-            "method": "POST",
-            "headers": [],
-            "params": [],
-            "body": {
-              "mode": "multipartForm",
-              "formUrlEncoded": [],
-              "multipartForm": [
-                {
-                  "type": "text",
-                  "name": "ShortId",
-                  "value": "taar2qz5",
-                  "enabled": true
-                },
-                {
-                  "type": "file",
-                  "name": "File",
-                  "value": [
-                    "/Users/awingray/Desktop/Screenshot 2568-09-28 at 20.42.05.png"
-                  ],
-                  "enabled": true
-                }
-              ],
-              "file": []
-            },
-            "script": {},
-            "vars": {},
-            "assertions": [],
-            "tests": "",
-            "docs": "",
-            "auth": {
-              "mode": "inherit"
-            }
-          }
-        },
-        {
-          "type": "http",
           "name": "GetPhotos",
           "filename": "GetPhotos.bru",
           "seq": 2,
@@ -263,6 +218,45 @@
               "mode": "none",
               "formUrlEncoded": [],
               "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "UploadPhoto",
+          "filename": "UploadPhoto.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true
+          },
+          "tags": [],
+          "request": {
+            "url": "{{host}}/photo/{{shortId}}",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "multipartForm",
+              "formUrlEncoded": [],
+              "multipartForm": [
+                {
+                  "type": "file",
+                  "name": "File",
+                  "value": [
+                    "/Users/awingray/Desktop/Screenshot 2568-09-28 at 20.42.05.png"
+                  ],
+                  "enabled": true
+                }
+              ],
               "file": []
             },
             "script": {},
@@ -328,7 +322,7 @@
       ]
     }
   ],
-  "activeEnvironmentUid": "IlxsXzPNiHSOeY4aJr7I9",
+  "activeEnvironmentUid": "on3vwS0KxlZ43jYmgT1Pg",
   "environments": [
     {
       "variables": [
@@ -356,7 +350,7 @@
           "name": "",
           "value": "",
           "enabled": true,
-          "uid": "9kyhC13sJ0Pp8OtnAnVTr"
+          "uid": "HuzvNc3dERQIIbPHhHHtE"
         }
       ],
       "vars": {
@@ -366,7 +360,14 @@
             "value": "658a3ab6-f551-45e1-88b2-849288781b22",
             "enabled": true,
             "local": false,
-            "uid": "1osvjY4ffjM7VFdwbJ0Dk"
+            "uid": "R63kfOND0yKb5Vd2Ij6W1"
+          },
+          {
+            "name": "shortId",
+            "value": "tarr43f",
+            "enabled": true,
+            "local": false,
+            "uid": "FKExbjbs3B6BueRecFJ0K"
           }
         ]
       }
@@ -380,7 +381,7 @@
       "node_modules",
       ".git"
     ],
-    "size": 0.0024318695068359375,
-    "filesCount": 8
+    "size": 0.00319671630859375,
+    "filesCount": 13
   }
 }
