@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using ZnapHub.Domain.Features.QrCodes.Factories;
 using ZnapHub.Infrastructure.Features.QrCodes.Factories;
-using ZnapHub.Shared.Options;
 
 namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 

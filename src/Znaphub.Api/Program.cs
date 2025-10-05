@@ -9,7 +9,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddZnapHub(builder.Configuration);
 builder.Services.AddAuthentication(builder.Configuration);
 builder.Services.AddAuthorization();
-
+builder.Services.AddFormLimit(builder.Configuration);
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {

@@ -4,7 +4,6 @@ using ZnapHub.Domain.Features.QrCodes.Errors;
 using ZnapHub.Domain.Features.QrCodes.Events;
 using ZnapHub.Domain.Features.QrCodes.ValueObjects;
 using ZnapHub.Domain.Interfaces;
-using ZnapHub.Domain.ValueObjects;
 using ZnapHub.Shared.Abstractions;
 
 namespace ZnapHub.Domain.Features.QrCodes.Entities;

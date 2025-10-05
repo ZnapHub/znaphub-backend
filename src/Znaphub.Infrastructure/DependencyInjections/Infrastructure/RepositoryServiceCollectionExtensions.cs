@@ -5,7 +5,6 @@ using ZnapHub.Domain.Features.Photos.Repositories;
 using ZnapHub.Domain.Features.QrCodes.Repositories;
 using ZnapHub.Infrastructure.Data;
 using ZnapHub.Infrastructure.Features.Events.Data;
-using ZnapHub.Infrastructure.Features.Photos;
 using ZnapHub.Infrastructure.Features.Photos.Data;
 using ZnapHub.Infrastructure.Features.QrCodes.Data;
 

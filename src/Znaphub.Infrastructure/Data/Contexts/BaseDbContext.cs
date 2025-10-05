@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using ZnapHub.Infrastructure.Features.Events.Data;
-using ZnapHub.Infrastructure.Features.Photos;
 using ZnapHub.Infrastructure.Features.Photos.Data;
 using ZnapHub.Infrastructure.Features.QrCodes.Data;
 
