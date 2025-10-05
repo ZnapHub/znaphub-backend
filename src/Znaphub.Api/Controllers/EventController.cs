@@ -26,12 +26,12 @@ public class EventController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetListAsync()
+    public async Task<IActionResult> GetListAsync(CancellationToken ct)
     {
         var result = await _queryDispatcher.QueryAsync<
             GetEventsByOrganizerQuery,
             IReadOnlyList<EventDto>
-        >(new GetEventsByOrganizerQuery());
+        >(new GetEventsByOrganizerQuery(), ct);
 
         return result.Match<IActionResult>(
             Ok,
@@ -45,9 +45,12 @@ public class EventController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> PostAsync([FromBody] CreateEventCommand command)
+    public async Task<IActionResult> PostAsync(
+        [FromBody] CreateEventCommand command,
+        CancellationToken ct
+    )
     {
-        var result = await _commandDispatcher.DispatchAsync(command);
+        var result = await _commandDispatcher.DispatchAsync(command, ct);
         return result.Match<IActionResult>(
             Ok,
             e =>
@@ -60,10 +63,11 @@ public class EventController : ControllerBase
     }
 
     [HttpGet("{eventId:guid}")]
-    public async Task<IActionResult> GetAsync(Guid eventId)
+    public async Task<IActionResult> GetAsync(Guid eventId, CancellationToken ct)
     {
         var result = await _queryDispatcher.QueryAsync<GetEventByIdQuery, EventDto>(
-            new GetEventByIdQuery(eventId)
+            new GetEventByIdQuery(eventId),
+            ct
         );
 
         return result.Match<IActionResult>(

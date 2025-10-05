@@ -22,9 +22,12 @@ public class PhotoController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> UploadAsync([FromForm] UploadPhotoCommand command)
+    public async Task<IActionResult> UploadAsync(
+        [FromForm] UploadPhotoCommand command,
+        CancellationToken ct
+    )
     {
-        var result = await _commandDispatcher.DispatchAsync(command);
+        var result = await _commandDispatcher.DispatchAsync(command, ct);
         return result.Match<IActionResult>(
             Ok,
             e =>
@@ -36,12 +39,12 @@ public class PhotoController : ControllerBase
     }
 
     [HttpGet("{eventId:guid}")]
-    public async Task<IActionResult> GetListAsync(Guid eventId)
+    public async Task<IActionResult> GetListAsync(Guid eventId, CancellationToken ct)
     {
         var result = await _queryDispatcher.QueryAsync<
             GetPhotosByEventQuery,
             IReadOnlyList<PhotoDto>
-        >(new GetPhotosByEventQuery(eventId));
+        >(new GetPhotosByEventQuery(eventId), ct);
 
         return result.Match(
             Ok,
