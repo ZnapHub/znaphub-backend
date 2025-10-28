@@ -6,7 +6,7 @@ public sealed record OrganizerId
 
     private OrganizerId(Guid value) => Value = value;
 
-    public static OrganizerId New() => new(Guid.NewGuid());
+    public static OrganizerId New() => new(Guid.CreateVersion7());
 
     public static OrganizerId FromString(string value) => new(Guid.Parse(value.Trim()));
 

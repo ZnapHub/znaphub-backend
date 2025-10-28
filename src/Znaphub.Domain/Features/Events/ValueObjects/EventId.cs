@@ -6,7 +6,7 @@ public sealed record EventId
 
     private EventId(Guid value) => Value = value;
 
-    public static EventId New() => new(Guid.NewGuid());
+    public static EventId New() => new(Guid.CreateVersion7());
 
     public static EventId FromString(string value) => new(Guid.Parse(value.Trim()));
 

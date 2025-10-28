@@ -6,7 +6,7 @@ public sealed record PhotoId
 
     private PhotoId(Guid value) => Value = value;
 
-    public static PhotoId New() => new(Guid.NewGuid());
+    public static PhotoId New() => new(Guid.CreateVersion7());
 
     public static PhotoId FromGuid(Guid value) => new(value);
 

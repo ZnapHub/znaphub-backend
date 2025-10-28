@@ -6,7 +6,7 @@ public sealed record QrCodeId
 
     private QrCodeId(Guid value) => Value = value;
 
-    public static QrCodeId New() => new(Guid.NewGuid());
+    public static QrCodeId New() => new(Guid.CreateVersion7());
 
     public static QrCodeId FromGuid(Guid value) => new(value);
 

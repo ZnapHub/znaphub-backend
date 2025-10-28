@@ -4,7 +4,7 @@ namespace ZnapHub.Infrastructure.Features.QrCodes.Data;
 
 internal sealed class QrCodeEntity
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid Id { get; set; } = Guid.CreateVersion7();
     public string ShortId { get; set; } = null!;
     public Guid EventId { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
