@@ -27,13 +27,15 @@ spec:
               value: "admin"  # TODO: change this
             - name: KC_HOSTNAME
               value: "auth.staging.znaphub.com" # TODO: change this
+            - name: JAVA_OPTS
+              value: "-Xms512m -Xmx1024m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.awt.headless=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.util.concurrent.ForkJoinPool.common.parallelism=1"
           ports:
             - containerPort: 8080
           livenessProbe:
             httpGet:
               path: /realms/master
               port: 8080
-            initialDelaySeconds: 60
+            initialDelaySeconds: 180
             periodSeconds: 30
           readinessProbe:
             httpGet:
@@ -43,11 +45,11 @@ spec:
             periodSeconds: 10
           resources:
             requests:
-              memory: "512Mi"
-              cpu: "250m"
+              memory: "1Gi" 
+              cpu: "500m"   
             limits:
-              memory: "1Gi"
-              cpu: "500m"
+              memory: "2Gi"  
+              cpu: "1000m" 
 ---
 apiVersion: v1
 kind: Service
