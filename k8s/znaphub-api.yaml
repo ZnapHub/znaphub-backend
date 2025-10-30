@@ -1,35 +1,10 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: znaphub-config
-  namespace: znaphub
-data:
-  appsettings.json: |
-    {
-      "ConnectionStrings": {
-        "ZnapHubContext": "Host=postgres.znaphub.svc.cluster.local;Port=5432;Database=ZnapHub;Username=postgres;Password=postgrespw;Timeout=300;CommandTimeout=300"
-      },
-      "Logging": {
-        "LogLevel": {
-          "Default": "Information",
-          "Microsoft.AspNetCore": "Warning"
-        }
-      },
-      "AllowedHosts": "*",
-      "Minio": {
-        "Endpoint": "minio.znaphub.svc.cluster.local:9000",
-        "Secure": false,
-        "Bucket": "eventphotos"
-      }
-    }
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: znaphub-api
   namespace: znaphub
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: znaphub-api
@@ -39,43 +14,39 @@ spec:
         app: znaphub-api
     spec:
       containers:
-        - name: znaphub-api
-          image: awingray/znaphub-api:latest
+        - name: api
+          image: awingray/znaphub:latest
           ports:
             - containerPort: 8080
             - containerPort: 8081
           env:
             - name: ASPNETCORE_ENVIRONMENT
-              value: "Production"
-          volumeMounts:
-            - name: app-config
-              mountPath: /app/appsettings.json
-              subPath: appsettings.json
+              value: "Development"
+            - name: ConnectionStrings__ZnapHubContext
+              value: "Host=znaphub-db;Port=5432;Database=ZnapHub;Username=postgres;Password=postgrespw;Timeout=300;CommandTimeout=300"
+            - name: Authentication__Authority
+              value: "https://auth.staging.znaphub.com/realms/znaphub"
+            - name: Authentication__Audience
+              value: "znaphub-api"
           livenessProbe:
             httpGet:
-              path: /health/live
+              path: /health
               port: 8080
             initialDelaySeconds: 30
             periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /health/ready
+              path: /health
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 5
-          startupProbe:
-            httpGet:
-              path: /health/startup
-              port: 8080
-            failureThreshold: 30
-            periodSeconds: 10
-      volumes:
-        - name: app-config
-          configMap:
-            name: znaphub-config
-            items:
-              - key: appsettings.json
-                path: appsettings.json
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "250m"
 ---
 apiVersion: v1
 kind: Service
@@ -87,28 +58,8 @@ spec:
     app: znaphub-api
   ports:
     - name: http
-      port: 80
+      port: 8080
       targetPort: 8080
     - name: metrics
       port: 8081
       targetPort: 8081
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: znaphub-ingress
-  namespace: znaphub
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  rules:
-    - host: znaphub.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: znaphub-api
-                port:
-                  number: 80

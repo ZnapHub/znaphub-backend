@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: znaphub-keycloak
+  namespace: znaphub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: znaphub-keycloak
+  template:
+    metadata:
+      labels:
+        app: znaphub-keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:26.4.2
+          command:
+            - "/opt/keycloak/bin/kc.sh"
+          args:
+            - "start-dev"
+          env:
+            - name: KEYCLOAK_ADMIN
+              value: "admin"  # TODO: change this
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: "admin"  # TODO: change this
+            - name: KC_HOSTNAME
+              value: "auth.staging.znaphub.com" # TODO: change this
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /realms/master
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /realms/master
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: znaphub-keycloak
+  namespace: znaphub
+spec:
+  selector:
+    app: znaphub-keycloak
+  ports:
+    - port: 8080
+      targetPort: 8080
