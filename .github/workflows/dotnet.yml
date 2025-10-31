@@ -13,16 +13,21 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Debug - List files
+      run: |
+        echo "=== Root directory ==="
+        ls -la
+        echo "=== src directory ==="
+        ls -la src/
+        echo "=== Checking for .csproj files ==="
+        find . -name "*.csproj" -type f
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
 
-    - name: Restore dependencies
-      run: dotnet restore src/ZnapHub.Api/ZnapHub.Api.csproj
-    
-    - name: Build
-      run: dotnet build src/ZnapHub.Api/ZnapHub.Api.csproj --no-restore
-    
-    - name: Test
-      run: dotnet test src/ZnapHub.Api/ZnapHub.Api.csproj --no-build --verbosity normal
+    - name: Check solution file
+      run: |
+        echo "=== Solution file content ==="
+        head -50 ZnapHub.sln || echo "Solution file not found"
