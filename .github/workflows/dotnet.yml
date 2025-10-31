@@ -19,10 +19,13 @@ jobs:
         dotnet-version: 9.0.x
 
     - name: Restore dependencies
-      run: dotnet restore ZnapHub.sln
-    
+      working-directory: ./src 
+      run: dotnet restore ../ZnapHub.sln 
+      
     - name: Build
-      run: dotnet build ZnapHub.sln --no-restore
+      working-directory: ./src  
+      run: dotnet build ../ZnapHub.sln --no-restore  
     
     - name: Test
-      run: dotnet test ZnapHub.sln --no-build --verbosity normal
+      working-directory: ./src 
+      run: dotnet test ../ZnapHub.sln --no-build --verbosity normal
