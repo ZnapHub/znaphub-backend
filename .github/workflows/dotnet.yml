@@ -19,10 +19,10 @@ jobs:
         dotnet-version: 9.0.x
 
     - name: Restore dependencies
-      run: dotnet restore Znaphub.sln
+      run: dotnet restore ZnapHub.sln
     
     - name: Build
-      run: dotnet build Znaphub.sln --no-restore
+      run: dotnet build ZnapHub.sln --no-restore
     
     - name: Test
-      run: dotnet test Znaphub.sln --no-build --verbosity normal
+      run: dotnet test ZnapHub.sln --no-build --verbosity normal
