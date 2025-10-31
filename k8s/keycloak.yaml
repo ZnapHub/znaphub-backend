@@ -22,11 +22,17 @@ spec:
             - "start-dev"
           env:
             - name: KEYCLOAK_ADMIN
-              value: "admin"  # TODO: change this
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: KEYCLOAK_ADMIN
             - name: KEYCLOAK_ADMIN_PASSWORD
-              value: "admin"  # TODO: change this
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: KEYCLOAK_ADMIN_PASSWORD
             - name: KC_HOSTNAME
-              value: "auth.staging.znaphub.com" # TODO: change this
+              value: "auth.staging.znaphub.com" 
             - name: JAVA_OPTS
               value: "-Xms512m -Xmx1024m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.awt.headless=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.util.concurrent.ForkJoinPool.common.parallelism=1"
           ports:

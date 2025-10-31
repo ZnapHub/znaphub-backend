@@ -1,17 +1,19 @@
-apiVersion: v1
-kind: Pod
+apiVersion: secrets.infisical.com/v1alpha1
+kind: InfisicalSecret
 metadata:
-  name: $title$
-  labels:
-    role: $title$
+  name: znaphub-secrets
+  namespace: znaphub
 spec:
-  containers:
-    - name: $title$
-      image: $nginx$
-      imagePullPolicy: IfNotPresent
-      ports:
-        - name: $title$
-          containerPort: $80$
-          protocol: $TCP$
-  restartPolicy: Always
-  $END$
+  resyncInterval: 60
+  authentication:
+    serviceToken:
+      serviceTokenSecretReference:
+        secretName: infisical-service-token
+        secretNamespace: znaphub
+      secretsScope:
+        envSlug: staging
+        secretsPath: "/" 
+  managedSecretReference:
+    secretName: znaphub-secrets
+    secretNamespace: znaphub
+    creationPolicy: Orphan

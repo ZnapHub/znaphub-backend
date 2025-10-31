@@ -32,9 +32,15 @@ spec:
             - name: POSTGRES_DB
               value: "ZnapHub"
             - name: POSTGRES_USER
-              value: "postgres"  # TODO: change this
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: POSTGRES_USER
             - name: POSTGRES_PASSWORD
-              value: "postgrespw"  # TODO: change this
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: POSTGRES_PASSWORD
           ports:
             - containerPort: 5432
           volumeMounts:

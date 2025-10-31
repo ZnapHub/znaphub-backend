@@ -23,9 +23,30 @@ spec:
             - name: ASPNETCORE_ENVIRONMENT
               value: "Development"
             - name: ConnectionStrings__ZnapHubContext
-              value: "Host=znaphub-db;Port=5432;Database=ZnapHub;Username=postgres;Password=postgrespw;Timeout=300;CommandTimeout=300"
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: CONNECTIONSTRING_ZNAPHUB_API
             - name: Authentication__Authority
-              value: "https://auth.staging.znaphub.com/realms/znaphub"
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: AUTHENTICATION_AUTHORITY
+            - name: Storage__Cloudflare__AccessKey
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: STORAGE_ACCESS_KEY
+            - name: Storage__Cloudflare__Endpoint
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: STORAGE_ENDPOINT
+            - name: Storage__Cloudflare__SecretKey
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: STORAGE_SECRET_KEY
             - name: Authentication__Audience
               value: "znaphub-api"
           livenessProbe:
@@ -42,11 +63,11 @@ spec:
             periodSeconds: 5
           resources:
             requests:
-              memory: "256Mi"
-              cpu: "100m"
-            limits:
               memory: "512Mi"
-              cpu: "250m"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
 ---
 apiVersion: v1
 kind: Service
