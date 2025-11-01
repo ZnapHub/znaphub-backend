@@ -27,11 +27,16 @@ spec:
                 secretKeyRef:
                   name: znaphub-secrets
                   key: CONNECTIONSTRING_ZNAPHUB_API
-            - name: Authentication__Authority
+            - name: Jwt__Authority
               valueFrom:
                 secretKeyRef:
                   name: znaphub-secrets
                   key: AUTHENTICATION_AUTHORITY
+            - name: Jwt__Audience
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: AUTHENTICATION_AUDIENCE
             - name: Storage__Cloudflare__AccessKey
               valueFrom:
                 secretKeyRef:
