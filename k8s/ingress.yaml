@@ -4,8 +4,14 @@ metadata:
   name: znaphub-ingress
   namespace: znaphub
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
+  tls:
+    - hosts:
+        - api.staging.znaphub.com
+        - auth.staging.znaphub.com
+      secretName: znaphub-tls 
   rules:
     - host: api.staging.znaphub.com
       http:
