@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: znaphub-authentik-worker
+  namespace: znaphub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: znaphub-authentik-worker
+  template:
+    metadata:
+      labels:
+        app: znaphub-authentik-worker
+    spec:
+      containers:
+        - name: authentik-worker
+          image: ghcr.io/goauthentik/server:2025.10
+          args: ["worker"]
+          env:
+            - name: AUTHENTIK_REDIS__HOST
+              value: znaphub-redis
+            - name: AUTHENTIK_POSTGRESQL__HOST
+              value: znaphub-db
+            - name: AUTHENTIK_POSTGRESQL__NAME
+              value: authentik
+            - name: AUTHENTIK_POSTGRESQL__USER
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: POSTGRES_USER
+            - name: AUTHENTIK_POSTGRESQL__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: POSTGRES_PASSWORD
+            - name: AUTHENTIK_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: AUTHENTIK_SECRET_KEY
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"

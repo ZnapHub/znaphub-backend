@@ -6,6 +6,8 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: letsencrypt
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   tls:
     - hosts:
@@ -30,6 +32,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: znaphub-keycloak
+                name: znaphub-authentik
                 port:
-                  number: 8080
+                  number: 80

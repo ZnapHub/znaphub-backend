@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: znaphub-authentik
+  namespace: znaphub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: znaphub-authentik
+  template:
+    metadata:
+      labels:
+        app: znaphub-authentik
+    spec:
+      containers:
+        - name: authentik
+          image: ghcr.io/goauthentik/server:2025.10
+          command: ["ak"]
+          args: ["server"]
+          env:
+            - name: AUTHENTIK_REDIS__HOST
+              value: znaphub-redis
+            - name: AUTHENTIK_POSTGRESQL__HOST
+              value: znaphub-db
+            - name: AUTHENTIK_POSTGRESQL__NAME
+              value: authentik
+            - name: AUTHENTIK_POSTGRESQL__USER
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: POSTGRES_USER
+            - name: AUTHENTIK_POSTGRESQL__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: POSTGRES_PASSWORD
+            - name: AUTHENTIK_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: AUTHENTIK_SECRET_KEY
+          ports:
+            - containerPort: 9000
+          readinessProbe:
+            httpGet:
+              path: /-/health/live/
+              port: 9000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: znaphub-authentik
+  namespace: znaphub
+spec:
+  selector:
+    app: znaphub-authentik
+  ports:
+    - port: 80
+      targetPort: 9000
