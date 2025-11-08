@@ -36,8 +36,8 @@ public sealed class CreateEventCommandHandler : ICommandHandler<CreateEventComma
 
         var @event = Event.Create(
             OrganizerId.FromGuid(userId.Value),
-            EventName.FromString(command.EventName),
-            EventSlug.FromString(command.EventSlug),
+            EventName.FromString(command.Name),
+            EventSlug.FromString(command.Slug),
             EventVisibility.FromBool(command.IsPublic),
             EventDescription.FromString(command.Description)
         );
