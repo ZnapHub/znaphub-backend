@@ -10,11 +10,11 @@ namespace ZnapHub.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("[controller]")]
-public class QrCodeController : ControllerBase
+public class QrCodesController : ControllerBase
 {
     private readonly ICommandDispatcher _commandDispatcher;
 
-    public QrCodeController(ICommandDispatcher commandDispatcher)
+    public QrCodesController(ICommandDispatcher commandDispatcher)
     {
         _commandDispatcher = commandDispatcher;
     }

@@ -14,12 +14,12 @@ namespace ZnapHub.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("[controller]")]
-public class EventController : ControllerBase
+public class EventsController : ControllerBase
 {
     private readonly IQueryDispatcher _queryDispatcher;
     private readonly ICommandDispatcher _commandDispatcher;
 
-    public EventController(IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
+    public EventsController(IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
     {
         _queryDispatcher = queryDispatcher;
         _commandDispatcher = commandDispatcher;

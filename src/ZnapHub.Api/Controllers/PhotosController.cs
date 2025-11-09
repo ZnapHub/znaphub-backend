@@ -10,12 +10,12 @@ namespace ZnapHub.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class PhotoController : ControllerBase
+public class PhotosController : ControllerBase
 {
     private readonly IQueryDispatcher _queryDispatcher;
     private readonly ICommandDispatcher _commandDispatcher;
 
-    public PhotoController(IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
+    public PhotosController(IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
     {
         _queryDispatcher = queryDispatcher;
         _commandDispatcher = commandDispatcher;

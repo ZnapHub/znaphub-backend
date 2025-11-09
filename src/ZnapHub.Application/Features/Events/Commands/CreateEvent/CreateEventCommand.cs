@@ -5,6 +5,6 @@ namespace ZnapHub.Application.Features.Events.Commands.CreateEvent;
 public sealed record CreateEventCommand(
     string Name,
     string Slug,
-    bool IsPublic,
+    bool IsPublic = false,
     string? Description = null
 ) : ICommand;
