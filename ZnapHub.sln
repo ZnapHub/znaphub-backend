@@ -1,10 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8ACA7F84-7577-4B60-AC13-9C4B963D96AF}"
-	ProjectSection(SolutionItems) = preProject
-		compose.yaml = compose.yaml
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZnapHub.Api", "src/ZnapHub.Api/ZnapHub.Api.csproj", "{2987968D-B9BE-4BB6-B0A6-0344B3F58FE9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZnapHub.Infrastructure", "src/ZnapHub.Infrastructure/ZnapHub.Infrastructure.csproj", "{4591FFD7-D226-4CEE-8EBE-4C0728395CE5}"

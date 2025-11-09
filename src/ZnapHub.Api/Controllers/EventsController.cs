@@ -52,7 +52,7 @@ public class EventsController : ControllerBase
     {
         var result = await _commandDispatcher.DispatchAsync(command, ct);
         return result.Match<IActionResult>(
-            Ok,
+            Created,
             e =>
                 e switch
                 {

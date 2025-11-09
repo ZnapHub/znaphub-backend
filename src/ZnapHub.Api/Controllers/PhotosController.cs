@@ -37,7 +37,7 @@ public class PhotosController : ControllerBase
             ct
         );
         return result.Match<IActionResult>(
-            Ok,
+            Created,
             e =>
                 e switch
                 {
