@@ -20,7 +20,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src/src/ZnapHub.Api
 RUN dotnet publish ZnapHub.Api.csproj -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
 WORKDIR /app
 
 RUN adduser --disabled-password --gecos '' appuser && chown -R appuser /app
