@@ -6,21 +6,21 @@ namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 internal static class HealthCheckServiceCollectionExtensions
 {
-    internal static IServiceCollection AddHealthChecks(
-        this IServiceCollection services,
-        IConfiguration configuration
-    )
+    extension(IServiceCollection services)
     {
-        services
-            .AddHealthChecks()
-            .AddNpgSql(
-                configuration.GetConnectionString("ZnapHubContext")
-                    ?? throw new InvalidOperationException("ZnapHubContext not found"),
-                name: "Postgres",
-                healthQuery: "SELECT 1;",
-                failureStatus: HealthStatus.Unhealthy,
-                tags: ["db", "sql"]
-            );
-        return services;
+        internal IServiceCollection AddHealthChecks(IConfiguration configuration)
+        {
+            services
+                .AddHealthChecks()
+                .AddNpgSql(
+                    configuration.GetConnectionString("ZnapHubContext")
+                        ?? throw new InvalidOperationException("ZnapHubContext not found"),
+                    name: "Postgres",
+                    healthQuery: "SELECT 1;",
+                    failureStatus: HealthStatus.Unhealthy,
+                    tags: ["db", "sql"]
+                );
+            return services;
+        }
     }
 }

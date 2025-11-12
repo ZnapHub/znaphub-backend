@@ -6,11 +6,14 @@ namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 internal static class AuthServiceCollectionExtensions
 {
-    internal static IServiceCollection AddAuth(this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        services.AddHttpContextAccessor();
+        internal IServiceCollection AddAuth()
+        {
+            services.AddHttpContextAccessor();
 
-        services.AddScoped<ICurrentUserService, CurrentUserService>();
-        return services;
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
+            return services;
+        }
     }
 }

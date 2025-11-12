@@ -12,22 +12,25 @@ namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 internal static class RepositoryServiceCollectionExtensions
 {
-    internal static IServiceCollection AddRepositories(this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        services.AddScoped<IPhotoWriteRepository, PhotoWriteRepository>();
-        services.AddScoped<IPhotoReadRepository, PhotoReadRepository>();
+        internal IServiceCollection AddRepositories()
+        {
+            services.AddScoped<IPhotoWriteRepository, PhotoWriteRepository>();
+            services.AddScoped<IPhotoReadRepository, PhotoReadRepository>();
 
-        services.AddScoped<IEventWriteRepository, EventWriteRepository>();
-        services.AddScoped<IEventReadRepository, EventReadRepository>();
+            services.AddScoped<IEventWriteRepository, EventWriteRepository>();
+            services.AddScoped<IEventReadRepository, EventReadRepository>();
 
-        services.AddScoped<IQrCodeReadRepository, QrCodeReadRepository>();
-        services.AddScoped<IQrCodeWriteRepository, QrCodeWriteRepository>();
-        return services;
-    }
+            services.AddScoped<IQrCodeReadRepository, QrCodeReadRepository>();
+            services.AddScoped<IQrCodeWriteRepository, QrCodeWriteRepository>();
+            return services;
+        }
 
-    internal static IServiceCollection AddUnitOfWork(this IServiceCollection services)
-    {
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
-        return services;
+        internal IServiceCollection AddUnitOfWork()
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            return services;
+        }
     }
 }

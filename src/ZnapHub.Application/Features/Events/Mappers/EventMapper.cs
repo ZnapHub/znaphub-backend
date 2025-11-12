@@ -4,15 +4,18 @@ using ZnapHub.Domain.Features.Events.ValueObjects;
 
 namespace ZnapHub.Application.Features.Events.Mappers;
 
-public static class EventMapper
+internal static class EventMapper
 {
-    public static EventDto ToDto(this Event @event) =>
-        new(
-            @event.Id,
-            @event.Name,
-            @event.Slug,
-            @event.Description,
-            @event.Visibility is EventVisibility.Public,
-            @event.CreatedAt
-        );
+    extension(Event @event)
+    {
+        internal EventDto ToDto() =>
+            new(
+                @event.Id,
+                @event.Name,
+                @event.Slug,
+                @event.Description,
+                @event.Visibility is EventVisibility.Public,
+                @event.CreatedAt
+            );
+    }
 }

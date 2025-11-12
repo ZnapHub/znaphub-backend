@@ -6,9 +6,12 @@ namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 internal static class FactoryServiceCollectionExtensions
 {
-    internal static IServiceCollection AddFactories(this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        services.AddScoped<IQrCodeUrlFactory, QrCodeUrlFactory>();
-        return services;
+        internal IServiceCollection AddFactories()
+        {
+            services.AddScoped<IQrCodeUrlFactory, QrCodeUrlFactory>();
+            return services;
+        }
     }
 }

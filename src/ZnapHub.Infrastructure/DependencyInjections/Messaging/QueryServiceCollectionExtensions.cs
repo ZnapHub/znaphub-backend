@@ -6,18 +6,21 @@ namespace ZnapHub.Infrastructure.DependencyInjections.Messaging;
 
 public static class QueryServiceCollectionExtensions
 {
-    public static IServiceCollection AddQueryHandlers(this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        var assembly = typeof(IQuery).Assembly;
+        public IServiceCollection AddQueryHandlers()
+        {
+            var assembly = typeof(IQuery).Assembly;
 
-        services.AddSingleton<IQueryDispatcher, InMemoryQueryDispatcher>();
-        services.Scan(s =>
-            s.FromAssemblies(assembly)
-                .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
-                .AsImplementedInterfaces()
-                .WithScopedLifetime()
-        );
+            services.AddSingleton<IQueryDispatcher, InMemoryQueryDispatcher>();
+            services.Scan(s =>
+                s.FromAssemblies(assembly)
+                    .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
+                    .AsImplementedInterfaces()
+                    .WithScopedLifetime()
+            );
 
-        return services;
+            return services;
+        }
     }
 }

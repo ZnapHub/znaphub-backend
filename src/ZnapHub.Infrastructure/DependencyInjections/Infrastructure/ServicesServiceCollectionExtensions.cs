@@ -6,9 +6,12 @@ namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 internal static class ServicesServiceCollectionExtensions
 {
-    internal static IServiceCollection AddServices(this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        services.AddScoped<IShortIdGenerator, ShortIdGenerator>();
-        return services;
+        internal IServiceCollection AddServices()
+        {
+            services.AddScoped<IShortIdGenerator, ShortIdGenerator>();
+            return services;
+        }
     }
 }

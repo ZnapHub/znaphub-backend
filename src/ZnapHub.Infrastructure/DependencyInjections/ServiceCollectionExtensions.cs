@@ -7,13 +7,13 @@ namespace ZnapHub.Infrastructure.DependencyInjections;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddZnapHub(
-        this IServiceCollection services,
-        IConfiguration configuration
-    ) =>
-        services
-            .AddZnapHubOptions(configuration)
-            .AddCommandHandlers()
-            .AddQueryHandlers()
-            .AddInfrastructure(configuration);
+    extension(IServiceCollection services)
+    {
+        public IServiceCollection AddZnapHub(IConfiguration configuration) =>
+            services
+                .AddZnapHubOptions(configuration)
+                .AddCommandHandlers()
+                .AddQueryHandlers()
+                .AddInfrastructure(configuration);
+    }
 }

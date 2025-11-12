@@ -10,9 +10,7 @@ namespace ZnapHub.Infrastructure.Data.Migrations.Write
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Url",
-                table: "Photos");
+            migrationBuilder.DropColumn(name: "Url", table: "Photos");
         }
 
         /// <inheritdoc />
@@ -24,7 +22,8 @@ namespace ZnapHub.Infrastructure.Data.Migrations.Write
                 type: "character varying(2048)",
                 maxLength: 2048,
                 nullable: false,
-                defaultValue: "");
+                defaultValue: ""
+            );
         }
     }
 }

@@ -2,9 +2,12 @@ namespace ZnapHub.Shared.Extensions;
 
 public static class StreamExtensions
 {
-    public static Stream SetBeginStream(this Stream stream)
+    extension(Stream stream)
     {
-        stream.Position = 0;
-        return stream;
+        public Stream SetBeginStream()
+        {
+            stream.Position = 0;
+            return stream;
+        }
     }
 }

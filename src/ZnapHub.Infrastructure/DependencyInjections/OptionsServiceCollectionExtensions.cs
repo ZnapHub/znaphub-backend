@@ -6,14 +6,14 @@ namespace ZnapHub.Infrastructure.DependencyInjections;
 
 public static class OptionsServiceCollectionExtensions
 {
-    public static IServiceCollection AddZnapHubOptions(
-        this IServiceCollection services,
-        IConfiguration configuration
-    )
+    extension(IServiceCollection services)
     {
-        services.Configure<StorageOptions>(configuration.GetSection("Storage"));
-        services.AddOptions<StorageOptions>().Bind(configuration.GetSection("Storage"));
+        public IServiceCollection AddZnapHubOptions(IConfiguration configuration)
+        {
+            services.Configure<StorageOptions>(configuration.GetSection("Storage"));
+            services.AddOptions<StorageOptions>().Bind(configuration.GetSection("Storage"));
 
-        return services;
+            return services;
+        }
     }
 }

@@ -10,61 +10,56 @@ namespace ZnapHub.Infrastructure.DependencyInjections.Infrastructure;
 
 internal static class StorageServiceCollectionExtensions
 {
-    internal static IServiceCollection AddStorage(
-        this IServiceCollection services,
-        IConfiguration configuration
-    ) => services.AddS3Storage(configuration).AddStorageServices(configuration);
-
-    private static IServiceCollection AddS3Storage(
-        this IServiceCollection services,
-        IConfiguration configuration
-    )
+    extension(IServiceCollection services)
     {
-        services.AddSingleton<IAmazonS3>(_ => new AmazonS3Client(
-            configuration["Storage:Cloudflare:AccessKey"],
-            configuration["Storage:Cloudflare:SecretKey"],
-            new AmazonS3Config
+        internal IServiceCollection AddStorage(IConfiguration configuration) =>
+            services.AddS3Storage(configuration).AddStorageServices(configuration);
+
+        private IServiceCollection AddS3Storage(IConfiguration configuration)
+        {
+            services.AddSingleton<IAmazonS3>(_ => new AmazonS3Client(
+                configuration["Storage:Cloudflare:AccessKey"],
+                configuration["Storage:Cloudflare:SecretKey"],
+                new AmazonS3Config
+                {
+                    ServiceURL = configuration["Storage:Cloudflare:Endpoint"],
+                    ForcePathStyle = true,
+                }
+            ));
+
+            services.AddScoped<IStorageProvider>(service =>
             {
-                ServiceURL = configuration["Storage:Cloudflare:Endpoint"],
-                ForcePathStyle = true,
-            }
-        ));
+                var s3Client = service.GetRequiredService<IAmazonS3>();
+                return new S3StorageProvider(s3Client);
+            });
 
-        services.AddScoped<IStorageProvider>(service =>
+            services.AddScoped<IUrlProvider>(service =>
+            {
+                var s3Client = service.GetRequiredService<IAmazonS3>();
+                return new S3UrlProvider(s3Client);
+            });
+
+            return services;
+        }
+
+        private IServiceCollection AddStorageServices(IConfiguration configuration)
         {
-            var s3Client = service.GetRequiredService<IAmazonS3>();
-            return new S3StorageProvider(s3Client);
-        });
+            var bucketName =
+                configuration["Storage:Buckets:Photos"]
+                ?? throw new InvalidOperationException("Storage:Buckets:Photos is required.");
 
-        services.AddScoped<IUrlProvider>(service =>
-        {
-            var s3Client = service.GetRequiredService<IAmazonS3>();
-            return new S3UrlProvider(s3Client);
-        });
+            services.AddScoped<IPhotoStorageService>(service =>
+            {
+                var storageProvider = service.GetRequiredService<IStorageProvider>();
+                return new PhotoStorageService(storageProvider, bucketName);
+            });
 
-        return services;
-    }
-
-    private static IServiceCollection AddStorageServices(
-        this IServiceCollection services,
-        IConfiguration configuration
-    )
-    {
-        var bucketName =
-            configuration["Storage:Buckets:Photos"]
-            ?? throw new InvalidOperationException("Storage:Buckets:Photos is required.");
-
-        services.AddScoped<IPhotoStorageService>(service =>
-        {
-            var storageProvider = service.GetRequiredService<IStorageProvider>();
-            return new PhotoStorageService(storageProvider, bucketName);
-        });
-
-        services.AddScoped<IPhotoUrlService>(service =>
-        {
-            var urlProvider = service.GetRequiredService<IUrlProvider>();
-            return new PhotoUrlService(urlProvider, bucketName);
-        });
-        return services;
+            services.AddScoped<IPhotoUrlService>(service =>
+            {
+                var urlProvider = service.GetRequiredService<IUrlProvider>();
+                return new PhotoUrlService(urlProvider, bucketName);
+            });
+            return services;
+        }
     }
 }
