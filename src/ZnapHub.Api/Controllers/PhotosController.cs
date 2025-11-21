@@ -1,4 +1,5 @@
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ZnapHub.Application.Abstractions.Messaging.Commands;
 using ZnapHub.Application.Abstractions.Messaging.Queries;
@@ -9,6 +10,7 @@ using ZnapHub.Application.Features.Photos.Queries.GetPhotosByEvent;
 namespace ZnapHub.Api.Controllers;
 
 [ApiController]
+[AllowAnonymous]
 [Route("[controller]")]
 public class PhotosController : ControllerBase
 {
