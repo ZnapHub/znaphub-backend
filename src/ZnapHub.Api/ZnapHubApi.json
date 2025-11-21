@@ -7,6 +7,7 @@
       "name": "Auth",
       "filename": "Auth",
       "seq": 3,
+      "examples": [],
       "root": {
         "request": {
           "auth": {
@@ -29,6 +30,7 @@
             "timeout": 0
           },
           "tags": [],
+          "examples": [],
           "request": {
             "url": "https://auth.staging.znaphub.com/application/o/token/",
             "method": "POST",
@@ -71,60 +73,10 @@
     },
     {
       "type": "folder",
-      "name": "QrCodes",
-      "filename": "QrCodes",
-      "seq": 4,
-      "root": {
-        "request": {
-          "auth": {
-            "mode": "inherit"
-          }
-        },
-        "meta": {
-          "name": "QrCodes",
-          "seq": 4
-        }
-      },
-      "items": [
-        {
-          "type": "http",
-          "name": "GenerateQrCode",
-          "filename": "GenerateQrCode.bru",
-          "seq": 1,
-          "settings": {
-            "encodeUrl": true,
-            "timeout": 0
-          },
-          "tags": [],
-          "request": {
-            "url": "{{host}}/qrcodes",
-            "method": "POST",
-            "headers": [],
-            "params": [],
-            "body": {
-              "mode": "json",
-              "json": "{\n  \"eventId\": \"{{eventId}}\"\n}",
-              "formUrlEncoded": [],
-              "multipartForm": [],
-              "file": []
-            },
-            "script": {},
-            "vars": {},
-            "assertions": [],
-            "tests": "",
-            "docs": "",
-            "auth": {
-              "mode": "inherit"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "type": "folder",
       "name": "Events",
       "filename": "Events",
       "seq": 2,
+      "examples": [],
       "root": {
         "request": {
           "auth": {
@@ -147,6 +99,7 @@
             "timeout": 0
           },
           "tags": [],
+          "examples": [],
           "request": {
             "url": "{{host}}/events",
             "method": "POST",
@@ -179,6 +132,7 @@
             "timeout": 0
           },
           "tags": [],
+          "examples": [],
           "request": {
             "url": "{{host}}/events/{{eventId}}",
             "method": "GET",
@@ -210,8 +164,41 @@
             "timeout": 0
           },
           "tags": [],
+          "examples": [],
           "request": {
             "url": "{{host}}/events",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "GetPhotos",
+          "filename": "GetPhotos.bru",
+          "seq": 2,
+          "settings": {
+            "encodeUrl": true,
+            "timeout": 0
+          },
+          "tags": [],
+          "examples": [],
+          "request": {
+            "url": "{{host}}/events/{{eventId}}/photos",
             "method": "GET",
             "headers": [],
             "params": [],
@@ -238,6 +225,7 @@
       "name": "Photos",
       "filename": "Photos",
       "seq": 1,
+      "examples": [],
       "root": {
         "request": {
           "auth": {
@@ -252,37 +240,6 @@
       "items": [
         {
           "type": "http",
-          "name": "GetPhotos",
-          "filename": "GetPhotos.bru",
-          "seq": 2,
-          "settings": {
-            "encodeUrl": true,
-            "timeout": 0
-          },
-          "tags": [],
-          "request": {
-            "url": "{{host}}/photos/{{eventId}}",
-            "method": "GET",
-            "headers": [],
-            "params": [],
-            "body": {
-              "mode": "none",
-              "formUrlEncoded": [],
-              "multipartForm": [],
-              "file": []
-            },
-            "script": {},
-            "vars": {},
-            "assertions": [],
-            "tests": "",
-            "docs": "",
-            "auth": {
-              "mode": "inherit"
-            }
-          }
-        },
-        {
-          "type": "http",
           "name": "UploadPhoto",
           "filename": "UploadPhoto.bru",
           "seq": 1,
@@ -291,6 +248,7 @@
             "timeout": 0
           },
           "tags": [],
+          "examples": [],
           "request": {
             "url": "{{host}}/photos/{{shortId}}",
             "method": "POST",
@@ -322,9 +280,62 @@
           }
         }
       ]
+    },
+    {
+      "type": "folder",
+      "name": "QrCodes",
+      "filename": "QrCodes",
+      "seq": 4,
+      "examples": [],
+      "root": {
+        "request": {
+          "auth": {
+            "mode": "inherit"
+          }
+        },
+        "meta": {
+          "name": "QrCodes",
+          "seq": 4
+        }
+      },
+      "items": [
+        {
+          "type": "http",
+          "name": "GenerateQrCode",
+          "filename": "GenerateQrCode.bru",
+          "seq": 1,
+          "settings": {
+            "encodeUrl": true,
+            "timeout": 0
+          },
+          "tags": [],
+          "examples": [],
+          "request": {
+            "url": "{{host}}/qrcodes",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"eventId\": \"{{eventId}}\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "inherit"
+            }
+          }
+        }
+      ]
     }
   ],
-  "activeEnvironmentUid": "jJVNh13MVM8rYbx4YCxGE",
+  "activeEnvironmentUid": "JKEP9kv7dNDF8xJOLeR0F",
   "environments": [
     {
       "variables": [
@@ -352,7 +363,7 @@
           "name": "",
           "value": "",
           "enabled": true,
-          "uid": "Ivspbt6V17QPpIgOSOY63"
+          "uid": "14jP0wGMd6HlMRNTXPfei"
         }
       ],
       "vars": {
@@ -362,14 +373,14 @@
             "value": "658a3ab6-f551-45e1-88b2-849288781b22",
             "enabled": true,
             "local": false,
-            "uid": "WIe1LaXkuzxe2ghiaujVz"
+            "uid": "LxbbqMz21FkgQsEfEd23a"
           },
           {
             "name": "shortId",
             "value": "tarr43f",
             "enabled": true,
             "local": false,
-            "uid": "lK5PLsGy7Dbf9yN5AbdvL"
+            "uid": "2ig1FQEtKW813T4WBYuTu"
           }
         ]
       }
@@ -383,7 +394,7 @@
       "node_modules",
       ".git"
     ],
-    "size": 0.0032892227172851562,
+    "size": 0.0033445358276367188,
     "filesCount": 13
   }
 }
