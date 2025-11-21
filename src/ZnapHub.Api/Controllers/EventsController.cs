@@ -7,6 +7,8 @@ using ZnapHub.Application.Features.Events.Commands.CreateEvent;
 using ZnapHub.Application.Features.Events.Dtos;
 using ZnapHub.Application.Features.Events.Queries.GetEventById;
 using ZnapHub.Application.Features.Events.Queries.GetEventsByOrganizer;
+using ZnapHub.Application.Features.Photos.Dtos;
+using ZnapHub.Application.Features.Photos.Queries.GetPhotosByEvent;
 using ZnapHub.Shared.Abstractions;
 
 namespace ZnapHub.Api.Controllers;
@@ -76,6 +78,24 @@ public class EventsController : ControllerBase
                 e switch
                 {
                     not null when e == Error.NotFound => NotFound(e),
+                    _ => StatusCode((int)HttpStatusCode.InternalServerError, e),
+                }
+        );
+    }
+
+    [HttpGet("{eventId:guid}/photos")]
+    public async Task<IActionResult> GetPhotoListAsync(Guid eventId, CancellationToken ct)
+    {
+        var result = await _queryDispatcher.QueryAsync<
+            GetPhotosByEventQuery,
+            IReadOnlyList<PhotoDto>
+        >(new GetPhotosByEventQuery(eventId), ct);
+
+        return result.Match(
+            Ok,
+            e =>
+                e switch
+                {
                     _ => StatusCode((int)HttpStatusCode.InternalServerError, e),
                 }
         );

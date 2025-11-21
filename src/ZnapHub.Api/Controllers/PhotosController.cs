@@ -45,22 +45,4 @@ public class PhotosController : ControllerBase
                 }
         );
     }
-
-    [HttpGet("{eventId:guid}")]
-    public async Task<IActionResult> GetListAsync(Guid eventId, CancellationToken ct)
-    {
-        var result = await _queryDispatcher.QueryAsync<
-            GetPhotosByEventQuery,
-            IReadOnlyList<PhotoDto>
-        >(new GetPhotosByEventQuery(eventId), ct);
-
-        return result.Match(
-            Ok,
-            e =>
-                e switch
-                {
-                    _ => StatusCode((int)HttpStatusCode.InternalServerError, e),
-                }
-        );
-    }
 }
