@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: znaphub-pwa
+  namespace: znaphub
+  labels:
+    app: znaphub-pwa
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: znaphub-pwa
+  template:
+    metadata:
+      labels:
+        app: znaphub-pwa
+    spec:
+      containers:
+        - name: znaphub-pwa
+          image: docker.io/awingray/znaphub-pwa:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: znaphub-pwa
+  namespace: znaphub
+spec:
+  type: ClusterIP
+  selector:
+    app: znaphub-pwa
+  ports:
+    - port: 80
+      targetPort: 80

@@ -13,6 +13,7 @@ spec:
     - hosts:
         - api.staging.znaphub.com
         - auth.staging.znaphub.com
+        - staging.znaphub.com
       secretName: znaphub-tls 
   rules:
     - host: api.staging.znaphub.com
@@ -35,3 +36,13 @@ spec:
                 name: znaphub-authentik
                 port:
                   number: 80
+    - host: staging.znaphub.com
+      http:
+        paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: znaphub-pwa
+                  port:
+                    number: 80
