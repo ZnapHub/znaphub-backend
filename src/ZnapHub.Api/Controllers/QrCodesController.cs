@@ -30,7 +30,7 @@ public class QrCodesController : ControllerBase
             GenerateQrCodeResponse
         >(command, ct);
         return result.Match<IActionResult>(
-            Created,
+            Ok,
             e =>
                 e switch
                 {
