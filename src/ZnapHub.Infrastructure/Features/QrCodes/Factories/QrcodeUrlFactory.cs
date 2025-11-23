@@ -13,5 +13,5 @@ internal sealed class QrCodeUrlFactory : IQrCodeUrlFactory
         _options = options.Value;
     }
 
-    public string CreateUploadUrl(string shortId) => $"{_options.BaseUploadUrl}/{shortId}";
+    public Uri CreateUploadUrl(string shortId) => new(new Uri(_options.BaseUploadUrl), shortId);
 }

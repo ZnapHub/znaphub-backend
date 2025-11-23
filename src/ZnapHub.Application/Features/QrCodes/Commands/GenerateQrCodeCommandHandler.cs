@@ -52,6 +52,6 @@ public sealed class GenerateQrCodeCommandHandler
         await _unitOfWork.SaveChangesAsync(ct);
 
         var uploadUrl = _qrCodeUrlFactory.CreateUploadUrl(shortId);
-        return Result.Success(new GenerateQrCodeResponse(uploadUrl));
+        return Result.Success(new GenerateQrCodeResponse(uploadUrl.ToString()));
     }
 }
