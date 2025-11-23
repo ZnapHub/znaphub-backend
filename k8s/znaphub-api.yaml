@@ -52,6 +52,11 @@ spec:
                 secretKeyRef:
                   name: znaphub-secrets
                   key: STORAGE_SECRET_KEY
+            - name: Storage__BaseUploadUrl
+              valueFrom:
+                secretKeyRef:
+                  name: znaphub-secrets
+                  key: STORAGE_BASE_UPLOAD_URL
             - name: Authentication__Audience
               value: "znaphub-api"
           livenessProbe:
