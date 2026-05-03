@@ -1,0 +1,18 @@
+namespace ZnapHub.Modules.Events.Domain.ValueObjects;
+
+public sealed record EventId
+{
+    private Guid Value { get; }
+
+    private EventId(Guid value) => Value = value;
+
+    public static EventId New() => new(Guid.CreateVersion7());
+
+    public static EventId FromString(string value) => new(Guid.Parse(value.Trim()));
+
+    public static EventId FromGuid(Guid value) => new(value);
+
+    public override string ToString() => Value.ToString();
+
+    public static implicit operator Guid(EventId eventId) => eventId.Value;
+}
