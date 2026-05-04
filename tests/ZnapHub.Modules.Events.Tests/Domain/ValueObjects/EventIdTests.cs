@@ -8,8 +8,6 @@ public class EventIdTests
     [Fact]
     public void New_ProducesVersion7Guid_SoIdsAreTimeOrdered()
     {
-        // We rely on UUIDv7 ordering for index locality / pagination.
-        // If this changes, repository query behavior changes too.
         Guid value = EventId.New();
 
         value.Version.ShouldBe(7);

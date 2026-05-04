@@ -1,6 +1,6 @@
-using ZnapHub.Modules.Events.Domain.Abstractions;
 using ZnapHub.Modules.Events.Domain.Events;
 using ZnapHub.Modules.Events.Domain.ValueObjects;
+using ZnapHub.Shared.Abstractions;
 
 namespace ZnapHub.Modules.Events.Domain.Entities;
 

@@ -1,4 +1,4 @@
-namespace ZnapHub.Modules.Events.Domain.Abstractions;
+namespace ZnapHub.Shared.Abstractions;
 
 public abstract class Entity<TId> : IEntity<TId>
     where TId : notnull
